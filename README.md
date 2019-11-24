@@ -4,7 +4,7 @@ hello world
 #Why Rust!
 # hola
 
-<<<<<<< HEAD
+
 #Rendering
 
 #Performance monitoring 
@@ -17,5 +17,3 @@ hello world
 #Rust
 
 
-
-=======
