@@ -1,9 +1,10 @@
 # Artemis-dev-tool
 hello world
 # Hello from Tim
-
+#Why Rust!
 # hola
 
+<<<<<<< HEAD
 #Rendering
 
 #Performance monitoring 
@@ -16,3 +17,5 @@ hello world
 #Rust
 
 
+
+=======
