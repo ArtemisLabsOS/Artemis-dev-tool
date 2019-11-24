@@ -7,3 +7,11 @@ hello world
 # hola
 
 # feature branch test!
+#Rendering
+
+#Performance monitoring 
+
+
+
+#Rust
+#Why Rust!
