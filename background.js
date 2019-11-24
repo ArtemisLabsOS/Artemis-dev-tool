@@ -1,1 +1,0 @@
-chrome.devtools.panels.create("Artimes",null,"index.html",(panel)=> console.log("hell0 world"))
