@@ -1,3 +1,3 @@
-chrome.devtools.panels.create("Artimes", null, "index.html", panel =>
+chrome.devtools.panels.create("Artemis", "", "devtool.html", panel =>
   console.log("hello world")
 );
