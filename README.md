@@ -10,4 +10,9 @@ hello world
 
 
 
+#feature 1 addition
+#includes the query display with web socket rendering
+
 #Rust
+
+
