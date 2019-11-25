@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, 'client/index.js'), //where to build dependency graph 
+  entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
   output: {
       path: path.resolve(__dirname, './build'),
       filename: 'bundle.js'
@@ -31,15 +31,5 @@ module.exports = {
         ],
       },
     ]
-  },
-  devServer: {
-    publicPath: '/build/',
-    port: 8080,
-    proxy: {
-      '/api/leaders': {
-        target: 'http://localhost:3000',
-        secure: false
-      }
-    }
   }
 };
