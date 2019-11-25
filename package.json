@@ -1,11 +1,12 @@
 {
-  "name": "Artemis-dev-tool",
+  "name": "artemis-dev-tool",
   "version": "1.0.0",
   "description": "",
   "main": "devtools.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev": "NODE_ENV=production webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,12 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
