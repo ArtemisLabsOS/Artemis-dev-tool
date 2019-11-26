@@ -1,15 +1,16 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import bglog from "./bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
+import "./stylesheets/style.scss";
 
-
-const App = (props) => {
+const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
 
-  chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+  chrome.devtools.network.onRequestFinished.addListener(httpReq => {
     bglog(httpReq.response.content);
-    if(httpReq.request.postData.text){
+    bglog(httpReq.request);
+    if (httpReq.request.postData.text) {
       httpReq.getContent(res => {
         const arr = JSON.parse(JSON.stringify(results));
         arr.push(JSON.stringify(res));
@@ -17,10 +18,13 @@ const App = (props) => {
       });
       const requestQuery = JSON.parse(httpReq.request.postData.text);
       const newArr = JSON.parse(JSON.stringify(queries));
-      newArr.push(JSON.stringify({
-        time:httpReq.time,
-        outgoingQueries: requestQuery.query
-      }));
+      newArr.push(
+        JSON.stringify({
+          time: httpReq.time,
+          outgoingQueries: requestQuery.query
+        })
+      );
+      bglog(newArr);
       updateQueries(newArr);
     }
   });
@@ -29,7 +33,7 @@ const App = (props) => {
   return (
     <div>
       {results}
-      <QueryContainer queries ={queries} />
+      <QueryContainer queries={queries} />
     </div>
   );
 };
