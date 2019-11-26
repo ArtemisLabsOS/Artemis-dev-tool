@@ -2,6 +2,8 @@ import React, { useEffect , useState} from "react";
 import bglog from "./bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
 
+import { ApolloClient } from 'apollo-client';
+
 
 const App = (props) => {
   // console.log('i am in useEffect');
