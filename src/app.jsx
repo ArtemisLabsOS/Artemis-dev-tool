@@ -1,9 +1,7 @@
 import React, { useEffect , useState} from "react";
-import bglog from "./bglog.js";
+import bglog from "./utils/bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
-
-import { ApolloClient } from 'apollo-client';
-
+import ResultDisplay from "./components/GraphQLResponse.jsx"
 
 const App = (props) => {
   // console.log('i am in useEffect');
@@ -11,30 +9,35 @@ const App = (props) => {
   const [results, updateResults] = useState([]);
 
   chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-    bglog(httpReq.response.content);
-    if(httpReq.request.postData.text){
+    if(httpReq.request.postData){
       httpReq.getContent(res => {
-        const arr = JSON.parse(JSON.stringify(results));
-        arr.push(JSON.stringify(res));
-        updateResults(arr);
+        const tempArr = results.slice();
+        tempArr.push(res);
+        updateResults(tempArr);
       });
-      const requestQuery = JSON.parse(httpReq.request.postData.text);
-      const newArr = JSON.parse(JSON.stringify(queries));
+      let requestQuery;
+      if(typeof JSON.parse(httpReq.request.postData.text) === "object"){
+        requestQuery = JSON.parse(httpReq.request.postData.text).query;
+      }
+      else {
+        requestQuery = httpReq.request.postData.text;
+      }
+      const newArr = queries.slice();
       newArr.push(JSON.stringify({
         time:httpReq.time,
-        outgoingQueries: requestQuery.query
+        outgoingQueries: requestQuery
       }));
       updateQueries(newArr);
     }
   });
-
-  bglog(queries);
+  bglog(['this is queries', queries]);
+  bglog(['this is results', results]);
   return (
     <div>
-      {results}
-      <QueryContainer queries ={queries} />
-      Hello World; 
-      This is test 
+      {/* {queries}
+      {results} */}
+      <QueryContainer queries={queries} />
+      <ResultDisplay results={results}/>
     </div>
   );
 };

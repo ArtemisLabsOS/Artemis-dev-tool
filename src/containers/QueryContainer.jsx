@@ -1,7 +1,6 @@
 import React from "react";
 import Query from "../components/Query.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx"
-import bglog from "../bglog";
 // import "./QueryContainer.css"
 const QueryContainer = (props) => {
   return (
