@@ -1,5 +1,6 @@
-import React, { useEffect, useState} from 'react';
-import bglog from './bglog';
+import React, { useEffect , useState} from "react";
+import bglog from "./bglog.js";
+import QueryContainer from "./containers/QueryContainer.jsx";
 
 
 const App = (props) => {
@@ -23,17 +24,17 @@ const App = (props) => {
       }));
       updateQueries(newArr);
     }
-  })
+  });
 
   bglog(queries);
   return (
     <div>
-      {queries}
       {results}
+      <QueryContainer queries ={queries} />
       Hello World; 
       This is test 
     </div>
-  )
-}
+  );
+};
 
 export default App;
