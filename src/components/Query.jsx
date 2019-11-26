@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from "react";
 
 const Query = props => {
-
-    return(
-        <div>
-
-        </div>
-    )
-}
+    
+  return (
+  <div>
+    hello
+  </div>
+  )
+};
 
 export default Query;

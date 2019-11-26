@@ -1,10 +1,13 @@
 import React from 'react';
+import QueryContainer from './containers/QueryContainer.jsx';
 
 const App = (props) => {
+  
   return (
     <div>
-      Hello World;
-      This is test
+      <QueryContainer />
+      Hello World; 
+      This is test 
     </div>
   )
 }
