@@ -1,0 +1,10 @@
+{
+  "name": "Project Artemis",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "The GraphQL debugging tool for Apollo Client in the Chrome developer console.",
+  "devtools_page": "devtools.html",
+  "background": { 
+    "scripts": ["background.js"]
+  }
+}
