@@ -1,7 +1,7 @@
 import React, { useEffect , useState} from "react";
 import bglog from "./utils/bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
-
+import ResultDisplay from "./components/GraphQLResponse.jsx"
 
 const App = (props) => {
   // console.log('i am in useEffect');
@@ -11,10 +11,8 @@ const App = (props) => {
   chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
     if(httpReq.request.postData){
       httpReq.getContent(res => {
-        bglog(['this is res',res]);
         const tempArr = results.slice();
         tempArr.push(res);
-        bglog(['this is tempArr', tempArr]);
         updateResults(tempArr);
       });
       let requestQuery;
@@ -24,9 +22,7 @@ const App = (props) => {
       else {
         requestQuery = httpReq.request.postData.text;
       }
-      bglog(["this is response query", requestQuery]);
       const newArr = queries.slice();
-      bglog(['this is new Arr', newArr]);
       newArr.push(JSON.stringify({
         time:httpReq.time,
         outgoingQueries: requestQuery
@@ -35,11 +31,13 @@ const App = (props) => {
     }
   });
   bglog(['this is queries', queries]);
+  bglog(['this is results', results]);
   return (
     <div>
-      {queries}
-      {results}
-      <QueryContainer queries ={queries} />
+      {/* {queries}
+      {results} */}
+      <QueryContainer queries={queries} />
+      <ResultDisplay results={results}/>
     </div>
   );
 };
