@@ -1,10 +1,10 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import bglog from "./utils/bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
+import "./stylesheets/style.scss";
 import ResultDisplay from "./components/GraphQLResponse.jsx"
 
-const App = (props) => {
-  // console.log('i am in useEffect');
+const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
 
@@ -23,10 +23,10 @@ const App = (props) => {
           requestQuery = httpReq.request.postData.text;
         }
         bglog(['this is requestQUery', requestQuery])
-        updateQueries(oldQueries => [...oldQueries, JSON.stringify({
+        updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
-        })]);
+        }]);
       }
     });
   },[]);
@@ -37,8 +37,7 @@ const App = (props) => {
     <div>
       {/* {queries}
       {results} */}
-      <QueryContainer queries={queries} />
-      <ResultDisplay results={results}/>
+      <QueryContainer queries={queries} results={results}/>
     </div>
   );
 };
