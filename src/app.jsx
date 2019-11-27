@@ -8,40 +8,47 @@ const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
 
-  chrome.devtools.network.onRequestFinished.addListener(httpReq => {
-    bglog(httpReq.response.content);
-    bglog(httpReq.request);
-    if (httpReq.request.postData) {
-      httpReq.getContent(res => {
-        const tempArr = results.slice();
-        tempArr.push(res);
-        updateResults(tempArr);
-      });
-      let requestQuery;
-      if(typeof JSON.parse(httpReq.request.postData.text) === "object"){
-        requestQuery = JSON.parse(httpReq.request.postData.text).query;
+  useEffect(() => {
+    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+      if(httpReq.request.postData){
+        httpReq.getContent(res => {
+          updateResults(oldResults => [...oldResults, res]);
+        });
+        let requestQuery;
+        bglog(httpReq.request.postData.text);
+        if(IsJsonString(httpReq.request.postData.text)){
+          requestQuery = JSON.parse(httpReq.request.postData.text).query;
+        }
+        else {
+          requestQuery = httpReq.request.postData.text;
+        }
+        bglog(['this is requestQUery', requestQuery])
+        updateQueries(oldQueries => [...oldQueries, {
+          time:httpReq.time,
+          outgoingQueries: requestQuery
+        }]);
       }
-      else {
-        requestQuery = httpReq.request.postData.text;
-      }
-      const newArr = queries.slice();
-      newArr.push(JSON.stringify({
-        time:httpReq.time,
-        outgoingQueries: requestQuery
-      }));
-      updateQueries(newArr);
-    }
-  });
+    });
+  },[]);
+
   bglog(['this is queries', queries]);
   bglog(['this is results', results]);
   return (
     <div>
       {/* {queries}
       {results} */}
-      <QueryContainer queries={queries} />
-      <ResultDisplay results={results}/>
+      <QueryContainer queries={queries} results={results}/>
     </div>
   );
 };
+
+function IsJsonString(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
 
 export default App;
