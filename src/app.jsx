@@ -10,7 +10,7 @@ const App = props => {
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      if(httpReq.request.postData){
+      if(httpReq.request.postData) {
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
         });
@@ -30,6 +30,12 @@ const App = props => {
       }
     });
   },[]);
+
+  
+    // chrome.devtools.network.onRequestFinished.addListener((httpRequest) => {
+    //   bglog('THIS IS THE REQUEST BODY', httpRequest);
+    // })
+  
 
   bglog(['this is queries', queries]);
   bglog(['this is results', results]);
