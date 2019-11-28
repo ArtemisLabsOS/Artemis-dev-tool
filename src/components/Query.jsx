@@ -7,7 +7,7 @@ const Query = props => {
   if (props.queries) {
     arr = props.queries.map((data, i) => (
       <SyntaxHighlighter
-        id="queryBox"
+        // id="queryBox"
         key={i}
         language="javascript"
         style={docco}
@@ -16,7 +16,12 @@ const Query = props => {
       </SyntaxHighlighter>
     ));
   }
-  return <div id="queryBox">{arr}</div>;
+
+  return (
+  <div id="queryBox">
+  {arr[props.historyBtn]}
+  </div>
+  )
 };
 
 export default Query;

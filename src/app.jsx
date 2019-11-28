@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import bglog from "./utils/bglog.js";
 import QueryContainer from "./containers/QueryContainer.jsx";
+import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
 
 const App = props => {
@@ -14,14 +14,14 @@ const App = props => {
           updateResults(oldResults => [...oldResults, res]);
         });
         let requestQuery;
-        bglog(httpReq.request.postData.text);
+        console.log(httpReq.request.postData.text);
         if(IsJsonString(httpReq.request.postData.text)){
           requestQuery = JSON.parse(httpReq.request.postData.text).query;
         }
         else {
           requestQuery = httpReq.request.postData.text;
         }
-        bglog(['this is requestQUery', requestQuery])
+        console.log(['this is requestQUery', requestQuery])
         updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
@@ -30,11 +30,13 @@ const App = props => {
     });
   },[]);
 
-  bglog(['this is queries', queries]);
-  bglog(['this is results', results]);
+  console.log(['this is queries', queries]);
+  console.log(['this is results', results]);
+
   return (
-    <div>
-      <QueryContainer queries={queries} results={results}/>
+    <div id="containers">
+      <QueryContainer queries={queries} />
+      <ResponseContainer results={results} />
     </div>
   );
 };
