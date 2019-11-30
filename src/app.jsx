@@ -1,7 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , Component } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
+
+
+
+import { ApolloProvider } from 'react-apollo';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const httpLink = new HttpLink({
+	uri: 'https://api.github.com/graphql',
+	headers: {
+		Authorization: `Bearer ${accessToken}`,
+	},
+});
+
+const client = new ApolloClient({
+	link: httpLink,
+	cache: new InMemoryCache(),
+});
 
 const App = props => {
   const [queries, updateQueries] = useState([]);
@@ -33,10 +51,26 @@ const App = props => {
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
 
+
   return (
     <div id="containers">
       <QueryContainer queries={queries} />
       <ResponseContainer results={results} />
+      console.log('client with caching is:'+{client.cache})
+      <ApolloProvider client={client} cache={client.cache}>
+						<div
+							css={{
+								display: 'grid',
+								gridTemplateColumns: '80px repeat(auto-fit, 300px)',
+								alignItems: 'start',
+								height: 'calc(100vh - 4px)',
+								overflow: 'hidden',
+							}}
+						>
+						
+						</div>
+					</ApolloProvider>
+
     </div>
   );
 };
