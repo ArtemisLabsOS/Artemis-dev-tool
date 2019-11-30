@@ -3,27 +3,29 @@ import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
 
-
-
+import { ApolloClient } from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+// const accessToken = localStorage.getItem('token');
+
 const httpLink = new HttpLink({
-	uri: 'https://api.github.com/graphql',
-	headers: {
-		Authorization: `Bearer ${accessToken}`,
-	},
+  uri: 'https://api.spacex.land/graphql/',
+  headers: none,
+
 });
 
 const client = new ApolloClient({
 	link: httpLink,
-	cache: new InMemoryCache(),
+  cache: new InMemoryCache(),
 });
 
 const App = props => {
   const [queries, updateQueries] = useState([]);
-  const [results, updateResults] = useState([]);
+  const [results, updateResults] = usçeState([]);
+  const [cache, updateCache] = useState([]);
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
@@ -50,7 +52,7 @@ const App = props => {
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
-
+ 
 
   return (
     <div id="containers">
