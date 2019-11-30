@@ -13,7 +13,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = new HttpLink({
   uri: 'https://api.spacex.land/graphql/',
-  headers: none,
 
 });
 
