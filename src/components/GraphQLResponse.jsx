@@ -1,9 +1,8 @@
 import React from "react";
 import ReactJson from "react-json-view";
-import bglog from "../utils/bglog";
 
 const GraphQLResponse = props => {
-  bglog(["this is responseArr", props.results]);
+  console.log(["this is responseArr", props.results]);
   let responseArr = [];
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
