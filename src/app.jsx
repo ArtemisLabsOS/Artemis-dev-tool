@@ -19,7 +19,7 @@ const App = props => {
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      if(httpReq.request.postData) {
+      if(httpReq.request.postData){
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
         });
