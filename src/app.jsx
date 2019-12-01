@@ -43,7 +43,7 @@ const App = props => {
         else {
           requestQuery = httpReq.request.postData.text;
         }
-        console.log(['this is requestQUery', requestQuery])
+        console.log(['this is requestQuery', requestQuery])
         updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
