@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import QueryContainer from "./containers/QueryContainer.jsx";
-import ResponseContainer from './containers/ResponseContainer.jsx'
+import ObserverContainer from './containers/ObserverContainer.jsx';
 import "./stylesheets/style.scss";
 const { introspectionQuery } = require('graphql');
 const {
@@ -33,53 +32,16 @@ console.log("this is client")
 console.log(client)
 
 const App = props => {
-  const [queries, updateQueries] = useState([]);
-  const [results, updateResults] = useState([]);
-  const [history, recordHistory] = useState([]);
-  // const [schemas, updateSchema] = useState([]);
-  
-  const [historyBtn, historyBtnToggle] = useState(0);
-  function isToggle(index) {
-    historyBtnToggle(index)
-  }
-
-  useEffect(()=>{
-    historyBtnToggle(queries.length-1);
-  },[queries]);
-  
   useEffect(() => {
-
     //inject content script
     chrome.tabs.executeScript({
       file: 'contentScript.js'
-    });
-    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      if(httpReq.request.postData){
-        httpReq.getContent(res => {
-          updateResults(oldResults => [...oldResults, res]);
-          recordHistory(oldHistory => [...oldHistory, ])
-        });
-        let requestQuery;
-        console.log(httpReq.request.postData.text);
-        if(IsJsonString(httpReq.request.postData.text)){
-          requestQuery = JSON.parse(httpReq.request.postData.text).query;
-        }
-        else {
-          requestQuery = httpReq.request.postData.text;
-        }
-        console.log(['this is requestQUery', requestQuery])
-        bglog("getDOM");
-        updateQueries(oldQueries => [...oldQueries, {
-          time:httpReq.time,
-          outgoingQueries: requestQuery
-        }]);
-      }
     });
   },[]);
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      bglog('this is the second useEffect http request');
+      console.log('this is the second useEffect http request');
       // httpReq.getContent((res) => {
         // bglog(res);
       // })
@@ -102,47 +64,27 @@ const App = props => {
     })
   })
 
-  console.log(['this is queries', queries]);
-  console.log(['this is results', results]);
- 
-
   return (
-    <div id="containers">
-     <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
-     <ResponseContainer results={results} historyBtn={historyBtn}/>
+    <div>
+      <ObserverContainer/>
       {/* {console.log('client with caching is:'+client)} */}
       <ApolloProvider client={client} cache={client.cache}>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '80px repeat(auto-fit, 300px)',
-          alignItems: 'start',
-          height: 'calc(100vh - 4px)',
-          overflow: 'hidden',
-        }}
-      >
-      {/* console.log({client}) */}
-      </div>
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: '80px repeat(auto-fit, 300px)',
+            alignItems: 'start',
+            height: 'calc(100vh - 4px)',
+            overflow: 'hidden',
+          }}
+        >
+        {/* console.log({client}) */}
+        </div>
       </ApolloProvider>
     </div>
   );
 };
 
-let bglog = function(obj) {
-  if(chrome && chrome.runtime) {
-    chrome.runtime.sendMessage({type: "contentScript", obj: obj}, function(response) {
-      console.log(response);
-    });
-  }
-}
 
-function IsJsonString(str) {
-  try {
-      JSON.parse(str);
-  } catch (e) {
-      return false;
-  }
-  return true;
-}
 
 export default App;
