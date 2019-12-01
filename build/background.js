@@ -1,4 +1,3 @@
-
 var onMessageListener = function(message, sender, sendResponse) {
   switch(message.type) {
     case "bglog":
