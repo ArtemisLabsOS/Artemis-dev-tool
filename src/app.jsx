@@ -3,13 +3,12 @@ import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
 
-import { ApolloClient } from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
-import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
 
-// const accessToken = localStorage.getItem('token');
 
 const httpLink = new HttpLink({
   uri: 'https://api.spacex.land/graphql/',
@@ -24,7 +23,7 @@ const client = new ApolloClient({
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = usçeState([]);
-  const [cache, updateCache] = useState([]);
+  // const [cache, updateCache] = useState([]);
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
@@ -57,7 +56,7 @@ const App = props => {
     <div id="containers">
       <QueryContainer queries={queries} />
       <ResponseContainer results={results} />
-      console.log('client with caching is:'+{client.cache})
+      console.log('client with caching is:')
       <ApolloProvider client={client} cache={client.cache}>
 						<div
 							css={{
