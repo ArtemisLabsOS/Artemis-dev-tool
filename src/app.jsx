@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
+const { introspectionQuery } = require('graphql');
+const {
+  introspect,
+  introspectURL,
+  introspectFile 
+} = require('graphql-introspect');
+const http = require('http');
+console.log(http);
 
 import { ApolloProvider } from 'react-apollo-hooks';
 
@@ -27,7 +35,9 @@ console.log(client)
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
-  /////////////
+  const [history, recordHistory] = useState([]);
+  // const [schemas, updateSchema] = useState([]);
+  
   const [historyBtn, historyBtnToggle] = useState(0);
   function isToggle(index) {
     historyBtnToggle(index)
@@ -36,13 +46,18 @@ const App = props => {
   useEffect(()=>{
     historyBtnToggle(queries.length-1);
   },[queries]);
-  ////////
-
+  
   useEffect(() => {
+
+    //inject content script
+    chrome.tabs.executeScript({
+      file: 'contentScript.js'
+    });
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
       if(httpReq.request.postData){
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
+          recordHistory(oldHistory => [...oldHistory, ])
         });
         let requestQuery;
         console.log(httpReq.request.postData.text);
@@ -52,7 +67,8 @@ const App = props => {
         else {
           requestQuery = httpReq.request.postData.text;
         }
-        console.log(['this is requestQuery', requestQuery])
+        console.log(['this is requestQUery', requestQuery])
+        bglog("getDOM");
         updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
@@ -60,6 +76,31 @@ const App = props => {
       }
     });
   },[]);
+
+  useEffect(() => {
+    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+      bglog('this is the second useEffect http request');
+      // httpReq.getContent((res) => {
+        // bglog(res);
+      // })
+      // bglog(httpReq.request.postData.text);
+
+      // httpReq.request.url gets us the http end point
+      console.log(httpReq.request);
+      console.log(httpReq.request.url);
+
+      introspect(httpReq.request.url)
+      // .then((output) => {
+      //   // output is supposed to be the schema
+
+      //   console.log(output.json());
+      //   return output.json();
+      //   console.log('hi');
+      // })
+      .then((output) => output.json())
+      .catch((err) => console.log('I AM ERROR', err));
+    })
+  })
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
@@ -69,7 +110,7 @@ const App = props => {
     <div id="containers">
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
      <ResponseContainer results={results} historyBtn={historyBtn}/>
-      {console.log('client with caching is:'+client)}
+      {/* {console.log('client with caching is:'+client)} */}
       <ApolloProvider client={client} cache={client.cache}>
       <div
         css={{
@@ -80,16 +121,20 @@ const App = props => {
           overflow: 'hidden',
         }}
       >
-      console.log({client})
+      {/* console.log({client}) */}
       </div>
       </ApolloProvider>
     </div>
   );
 };
 
-
-
-
+let bglog = function(obj) {
+  if(chrome && chrome.runtime) {
+    chrome.runtime.sendMessage({type: "contentScript", obj: obj}, function(response) {
+      console.log(response);
+    });
+  }
+}
 
 function IsJsonString(str) {
   try {
