@@ -71,7 +71,7 @@ const App = props => {
       .then((output) => output.json())
       .catch((err) => console.log('I AM ERROR', err));
     })
-  }, [schemas])
+  })
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
