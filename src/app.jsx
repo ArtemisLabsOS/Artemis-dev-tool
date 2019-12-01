@@ -2,10 +2,19 @@ import React, { useEffect, useState } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
+const { introspectionQuery } = require('graphql');
+const {
+  introspect,
+  introspectURL,
+  introspectFile 
+} = require('graphql-introspect');
+const http = require('http');
+console.log(http);
 
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
+  // const [schemas, updateSchema] = useState([]);
   
   const [historyBtn, historyBtnToggle] = useState(0);
   function isToggle(index) {
@@ -16,7 +25,6 @@ const App = props => {
     historyBtnToggle(queries.length-1);
   },[queries]);
   
-
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
       if(httpReq.request.postData) {
@@ -42,11 +50,28 @@ const App = props => {
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      // httpReq.request.url --> the url end point that we need
-      
-    })
-  })
+      bglog('this is the second useEffect http request');
+      // httpReq.getContent((res) => {
+        // bglog(res);
+      // })
+      // bglog(httpReq.request.postData.text);
 
+      // httpReq.request.url gets us the http end point
+      console.log(httpReq.request);
+      console.log(httpReq.request.url);
+
+      introspect(httpReq.request.url)
+      // .then((output) => {
+      //   // output is supposed to be the schema
+
+      //   console.log(output.json());
+      //   return output.json();
+      //   console.log('hi');
+      // })
+      .then((output) => output.json())
+      .catch((err) => console.log('I AM ERROR', err));
+    })
+  }, [schemas])
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
