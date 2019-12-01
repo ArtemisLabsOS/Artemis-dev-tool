@@ -11,6 +11,27 @@ const {
 const http = require('http');
 console.log(http);
 
+import { ApolloProvider } from 'react-apollo-hooks';
+
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
+
+
+const httpLink = new HttpLink({
+  uri: 'https://api.spacex.land/graphql/',
+
+});
+console.log("this is the link")
+console.log(httpLink)
+
+const client = new ApolloClient({
+	link: httpLink,
+  cache: new InMemoryCache(),
+});
+console.log("this is client")
+console.log(client)
+
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
@@ -83,11 +104,26 @@ const App = props => {
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
+ 
 
   return (
     <div id="containers">
-      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
-      <ResponseContainer results={results} historyBtn={historyBtn}/>
+     <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
+     <ResponseContainer results={results} historyBtn={historyBtn}/>
+      {/* {console.log('client with caching is:'+client)} */}
+      <ApolloProvider client={client} cache={client.cache}>
+      <div
+        css={{
+          display: 'grid',
+          gridTemplateColumns: '80px repeat(auto-fit, 300px)',
+          alignItems: 'start',
+          height: 'calc(100vh - 4px)',
+          overflow: 'hidden',
+        }}
+      >
+      {/* console.log({client}) */}
+      </div>
+      </ApolloProvider>
     </div>
   );
 };
