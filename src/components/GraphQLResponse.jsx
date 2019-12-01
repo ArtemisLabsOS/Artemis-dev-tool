@@ -2,7 +2,8 @@ import React from "react";
 import ReactJson from "react-json-view";
 
 const GraphQLResponse = props => {
-  console.log(["this is responseArr", props.results]);
+//
+
   let responseArr = [];
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
@@ -23,7 +24,7 @@ const GraphQLResponse = props => {
   return (
     <div id="graphql-res">
       <h2 className="graphql-heading">Response:</h2>
-      <span className="graphql-span">{responseArr}</span>
+      <span className="graphql-span">{responseArr[props.historyBtn]}</span>
     </div>
   );
 };
