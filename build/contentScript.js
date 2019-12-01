@@ -5,6 +5,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       sendResponse({msg: document.getElementsByTagName('body')[0].innerHTML});
       break;
     case "rerenderDOM":
+      console.log(msg);
       document.getElementsByTagName('body')[0].innerHTML = msg.newBody;
       sendResponse({msg: "rerender done"});
       break;
