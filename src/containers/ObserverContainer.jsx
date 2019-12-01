@@ -10,6 +10,7 @@ const ObserverContainers = props => {
 
   function isToggle(index) {
     historyBtnToggle(index)
+    msgToBackground("contentScript", "rerenderDOM", response => console.log(response), history[index]);
   }
 
   useEffect(()=>{
@@ -29,7 +30,7 @@ const ObserverContainers = props => {
         else {
           requestQuery = httpReq.request.postData.text;
         }
-        msgToBackground("contentScript", "getDOM", response => recordHistory(oldHistory => [...oldHistory, response]));
+        msgToBackground("contentScript", "getDOM", response => recordHistory(oldHistory => [...oldHistory, response.msg]));
         updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
@@ -38,6 +39,7 @@ const ObserverContainers = props => {
     });
   },[]);
 
+  console.log('this is history', history);
   return (
     <div id="containers">
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
@@ -46,11 +48,12 @@ const ObserverContainers = props => {
   );
 }
 
-const msgToBackground = function(type, msg, callback) {
+const msgToBackground = function(type, msg, callback, newBody) {
   if(chrome && chrome.runtime) {
     chrome.runtime.sendMessage({
       type, 
-      msg
+      msg,
+      newBody
     }, function(response) {
       callback(response);
     });
