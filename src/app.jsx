@@ -7,8 +7,16 @@ import { introspectionQuery } from 'graphql';
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
-  // const [schema, updateSchema] = useState('GraphQL schema is not available.');
-  // const [logs, updateLogs] = useState([]); 
+  /////////////
+  const [historyBtn, historyBtnToggle] = useState(0);
+  function isToggle(index) {
+    historyBtnToggle(index)
+  }
+
+  useEffect(()=>{
+    historyBtnToggle(queries.length-1);
+  },[queries]);
+  ////////
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
@@ -46,8 +54,8 @@ const App = props => {
 
   return (
     <div id="containers">
-      <QueryContainer queries={queries} />
-      <ResponseContainer results={results} />
+      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
+      <ResponseContainer results={results} historyBtn={historyBtn}/>
     </div>
   );
 };

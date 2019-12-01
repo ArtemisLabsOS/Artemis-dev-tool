@@ -1,45 +1,62 @@
-#queryBox {
-  background-color: green;
-  display: inline-flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 20px;
-  border: 2px solid red;
+#root{
+  background-color: rgb(212, 212, 212);
 }
 
 #containers {
-  display: inline-block;
-  background-color: rgb(165, 165, 165);
-  border: 2px solid blue;
+  display: flex;
+  justify-content: space-evenly;
+}
+#queryBox{
+  width: 100%;
+}
+#queryBox,  #queryBox pre{
+  background-color: white !important;
+  margin: 10px;
+  padding: 20px;
+
 }
 
-// #query{
-//   border: 2px solid green;
+// #graphql-res {
+//   box-sizing: border-box;
+//   background-color: white; 
+//   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+//   0 5px 15px 0 rgba(0,0,0,0.08);
+//   padding: 20px 25px;
+//   margin-bottom: 10px;
 // }
-// #past_queries{
-//   border: 2px solid yellow;
+
+// .graphql-heading {
+//   margin-bottom: 10px; 
 // }
 
-#graphql-res {
-  box-sizing: border-box;
-  background-color: white; 
-  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-  0 5px 15px 0 rgba(0,0,0,0.08);
-  padding: 20px 25px;
-  margin-bottom: 10px;
-}
+// .graphql-span {
+//   font-size: 1.3em;
+//   font-weight: 500;
+//   letter-spacing: 0.8px;
+//   line-height: 15px;
+// }
 
-.graphql-heading {
-  margin-bottom: 10px; 
-}
+// #graphQLTab{
+//   box-sizing: border-box;
+//   display: grid;
+//   grid-template-rows: 3fr 7fr;
+//   grid-template-columns: 100%;
+//   grid-template-areas:
+//     'log-container'
+//     'graphql';
+//   padding: 10px;
+// }
+// #graphql-container {
+//   grid-area: graphql;
+//   margin-right: 0px;
+//   min-height: 600px;
+// }
+// /* * To hide GraphQLTab */
+// .hide{
+//   display: none!important;
+// }
 
-.graphql-span {
-  font-size: 1.3em;
-  font-weight: 500;
-  letter-spacing: 0.8px;
-  line-height: 15px;
-}
-
+<<<<<<< HEAD
 #queryBox pre{
   background-color: green !important;
 }
@@ -64,6 +81,8 @@
   display: none!important;
 }
 
+=======
+>>>>>>> 3d19aa5edcdab31ca420b6c1b526e682449c7d37
 /* *for responsive use
 @media screen and (min-width: 760px) {
   #graphQLTab{
