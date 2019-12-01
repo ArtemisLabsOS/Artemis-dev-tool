@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Query from "../components/Query.jsx";
-import bglog from "../bglog";
+import HistoryOfPastQueries from '../components/HistoryOfPastQueries.jsx'
 
 const QueryContainer = props => {
+  const [historyBtn, historyBtnToggle] = useState(0);
+  function isToggle(index) {
+    historyBtnToggle(index)
+  }
+
+  useEffect(()=>{
+    historyBtnToggle(props.queries.length-1);
+  },[props.queries]);
+
   return (
-    <div>
-      {props.queries.map((data, i) => (
-        <Query index={i + 1} key={i} data={data} />
-      ))}
+    <div id="graphQLContainer">
+    {/* query should have index, istoggle props */}
+      <Query id='query' queries={props.queries} historyBtn={historyBtn}/>
+      <HistoryOfPastQueries queries={props.queries} isToggle={isToggle}/>
     </div>
   );
 };

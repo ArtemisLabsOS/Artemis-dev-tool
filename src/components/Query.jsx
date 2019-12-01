@@ -1,13 +1,27 @@
 import React from "react";
-import bglog from "../bglog";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Query = props => {
+  let arr = [];
+  if (props.queries) {
+    arr = props.queries.map((data, i) => (
+      <SyntaxHighlighter
+        // id="queryBox"
+        key={i}
+        language="javascript"
+        style={docco}
+      >
+        {data.outgoingQueries}
+      </SyntaxHighlighter>
+    ));
+  }
+
   return (
-    <div>
-      <div>Query {props.index}</div>
-      <div>{props.data}</div>
-    </div>
-  );
+  <div id="queryBox">
+  {arr[props.historyBtn]}
+  </div>
+  )
 };
 
 export default Query;

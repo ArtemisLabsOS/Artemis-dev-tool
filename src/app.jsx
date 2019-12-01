@@ -1,40 +1,94 @@
-import React, { useEffect , useState} from "react";
-import bglog from "./bglog.js";
+import React, { useEffect, useState , Component } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
+import ResponseContainer from './containers/ResponseContainer.jsx'
+import "./stylesheets/style.scss";
+
+import { ApolloProvider } from 'react-apollo-hooks';
+
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
 
 
-const App = (props) => {
-  // console.log('i am in useEffect');
+const httpLink = new HttpLink({
+  uri: 'https://api.spacex.land/graphql/',
+
+});
+console.log("this is the link")
+console.log(httpLink)
+
+const client = new ApolloClient({
+	link: httpLink,
+  cache: new InMemoryCache(),
+});
+console.log("this is client")
+console.log(client)
+
+const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
+  // const [cache, updateCache] = useState([]);
 
-  chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-    bglog(httpReq.response.content);
-    if(httpReq.request.postData.text){
-      httpReq.getContent(res => {
-        const arr = JSON.parse(JSON.stringify(results));
-        arr.push(JSON.stringify(res));
-        updateResults(arr);
-      });
-      const requestQuery = JSON.parse(httpReq.request.postData.text);
-      const newArr = JSON.parse(JSON.stringify(queries));
-      newArr.push(JSON.stringify({
-        time:httpReq.time,
-        outgoingQueries: requestQuery.query
-      }));
-      updateQueries(newArr);
-    }
-  });
+  useEffect(() => {
+    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+      if(httpReq.request.postData){
+        httpReq.getContent(res => {
+          updateResults(oldResults => [...oldResults, res]);
+        });
+        let requestQuery;
+        console.log(httpReq.request.postData.text);
+        if(IsJsonString(httpReq.request.postData.text)){
+          requestQuery = JSON.parse(httpReq.request.postData.text).query;
+        }
+        else {
+          requestQuery = httpReq.request.postData.text;
+        }
+        console.log(['this is requestQUery', requestQuery])
+        updateQueries(oldQueries => [...oldQueries, {
+          time:httpReq.time,
+          outgoingQueries: requestQuery
+        }]);
+      }
+    });
+  },[]);
 
-  bglog(queries);
+  console.log(['this is queries', queries]);
+  console.log(['this is results', results]);
+ 
+
   return (
-    <div>
-      {results}
-      <QueryContainer queries ={queries} />
-      Hello World; 
-      This is test 
+    <div id="containers">
+      <QueryContainer queries={queries} />
+      <ResponseContainer results={results} />
+      {console.log('client with caching is:'+client)}
+      <ApolloProvider client={client} cache={client.cache}>
+      <div
+        css={{
+          display: 'grid',
+          gridTemplateColumns: '80px repeat(auto-fit, 300px)',
+          alignItems: 'start',
+          height: 'calc(100vh - 4px)',
+          overflow: 'hidden',
+        }}
+      >
+      console.log({client})
+      </div>
+      </ApolloProvider>
     </div>
   );
 };
+
+
+
+
+
+function IsJsonString(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
 
 export default App;
