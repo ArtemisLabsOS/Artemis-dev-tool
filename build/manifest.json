@@ -6,5 +6,20 @@
   "devtools_page": "devtools.html",
   "background": { 
     "scripts": ["background.js"]
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "<all_urls>",
+    "tabs"
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+A",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens hello.html"
+    }
   }
 }
