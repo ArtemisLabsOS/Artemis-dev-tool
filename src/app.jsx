@@ -6,7 +6,7 @@ import "./stylesheets/style.scss";
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
-  /////////////
+  
   const [historyBtn, historyBtnToggle] = useState(0);
   function isToggle(index) {
     historyBtnToggle(index)
@@ -15,7 +15,7 @@ const App = props => {
   useEffect(()=>{
     historyBtnToggle(queries.length-1);
   },[queries]);
-  ////////
+  
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
@@ -39,6 +39,14 @@ const App = props => {
       }
     });
   },[]);
+
+  useEffect(() => {
+    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+      // httpReq.request.url --> the url end point that we need
+      
+    })
+  })
+
 
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
