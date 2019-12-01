@@ -6,12 +6,19 @@ import "./stylesheets/style.scss";
 const App = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
+  const [history, recordHistory] = useState([]);
 
   useEffect(() => {
+
+    //inject content script
+    chrome.tabs.executeScript({
+      file: 'contentScript.js'
+    });
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
       if(httpReq.request.postData){
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
+          recordHistory(oldHistory => [...oldHistory, ])
         });
         let requestQuery;
         console.log(httpReq.request.postData.text);
@@ -22,6 +29,7 @@ const App = props => {
           requestQuery = httpReq.request.postData.text;
         }
         console.log(['this is requestQUery', requestQuery])
+        bglog("getDOM");
         updateQueries(oldQueries => [...oldQueries, {
           time:httpReq.time,
           outgoingQueries: requestQuery
@@ -29,7 +37,7 @@ const App = props => {
       }
     });
   },[]);
-
+  
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
 
@@ -40,6 +48,14 @@ const App = props => {
     </div>
   );
 };
+
+let bglog = function(obj) {
+  if(chrome && chrome.runtime) {
+    chrome.runtime.sendMessage({type: "contentScript", obj: obj}, function(response) {
+      console.log(response);
+    });
+  }
+}
 
 function IsJsonString(str) {
   try {
