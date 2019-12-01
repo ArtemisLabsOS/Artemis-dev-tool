@@ -1,4 +1,4 @@
-import React, { useEffect, useState , Component } from "react";
+import React, { useEffect, useState } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
