@@ -65,7 +65,7 @@ const App = props => {
   })
 
   return (
-    <div>
+    <React.Fragment>
       <ObserverContainer/>
       {/* {console.log('client with caching is:'+client)} */}
       <ApolloProvider client={client} cache={client.cache}>
@@ -81,7 +81,7 @@ const App = props => {
         {/* console.log({client}) */}
         </div>
       </ApolloProvider>
-    </div>
+    </React.Fragment>
   );
 };
 
