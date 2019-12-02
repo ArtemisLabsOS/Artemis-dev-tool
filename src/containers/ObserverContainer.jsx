@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QueryContainer from "./QueryContainer.jsx";
 import ResponseContainer from './ResponseContainer.jsx';
+import HistoryOfPastQueriesContainer from '../components/HistoryOfPastQueries.jsx'
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
@@ -40,6 +41,7 @@ const ObserverContainers = props => {
 
   return (
     <div id="containers">
+      <HistoryOfPastQueriesContainer id='past-queries' queries={queries} isToggle={isToggle}/>
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
      <ResponseContainer results={results} historyBtn={historyBtn}/>
     </div>

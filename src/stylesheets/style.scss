@@ -1,24 +1,39 @@
-#root{
+#root {
   background-color: rgb(212, 212, 212);
 }
-
 #containers {
   display: flex;
   justify-content: space-evenly;
-}
-#queryBox{
   width: 100%;
+  height: 100%;
 }
-#queryBox,  #queryBox pre{
+// #queryBox{
+//   width: 100%;
+// }
+#history-past-container {
+  width: 33%;
+}
+#query-container {
+  width: 10%;
+}
+#response-container {
+  width: 33%;
+  height: 50%;
+}
+#queryBox,
+#queryBox pre {
   background-color: white !important;
   margin: 10px;
   padding: 20px;
-
 }
-
+#history-past-queries {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
 // #graphql-res {
 //   box-sizing: border-box;
-//   background-color: white; 
+//   background-color: white;
 //   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
 //   0 5px 15px 0 rgba(0,0,0,0.08);
 //   padding: 20px 25px;
@@ -26,7 +41,7 @@
 // }
 
 // .graphql-heading {
-//   margin-bottom: 10px; 
+//   margin-bottom: 10px;
 // }
 
 // .graphql-span {
