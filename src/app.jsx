@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QueryContainer from "./containers/QueryContainer.jsx";
+import CacheComponent from "./components/CacheComponent.jsx"
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
 const { introspectionQuery } = require('graphql');
@@ -8,11 +9,11 @@ const {
   introspectURL,
   introspectFile 
 } = require('graphql-introspect');
+
 const http = require('http');
 console.log(http);
 
 import { ApolloProvider } from 'react-apollo-hooks';
-
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-boost';
@@ -37,6 +38,8 @@ const App = props => {
   const [results, updateResults] = useState([]);
   const [history, recordHistory] = useState([]);
   // const [schemas, updateSchema] = useState([]);
+  const [cache, updateCache] = useState([])
+  const [client, updateClient] = useState([])
   
   const [historyBtn, historyBtnToggle] = useState(0);
   function isToggle(index) {
@@ -46,6 +49,16 @@ const App = props => {
   useEffect(()=>{
     historyBtnToggle(queries.length-1);
   },[queries]);
+
+  //
+  // useEffect(()=>{
+  //   cache.writeData({ //we must write data from the extracted schema, consider using useQuery
+  //   })
+  // },[client.cache]);
+
+  // useEffect(() => {
+  //   client.writeData({})
+  // },[client])
   
   useEffect(() => {
 
@@ -76,6 +89,7 @@ const App = props => {
       }
     });
   },[]);
+
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
@@ -111,7 +125,7 @@ const App = props => {
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
      <ResponseContainer results={results} historyBtn={historyBtn}/>
       {/* {console.log('client with caching is:'+client)} */}
-      <ApolloProvider client={client} cache={client.cache}>
+      {/* <ApolloProvider client={client} cache={client.cache}>
       <div
         css={{
           display: 'grid',
@@ -122,8 +136,9 @@ const App = props => {
         }}
       >
       {/* console.log({client}) */}
-      </div>
-      </ApolloProvider>
+      {/* </div>
+      </ApolloProvider> */} */}
+      <CacheComponent client={client} cache={client.cache} />
     </div>
   );
 };
