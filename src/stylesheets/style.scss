@@ -1,6 +1,6 @@
-#root{
-  background-color: rgb(212, 212, 212);
-}
+// #root{
+//   background-color: rgb(212, 212, 212);
+// }
 
 #containers {
   display: flex;
@@ -55,6 +55,30 @@
 // .hide{
 //   display: none!important;
 // }
+
+#queryBox pre{
+  background-color: green !important;
+}
+
+#graphQLTab{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 3fr 7fr;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'log-container'
+    'graphql';
+  padding: 10px;
+}
+#graphql-container {
+  grid-area: graphql;
+  margin-right: 0px;
+  min-height: 600px;
+}
+/* * To hide GraphQLTab */
+.hide{
+  display: none!important;
+}
 
 /* *for responsive use
 @media screen and (min-width: 760px) {
