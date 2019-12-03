@@ -3,9 +3,9 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Query = props => {
-  let arr = [];
+  let queries = [];
   if (props.queries) {
-    arr = props.queries.map((data, i) => (
+    queries = props.queries.map((data, i) => (
       <SyntaxHighlighter
         // id="queryBox"
         key={i}
@@ -19,7 +19,7 @@ const Query = props => {
 
   return (
   <div id="queryBox">
-  {arr[props.historyBtn]}
+  {queries[props.historyBtn]}
   </div>
   )
 };
