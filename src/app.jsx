@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from './containers/ObserverContainer.jsx';
 import "./stylesheets/style.scss";
-const { introspectionQuery } = require('graphql');
+
+const fetch = require('isomorphic-fetch');
 const {
-  introspect,
-  introspectURL,
-  introspectFile 
-} = require('graphql-introspect');
-const http = require('http');
-console.log(http);
+  buildClientSchema,
+  getIntrospectionQuery,
+  printSchema,
+} = require('graphql/utilities');
 
 import { ApolloProvider } from 'react-apollo-hooks';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-boost';
-
+import CustomGraphiQL from './components/GraphiQL.jsx';
+import introspectionQuery from './Utility/introspectionQuery.js';
 
 const httpLink = new HttpLink({
   uri: 'https://api.spacex.land/graphql/',
@@ -28,41 +28,20 @@ const client = new ApolloClient({
 	link: httpLink,
   cache: new InMemoryCache(),
 });
-console.log("this is client")
-console.log(client)
+console.log("this is client");
+console.log(client);
+
 
 const App = props => {
+  const [url, updateUrl] = useState('');
   useEffect(() => {
     //inject content script
     chrome.tabs.executeScript({
       file: 'contentScript.js'
     });
   },[]);
-
-  useEffect(() => {
-    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      console.log('this is the second useEffect http request');
-      // httpReq.getContent((res) => {
-        // bglog(res);
-      // })
-      // bglog(httpReq.request.postData.text);
-
-      // httpReq.request.url gets us the http end point
-      console.log(httpReq.request);
-      console.log(httpReq.request.url);
-
-      introspect(httpReq.request.url)
-      // .then((output) => {
-      //   // output is supposed to be the schema
-
-      //   console.log(output.json());
-      //   return output.json();
-      //   console.log('hi');
-      // })
-      .then((output) => output.json())
-      .catch((err) => console.log('I AM ERROR', err));
-    })
-  })
+  console.log('this is url', url);
+  updateUrl(httpReq.request.url);
 
   return (
     <React.Fragment>
@@ -81,10 +60,24 @@ const App = props => {
         {/* console.log({client}) */}
         </div>
       </ApolloProvider>
+<<<<<<< HEAD
     </React.Fragment>
   );
+=======
+      <CustomGraphiQL editorTheme="solarized light" fetcher={graphQLFetcher}/>
+      <button onClick={() => {graphQLFetcher(url, introspectionQuery)}}>Test Button</button>
+    </div>
+  )
+>>>>>>> 3d7c1a4537c26df7bfa596ffc4bfb4955a2eb544
 };
 
-
+function graphQLFetcher(url, introspectionQuery) {
+  return fetch(url, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: introspectionQuery }),
+  }).then(response => response.json())
+  .then((resp) => console.log('this is the fetched result for introspection', resp));
+}
 
 export default App;

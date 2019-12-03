@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
   font-family: "Tomorrow";
   font-style: normal;
@@ -15,6 +16,11 @@ body {
   font-family: "Tomorrow";
   color: white;
 }
+=======
+// #root{
+//   background-color: rgb(212, 212, 212);
+// }
+>>>>>>> 3d7c1a4537c26df7bfa596ffc4bfb4955a2eb544
 
 #root {
   position: fixed;
@@ -128,6 +134,30 @@ body {
 // .hide{
 //   display: none!important;
 // }
+
+#queryBox pre{
+  background-color: green !important;
+}
+
+#graphQLTab{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 3fr 7fr;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'log-container'
+    'graphql';
+  padding: 10px;
+}
+#graphql-container {
+  grid-area: graphql;
+  margin-right: 0px;
+  min-height: 600px;
+}
+/* * To hide GraphQLTab */
+.hide{
+  display: none!important;
+}
 
 /* *for responsive use
 @media screen and (min-width: 760px) {
