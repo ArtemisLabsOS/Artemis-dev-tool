@@ -3,6 +3,7 @@ import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
+import Headers from '../components/Headers.jsx';
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
@@ -10,7 +11,7 @@ const ObserverContainers = props => {
   const [history, recordHistory] = useState([]);
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
-
+  
   function isToggle(index) {
     historyBtnToggle(index);
     msgToBackground(
@@ -53,13 +54,17 @@ const ObserverContainers = props => {
   }, []);
 
   console.log("this is history", history);
+  
   return (
-    <div id="observerContainers">
-      <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
-      <Query2 queries={queries} historyBtn={historyBtn} />
-      <GraphQLResponse results={results} historyBtn={historyBtn} />
-      <Schema results={results} historyBtn={historyBtn} url={url} />
-    </div>
+    <React.Fragment>
+      <Headers />
+      <div id="observerContainers">
+        <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
+        <Query2 queries={queries} historyBtn={historyBtn} />
+        <GraphQLResponse results={results} historyBtn={historyBtn} />
+        <Schema historyBtn={historyBtn} url={url} queries={queries}/>
+      </div>
+    </React.Fragment>
   );
 };
 

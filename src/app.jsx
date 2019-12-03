@@ -14,8 +14,7 @@ import { ApolloProvider } from "react-apollo-hooks";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { ApolloClient } from "apollo-boost";
-import CustomGraphiQL from "./components/GraphiQL.jsx";
-import introspectionQuery from "./Utility/introspectionQuery.js";
+
 
 const httpLink = new HttpLink({
   uri: "https://api.spacex.land/graphql/"
