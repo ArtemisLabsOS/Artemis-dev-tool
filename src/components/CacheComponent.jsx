@@ -1,9 +1,9 @@
 import React from "react";
-import { ApolloProvider } from 'react-apollo-hooks';
-
+import { ApolloProvider  } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 
 const CacheComponent = props => {
 

@@ -3,6 +3,9 @@ import QueryContainer from "./containers/QueryContainer.jsx";
 import CacheComponent from "./components/CacheComponent.jsx"
 import ResponseContainer from './containers/ResponseContainer.jsx'
 import "./stylesheets/style.scss";
+// import injectStyles from './styles';
+
+
 const { introspectionQuery } = require('graphql');
 const {
   introspect,
@@ -14,9 +17,11 @@ const http = require('http');
 console.log(http);
 
 import { ApolloProvider } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import gql from 'graphql-tag';
 
 
 const httpLink = new HttpLink({
@@ -25,6 +30,9 @@ const httpLink = new HttpLink({
 });
 console.log("this is the link")
 console.log(httpLink)
+
+
+// const cache=
 
 const client = new ApolloClient({
 	link: httpLink,
@@ -67,6 +75,8 @@ const App = props => {
       file: 'contentScript.js'
     });
     chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
+      // injectStyles();
+
       if(httpReq.request.postData){
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
@@ -116,29 +126,27 @@ const App = props => {
     })
   })
 
+
+//   <div
+//   css={{
+//     display: 'grid',
+//     gridTemplateColumns: '80px repeat(auto-fit, 300px)',
+//     alignItems: 'start',
+//     height: 'calc(100vh - 4px)',
+//     overflow: 'hidden',
+//   }}
+// >
+//  </div>
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
- 
+
 
   return (
     <div id="containers">
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
      <ResponseContainer results={results} historyBtn={historyBtn}/>
-      {/* {console.log('client with caching is:'+client)} */}
-      {/* <ApolloProvider client={client} cache={client.cache}>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '80px repeat(auto-fit, 300px)',
-          alignItems: 'start',
-          height: 'calc(100vh - 4px)',
-          overflow: 'hidden',
-        }}
-      >
-      {/* console.log({client}) */}
-      {/* </div>
-      </ApolloProvider> */} */}
-      <CacheComponent client={client} cache={client.cache} />
+      <ApolloProvider client={client}>
+      </ApolloProvider> 
     </div>
   );
 };
