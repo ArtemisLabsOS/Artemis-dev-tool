@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
-// import Schema from "../components/Schema.jsx";
+import Schema from "../components/Schema.jsx";
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
@@ -56,7 +56,7 @@ const ObserverContainers = props => {
       <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
       <Query2 queries={queries} historyBtn={historyBtn} />
       <GraphQLResponse results={results} historyBtn={historyBtn} />
-      {/* <Schema results={results} historyBtn={historyBtn} /> */}
+      <Schema results={results} historyBtn={historyBtn} />
     </div>
   );
 };

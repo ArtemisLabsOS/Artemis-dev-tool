@@ -30,36 +30,36 @@ body {
   height: 100%;
 }
 #history-past-queries {
-  width: 10%;
+  width: 15%;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
   overflow: auto;
-}
 
-#queryBox {
-  padding: 5px;
-  display: flex;
-  justify-content: space-around;
-  border: 0.1em solid #ffffff;
-  transition: all 0.2s;
-}
-
-#queryBox:hover {
-  color: #000000;
-  background-color: #ffffff;
-}
-
-@media all and (max-width: 30em) {
   #queryBox {
-    display: block;
-    margin: 0.4em auto;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    border: 0.1em solid #ffffff;
+    transition: all 0.2s;
+  }
+
+  #queryBox:hover {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  @media all and (max-width: 30em) {
+    #queryBox {
+      display: block;
+      margin: 0.4em auto;
+    }
   }
 }
 
 #query-container {
   margin-left: 20px;
-  width: 30%;
+  width: 25%;
   overflow: auto;
   margin-left: 1rem;
 }
