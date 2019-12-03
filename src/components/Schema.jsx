@@ -1,5 +1,7 @@
 import React from "react";
 import ReactJson from "react-json-view";
+import CustomGraphiQL from "./GraphiQL.jsx";
+import introspectionQuery from "../Utility/introspectionQuery.js";
 
 const Schema = props => {
   let schemaList = [];
@@ -22,9 +24,29 @@ const Schema = props => {
   return (
     <div id="schema-container">
       <h2>Schema:</h2>
-      <span>{schemaList[props.historyBtn]}</span>
+      <button
+        onClick={() => {
+          graphQLFetcher(props.url, introspectionQuery);
+        }}
+      >
+        Test Button
+      </button>
+      <CustomGraphiQL editorTheme="solarized light" fetcher={graphQLFetcher} />
+      {/* <span>{schemaList[props.historyBtn]}</span> */}
     </div>
   );
 };
+
+function graphQLFetcher(url, introspectionQuery) {
+  return fetch(url, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query: introspectionQuery })
+  })
+    .then(response => response.json())
+    .then(resp =>
+      console.log("this is the fetched result for introspection", resp)
+    );
+}
 
 export default Schema;

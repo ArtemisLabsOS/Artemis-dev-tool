@@ -9,6 +9,7 @@ const ObserverContainers = props => {
   const [results, updateResults] = useState([]);
   const [history, recordHistory] = useState([]);
   const [historyBtn, historyBtnToggle] = useState(0);
+  const [url, updateUrl] = useState("");
 
   function isToggle(index) {
     historyBtnToggle(index);
@@ -27,6 +28,7 @@ const ObserverContainers = props => {
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener(httpReq => {
       if (httpReq.request.postData) {
+        updateUrl(httpReq.request.url);
         httpReq.getContent(res => {
           updateResults(oldResults => [...oldResults, res]);
         });
@@ -56,7 +58,7 @@ const ObserverContainers = props => {
       <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
       <Query2 queries={queries} historyBtn={historyBtn} />
       <GraphQLResponse results={results} historyBtn={historyBtn} />
-      <Schema results={results} historyBtn={historyBtn} />
+      <Schema results={results} historyBtn={historyBtn} url={url} />
     </div>
   );
 };
