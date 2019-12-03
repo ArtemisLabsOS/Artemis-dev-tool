@@ -1,11 +1,11 @@
 import React from "react";
 import ReactJson from "react-json-view";
 
-const GraphQLResponse = props => {
-  let responseArr = [];
+const Schema = props => {
+  let schemaList = [];
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
-      responseArr.push(
+      schemaList.push(
         <ReactJson
           src={JSON.parse(props.results[i])}
           name={null}
@@ -20,11 +20,11 @@ const GraphQLResponse = props => {
     }
   }
   return (
-    <div id="response-container">
-      <h2 className="graphql-heading">Response:</h2>
-      <span className="graphql-response">{responseArr[props.historyBtn]}</span>
+    <div id="schema-container">
+      <h2>Schema:</h2>
+      <span>{schemaList[props.historyBtn]}</span>
     </div>
   );
 };
 
-export default GraphQLResponse;
+export default Schema;

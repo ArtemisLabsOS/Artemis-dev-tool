@@ -2,11 +2,10 @@ import React from "react";
 import ReactJson from "react-json-view";
 
 const Query2 = props => {
-  
   let queriesList = [];
   if (props.queries) {
     for (let i = 0; i < props.queries.length; i++) {
-        queriesList.push(
+      queriesList.push(
         <ReactJson
           src={JSON.parse(JSON.stringify(props.queries[i]))}
           name={null}
@@ -21,7 +20,7 @@ const Query2 = props => {
     }
   }
   return (
-    <div id = 'query-container'>
+    <div id="query-container">
       <h2>Query:</h2>
       <span>{queriesList[props.historyBtn]}</span>
     </div>
