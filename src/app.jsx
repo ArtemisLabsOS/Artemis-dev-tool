@@ -60,15 +60,10 @@ const App = props => {
         {/* console.log({client}) */}
         </div>
       </ApolloProvider>
-<<<<<<< HEAD
-    </React.Fragment>
-  );
-=======
       <CustomGraphiQL editorTheme="solarized light" fetcher={graphQLFetcher}/>
       <button onClick={() => {graphQLFetcher(url, introspectionQuery)}}>Test Button</button>
-    </div>
+    </React.Fragment>
   )
->>>>>>> 3d7c1a4537c26df7bfa596ffc4bfb4955a2eb544
 };
 
 function graphQLFetcher(url, introspectionQuery) {
