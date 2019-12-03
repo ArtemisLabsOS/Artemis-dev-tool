@@ -2,19 +2,15 @@
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   switch(msg.msg){
     case "getDOM":
-      console.log(document.getElementsByTagName('body')[0].innerHTML);
       sendResponse({msg: document.getElementsByTagName('body')[0].innerHTML});
       break;
+    case "rerenderDOM":
+      console.log(msg);
+      document.getElementsByTagName('body')[0].innerHTML = msg.newBody;
+      sendResponse({msg: "rerender done"});
+      break;
   }
-  console.log(msg);
 });
-
-//send message
-const sendMsg = (msg) =>{
-  chrome.runtime.sendMessage({greeting: msg}, function(response) {
-  console.log(response.farewell);
-  })
-};
 
 console.log("hello from contentScript");
 
