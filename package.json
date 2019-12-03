@@ -28,6 +28,7 @@
     "graphiql": "^0.17.0",
     "graphql": "^14.5.8",
     "graphql-introspect": "^1.0.0",
+    "graphql-syntax-highlighter-react": "^0.4.0",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.24.0",
     "react": "^16.12.0",
