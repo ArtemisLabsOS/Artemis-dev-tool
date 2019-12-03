@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import QueryContainer from "./containers/QueryContainer.jsx";
-import CacheComponent from "./components/CacheComponent.jsx"
-import ResponseContainer from './containers/ResponseContainer.jsx'
+// import ReactDOM from 'react-dom'
+import QueryContainer from './containers/QueryContainer.jsx';
+// import Client from './components/Client.jsx';
+import ResponseContainer from './containers/ResponseContainer.jsx';
 import "./stylesheets/style.scss";
+import injectStyles from './styles';
+
 const { introspectionQuery } = require('graphql');
 const {
   introspect,
@@ -13,25 +16,37 @@ const {
 const http = require('http');
 console.log(http);
 
-import { ApolloProvider } from 'react-apollo-hooks';
+//'react-apollo'
+import { ApolloProvider, useQuery } from '@apollo/react-hooks';
+// import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import gql from 'graphql-tag';
 
 
 const httpLink = new HttpLink({
   uri: 'https://api.spacex.land/graphql/',
-
 });
 console.log("this is the link")
 console.log(httpLink)
 
+let cache=  new InMemoryCache(),
 const client = new ApolloClient({
+  cache: cache,
 	link: httpLink,
-  cache: new InMemoryCache(),
 });
-console.log("this is client")
-console.log(client)
+bglog("this is client")
+bglog(client)
+
+
+cache.writeData({
+  data: {
+    cartItems: [],
+  },
+});
+
+
 
 const App = props => {
   const [queries, updateQueries] = useState([]);
@@ -48,11 +63,24 @@ const App = props => {
 
   useEffect(()=>{
     historyBtnToggle(queries.length-1);
+    bglog("in use Effect to toggle update")
   },[queries]);
+
+
+
+
+
+  //for useEffect assign a mutation by using the client.writeFragment to update
+  //do not mutate cache directly, will not update automatically like client does
+//use of client.writeFragment
+//or we can directly do this in the app
+
+
 
   //
   // useEffect(()=>{
-  //   cache.writeData({ //we must write data from the extracted schema, consider using useQuery
+  //   client.writeData({ //we must write data from the extracted schema, consider using useQuery
+  //write the cache update
   //   })
   // },[client.cache]);
 
@@ -62,6 +90,7 @@ const App = props => {
   
   useEffect(() => {
 
+  
     //inject content script
     chrome.tabs.executeScript({
       file: 'contentScript.js'
@@ -119,27 +148,18 @@ const App = props => {
   console.log(['this is queries', queries]);
   console.log(['this is results', results]);
  
+  injectStyles();
 
   return (
     <div id="containers">
      <QueryContainer queries={queries} historyBtn={historyBtn} isToggle={isToggle}/>
      <ResponseContainer results={results} historyBtn={historyBtn}/>
-      {/* {console.log('client with caching is:'+client)} */}
-      {/* <ApolloProvider client={client} cache={client.cache}>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '80px repeat(auto-fit, 300px)',
-          alignItems: 'start',
-          height: 'calc(100vh - 4px)',
-          overflow: 'hidden',
-        }}
-      >
-      {/* console.log({client}) */}
-      {/* </div>
-      </ApolloProvider> */} */}
-      <CacheComponent client={client} cache={client.cache} />
-    </div>
+    <ApolloProvider client={client}>
+   
+    </ApolloProvider> 
+   
+      </div>
+  
   );
 };
 
@@ -161,3 +181,6 @@ function IsJsonString(str) {
 }
 
 export default App;
+
+
+
