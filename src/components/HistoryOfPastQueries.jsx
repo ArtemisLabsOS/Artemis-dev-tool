@@ -10,12 +10,12 @@ const HistoryOfPastQueries = props => {
   // for (let i=props.queries.length-1; i>=0; i--){
   for (let i = 0; i < props.queries.length; i++) {
     pastQueries.push(
-      <div id='queryBox'>
-        <span onClick={() => props.isToggle(i)}>Query {i + 1}</span>
-        <span>
+      <React.Fragment>
+        <div onClick={() => props.isToggle(i)}>Query {i + 1}</div>
+        <div>
           <Clock format={"HH:mm:ss"} />
-        </span>
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 
@@ -29,10 +29,10 @@ const HistoryOfPastQueries = props => {
   // }
   // }
   return (
-    <div id='history-past-queries'>
+    <React.Fragment id="history-past-queries">
       {pastQueries}
       {/* <Moment pastQueries={pastQueries}/> */}
-    </div>
+    </React.Fragment>
   );
 };
 
