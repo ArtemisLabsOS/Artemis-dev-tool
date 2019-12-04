@@ -42,7 +42,6 @@ const App = props => {
   useEffect(() => {
     //inject content script
 
-    // injectStyles();
 
     // client.cache.writeData({data: "data"})
     chrome.tabs.executeScript({
