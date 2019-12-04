@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactJson from "react-json-view";
-import CustomGraphiQL from "./GraphiQL.jsx";
+// import CustomGraphiQL from "./GraphiQL.jsx";
 import introspectionQuery from "../Utility/introspectionQuery.js";
 
 const Schema = props => {
@@ -27,9 +27,6 @@ const Schema = props => {
   return (
     <div id="schema-container">
       <h2>Schema:</h2>
-      {/* <button
-        onClick={() => { */}
-          {/*graphQLFetcher(props.url, introspectionQuery); */}
           <ReactJson
             src={schema}
             name={null}
@@ -40,13 +37,6 @@ const Schema = props => {
             displayDataTypes={false}
             displayObjectSize={false}
           />
-        {/* }} */}
-        {/* > */}
-        {/* Test Button
-      </button> */}
-
-      {/* <CustomGraphiQL editorTheme="solarized light" fetcher={graphQLFetcher} /> */}
-      {/* <span>{schemaList[props.historyBtn]}</span> */}
     </div>
   );
 };

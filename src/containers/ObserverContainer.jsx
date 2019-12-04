@@ -3,7 +3,7 @@ import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
-import Headers from '../components/Headers.jsx';
+import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
@@ -54,15 +54,16 @@ const ObserverContainers = props => {
   }, []);
 
   console.log("this is history", history);
+  console.log('this is props in observer', props);
   
   return (
     <React.Fragment>
-      <Headers />
       <div id="observerContainers">
         <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
         <Query2 queries={queries} historyBtn={historyBtn} />
         <GraphQLResponse results={results} historyBtn={historyBtn} />
-        <Schema historyBtn={historyBtn} url={url} queries={queries}/>
+        { props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries}/> : null }
+        { props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries}/> : null}
       </div>
     </React.Fragment>
   );

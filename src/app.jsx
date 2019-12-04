@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import "./stylesheets/style.scss";
+import Headers from './containers/Headers.jsx';
 
 const fetch = require("isomorphic-fetch");
 const {
@@ -31,6 +32,9 @@ console.log(client);
 
 const App = props => {
   // const [url, updateUrl] = useState("");
+  const [schemaStatus, updateSchemaStatus] = useState(false);
+  const [cacheStatus, updateCacheStatus] = useState(false);
+  
   useEffect(() => {
     //inject content script
     chrome.tabs.executeScript({
@@ -38,9 +42,22 @@ const App = props => {
     });
   }, []);
 
+  function schemaToggle() {
+    updateSchemaStatus(!schemaStatus);
+    updateCacheStatus(false);
+    console.log('this is schema status in toggle func', schemaStatus);
+  }
+
+  function cacheToggle() {
+    updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    console.log('this is cache status in toggle func', schemaStatus);
+  }
+
   return (
     <React.Fragment>
-      <ObserverContainer />
+      <Headers schemaStatus={schemaStatus} cacheStatus={cacheStatus} updateSchemaStatus={updateSchemaStatus} updateCacheStatus={updateCacheStatus} schemaToggle={schemaToggle} cacheToggle={cacheToggle}/>
+      <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus}/>
       {/* {console.log('client with caching is:'+client)} */}
       <ApolloProvider client={client} cache={client.cache}>
         <div
