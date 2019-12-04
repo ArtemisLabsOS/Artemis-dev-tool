@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Headers = (props) => {
-  // useEffect will trigger re-render when either schemaStatus OR cacheStatus gets updated
-  // useEffect(() => {
-    
-  // },[schemaStatus, cacheStatus])
-
   return (
     <React.Fragment>
       <div>
         <h1>ARTEMIS</h1>
         <img></img>
       </div>
-      <div>
-        <div onClick={()=> props.schemaToggle()}>
+      <div id='schema-cache-button'>
+        <div onClick={() => props.schemaToggle()}>
           SCHEMA
         </div>
-        <div onClick={()=> props.cacheToggle()}>
+        <div onClick={() => props.cacheToggle()}>
           CACHE
         </div>
       </div>
