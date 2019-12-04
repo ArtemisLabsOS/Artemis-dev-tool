@@ -1,49 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import "./stylesheets/style.scss";
-// import injectStyles from './containers/styles';
+import Headers from './containers/Headers.jsx';
 
-
-const fetch = require("isomorphic-fetch");
-const {
-  buildClientSchema,
-  getIntrospectionQuery,
-  printSchema
-} = require("graphql/utilities");
-
-// import { ApolloProvider } from "react-apollo-hooks";
-// import { useQuery } from "@apollo/react-hooks"
-// import gql from 'graphql-tag';
-
-// import { InMemoryCache } from "apollo-cache-inmemory";
-// import { HttpLink } from "apollo-link-http";
-// import { ApolloClient } from "apollo-boost";
-import CustomGraphiQL from "./components/GraphiQL.jsx";
-import introspectionQuery from "./Utility/introspectionQuery.js";
-
-
-
-
-// const httpLink = new HttpLink({
-//   uri: "https://api.spacex.land/graphql/"
-// });
-// console.log("this is the link");
-// console.log(httpLink);
-
-// const client = new ApolloClient({
-//   link: httpLink,
-//   cache: new InMemoryCache()
-// });
-// console.log("this is client");
-// console.log(client);
 
 const App = props => {
-  // const [url, updateUrl] = useState("");
+  const [schemaStatus, updateSchemaStatus] = useState(false);
+  const [cacheStatus, updateCacheStatus] = useState(false);
+  
   useEffect(() => {
-    //inject content script
-
-
-    // client.cache.writeData({data: "data"})
     chrome.tabs.executeScript({
       file: "contentScript.js"
     });
@@ -51,27 +16,24 @@ const App = props => {
     
   }, []);
 
-  //move the useQuery hook with the get query statement into the main container
+  function schemaToggle() {
+    updateSchemaStatus(!schemaStatus);
+    updateCacheStatus(false);
+    console.log('this is schema status in toggle func', schemaStatus);
+  }
 
+  function cacheToggle() {
+    updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    console.log('this is cache status in toggle func', schemaStatus);
+  }
 
   return (
     <React.Fragment>
-      <ObserverContainer />
-      
+      <Headers schemaStatus={schemaStatus} cacheStatus={cacheStatus} updateSchemaStatus={updateSchemaStatus} updateCacheStatus={updateCacheStatus} schemaToggle={schemaToggle} cacheToggle={cacheToggle}/>
+      <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus}/>
     </React.Fragment>
   );
 };
-
-// function graphQLFetcher(url, introspectionQuery) {
-//   return fetch(url, {
-//     method: "post",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ query: introspectionQuery })
-//   })
-//     .then(response => response.json())
-//     .then(resp =>
-//       console.log("this is the fetched result for introspection", resp)
-//     );
-// }
 
 export default App;
