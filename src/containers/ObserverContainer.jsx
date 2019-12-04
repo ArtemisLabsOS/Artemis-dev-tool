@@ -112,7 +112,10 @@ const msgToBackground = function(type, msg, callback, newBody) {
 };
 
 const getCache=() =>{
-  msgToBackground("contentScript", "getCache", response => {console.log(response)} )
+  msgToBackground("contentScript", "getCache", response => {
+    console.log(response)
+    msgToBackground("contentScript", "retrieveCache", response => {console.log(response)} );
+  });
 }
 
 const IsJsonString = function(str) {
