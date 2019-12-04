@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import ReactJson from "react-json-view";
-// import CustomGraphiQL from "./GraphiQL.jsx";
 
 const ApolloGraphQLCache = props => {
   useEffect(() => {

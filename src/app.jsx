@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
-import "./stylesheets/style.scss";
 import Headers from './containers/Headers.jsx';
+import "./stylesheets/style.scss";
 
 const App = props => {
   const [schemaStatus, updateSchemaStatus] = useState(false);

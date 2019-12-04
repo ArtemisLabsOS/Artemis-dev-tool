@@ -5,7 +5,6 @@ const Headers = (props) => {
     <React.Fragment>
       <div>
         <h1>ARTEMIS</h1>
-        <img></img>
       </div>
       <div id='schema-cache-button'>
         <div onClick={() => props.schemaToggle()}>
