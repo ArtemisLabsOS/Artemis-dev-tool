@@ -3,17 +3,17 @@ import React from 'react';
 const Headers = (props) => {
   return (
     <React.Fragment>
-      <div>
+      <div className="hOne">
         <h1>ARTEMIS</h1>
         <img></img>
       </div>
-      <div id='schema-cache-button'>
-        <div onClick={() => props.schemaToggle()}>
+      <div className="spotify-container">
+        <button className="spotify" onClick={()=> props.schemaToggle()}>
           SCHEMA
-        </div>
-        <div onClick={() => props.cacheToggle()}>
+        </button>
+        <button className="spotify" onClick={()=> props.cacheToggle()}>
           CACHE
-        </div>
+        </button>
       </div>
     </React.Fragment>
   )
