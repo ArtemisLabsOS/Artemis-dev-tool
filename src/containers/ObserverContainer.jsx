@@ -55,6 +55,7 @@ const ObserverContainers = props => {
   }, []);
 
   console.log("this is history", history);
+  
   console.log('this is props in observer', props);
   
   return (

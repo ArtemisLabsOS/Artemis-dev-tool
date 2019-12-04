@@ -19,6 +19,7 @@ const GraphQLResponse = props => {
       );
     }
   }
+  
   return (
     <div id="response-container">
       <h2 className="graphql-heading">Response:</h2>

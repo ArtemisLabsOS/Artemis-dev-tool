@@ -41,6 +41,4 @@ const Schema = props => {
   );
 };
 
-
-
 export default Schema;
