@@ -9,6 +9,14 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       document.getElementsByTagName('body')[0].innerHTML = msg.newBody;
       sendResponse({msg: "rerender done"});
       break;
+
+    case "getCache":
+      console.log("this is getCache message" ,msg)
+      console.log("this is window", window);
+      console.log("this is window.__apolloclient__", window.__APOLLO_CLIENT__);
+      sendResponse({ msg: window.__APOLLO_CLIENT__.localState.cache.data.data })
+      break;
+
   }
 });
 
