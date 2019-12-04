@@ -24,16 +24,16 @@ const Schema = props => {
   return (
     <div id="schema-container">
       <h2>Schema:</h2>
-      <ReactJson
-        src={schema}
-        name={null}
-        iconStyle="triangle"
-        indentWidth={1}
-        collapsed={3}
-        enableClipboard={false}
-        displayDataTypes={false}
-        displayObjectSize={false}
-      />
+        <ReactJson theme="summerfruit:inverted"
+          src={schema}
+          name={null}
+          iconStyle="triangle"
+          indentWidth={1}
+          collapsed={3}
+          enableClipboard={false}
+          displayDataTypes={false}
+          displayObjectSize={false}
+        />
     </div>
   );
 };
