@@ -65,7 +65,7 @@ const ObserverContainers = props => {
         <GraphQLResponse results={results} historyBtn={historyBtn} />
         { props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries}/> : null }
         { props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries}/> : null}
-        <button id="cache" onClick={getCache}> Get Cache  </button>
+        {/* <button id="cache" onClick={getCache}> Get Cache  </button> */}
       </div>
     </React.Fragment>
   );

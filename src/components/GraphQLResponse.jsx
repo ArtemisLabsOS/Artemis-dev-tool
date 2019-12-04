@@ -6,7 +6,7 @@ const GraphQLResponse = props => {
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
       responseArr.push(
-        <ReactJson
+        <ReactJson theme="summerfruit:inverted"
           src={JSON.parse(props.results[i])}
           name={null}
           iconStyle="triangle"
