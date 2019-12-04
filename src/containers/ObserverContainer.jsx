@@ -4,12 +4,38 @@ import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 
+//<ApolloProvider client={client} > </ApolloProvider>
+
+// import { ApolloProvider } from "react-apollo-hooks";
+// import {  useQuery } from "@apollo/react-hooks"
+// import gql from 'graphql-tag';
+
+// import { InMemoryCache } from "apollo-cache-inmemory";
+// import { HttpLink } from "apollo-link-http";
+// import { ApolloClient } from "apollo-client";
+
+
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
   const [history, recordHistory] = useState([]);
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
+  const [cache, updateCache] = useState({})
+
+  
+    // const httpLink = new HttpLink({
+    //   uri: "https://api.spacex.land/graphql/"
+    // });
+    // console.log("this is the link");
+    // console.log(httpLink);
+    
+    // const client = new ApolloClient({
+    //   link: httpLink,
+    //   cache: new InMemoryCache()
+    // });
+    // console.log("this is client");
+    // console.log(client);
 
   function isToggle(index) {
     historyBtnToggle(index);
@@ -26,7 +52,13 @@ const ObserverContainers = props => {
   }, [queries]);
 
   useEffect(() => {
+
+
+    // injectStyles();
+
+    //   client.cache.writeData({data: "data"})
     chrome.devtools.network.onRequestFinished.addListener(httpReq => {
+      
       if (httpReq.request.postData) {
         updateUrl(httpReq.request.url);
         httpReq.getContent(res => {
@@ -59,6 +91,7 @@ const ObserverContainers = props => {
       <Query2 queries={queries} historyBtn={historyBtn} />
       <GraphQLResponse results={results} historyBtn={historyBtn} />
       <Schema results={results} historyBtn={historyBtn} url={url} />
+      <button id="cache" onClick={getCache}> Get Cache  </button>
     </div>
   );
 };
@@ -77,6 +110,10 @@ const msgToBackground = function(type, msg, callback, newBody) {
     );
   }
 };
+
+const getCache=() =>{
+  msgToBackground("contentScript", "getCache", response => {console.log(response)} )
+}
 
 const IsJsonString = function(str) {
   try {
