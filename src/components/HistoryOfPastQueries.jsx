@@ -7,7 +7,6 @@ moment().format();
 
 const HistoryOfPastQueries = props => {
   let pastQueries = [];
-  // for (let i=props.queries.length-1; i>=0; i--){
   for (let i = 0; i < props.queries.length; i++) {
     pastQueries.push(
       <div id="queryBox">

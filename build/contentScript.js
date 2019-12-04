@@ -1,21 +1,21 @@
 // Listen for messages
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  switch(msg.msg){
+  switch (msg.msg) {
     case "getDOM":
-      sendResponse({msg: document.getElementsByTagName('body')[0].innerHTML});
+      sendResponse({ msg: document.getElementsByTagName('body')[0].innerHTML });
       break;
     case "rerenderDOM":
       console.log(msg);
       document.getElementsByTagName('body')[0].innerHTML = msg.newBody;
-      sendResponse({msg: "rerender done"});
+      sendResponse({ msg: "rerender done" });
       break;
     case "getCache":
-      console.log("this is getCache message" ,msg)
-      runInPageContext(() => {window.postMessage({ type: "FROM_PAGE", text: window.__APOLLO_CLIENT__.localState.cache.data.data}, "*");}, 'xx-XX');
-      sendResponse({msg: "cache requested"});
+      console.log("this is getCache message", msg)
+      runInPageContext(() => { window.postMessage({ type: "FROM_PAGE", text: window.__APOLLO_CLIENT__.localState.cache.data.data }, "*"); }, 'xx-XX');
+      sendResponse({ msg: "cache requested" });
       break;
-    case"retrieveCache":
-      sendResponse({msg: cache});
+    case "retrieveCache":
+      sendResponse({ msg: cache });
       break;
   }
 });
@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 var port = chrome.runtime.connect();
 let cache;
 
-window.addEventListener("message", function(event) {
+window.addEventListener("message", function (event) {
   // We only accept messages from ourselves
   if (event.source != window)
     return;
@@ -64,4 +64,3 @@ const runInPageContext = (method, ...args) => {
 // Break out of the sandbox and run `overwriteLanguage()` in the page context.
 
 console.log("hello from contentScript");
-

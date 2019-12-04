@@ -14,6 +14,4 @@ var onMessageListener = function(message, sender, sendResponse) {
   return true;
 }
 
-
 chrome.runtime.onMessage.addListener(onMessageListener);
-
