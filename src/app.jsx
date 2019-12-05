@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
 import "./stylesheets/style.scss";
+// import DropdownMenu from "./components/DropdownMenu.jsx";
 
 const App = props => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
@@ -25,6 +26,7 @@ const App = props => {
 
   return (
     <React.Fragment>
+      {/* <DropdownMenu/> */}
       <Headers schemaStatus={schemaStatus} cacheStatus={cacheStatus} updateSchemaStatus={updateSchemaStatus} updateCacheStatus={updateCacheStatus} schemaToggle={schemaToggle} cacheToggle={cacheToggle} />
       <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus} />
     </React.Fragment>
