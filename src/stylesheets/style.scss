@@ -1,24 +1,27 @@
-@font-face {
-  font-family: "Tomorrow";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local("Tomorrow Regular"), local("Tomorrow-Regular"),
-    url(https://fonts.gstatic.com/s/tomorrow/v2/WBLmrETNbFtZCeGqgRXSe2DiLsip.woff2)
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
+// @font-face {
+//   font-family: "Tomorrow";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-display: swap;
+//   src: local("Tomorrow Regular"), local("Tomorrow-Regular"),
+//     url(https://fonts.gstatic.com/s/tomorrow/v2/WBLmrETNbFtZCeGqgRXSe2DiLsip.woff2)
+//       format("woff2");
+//   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+//     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+//     U+FEFF, U+FFFD;
+// }
+
 body {
   margin: 0;
   font-family: "Tomorrow";
-  color: white;
+  color: whitesmoke;
 }
 
 #root {
   position: fixed;
-  background-color: rgba(34, 35, 38, 0.7);
+  background-color: rgb(34, 35, 38);
+  font-family: 'Courier New', Courier, monospace;
+  
   height: 100%;
   width: 100%;
 }
@@ -86,18 +89,19 @@ body {
   margin-bottom: 25px;
 }
 
-// #graphql-res {
-//   box-sizing: border-box;
-//   background-color: white;
-//   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-//   0 5px 15px 0 rgba(0,0,0,0.08);
-//   padding: 20px 25px;
-//   margin-bottom: 10px;
-// }
-
-// .graphql-heading {
-//   margin-bottom: 10px;
-// }
+#home-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  h1{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+}
 
 .graphql-response {
   height: 50%;
@@ -109,26 +113,6 @@ body {
   overflow: auto;
   transition: 5s ease all;
 }
-
-// #graphQLTab{
-//   box-sizing: border-box;
-//   display: grid;
-//   grid-template-rows: 3fr 7fr;
-//   grid-template-columns: 100%;
-//   grid-template-areas:
-//     'log-container'
-//     'graphql';
-//   padding: 10px;
-// }
-// #graphql-container {
-//   grid-area: graphql;
-//   margin-right: 0px;
-//   min-height: 600px;
-// }
-// /* * To hide GraphQLTab */
-// .hide{
-//   display: none!important;
-// }
 
 #queryBox pre {
   background-color: green !important;
@@ -144,6 +128,7 @@ body {
     "graphql";
   padding: 10px;
 }
+
 #graphql-container {
   grid-area: graphql;
   margin-right: 0px;
@@ -165,3 +150,21 @@ body {
     overflow-y: scroll;
   } */
 /* } */
+
+.hOne {
+  display: flex;
+  justify-content: center;
+}
+
+.spotify {
+  background-color: #1db954;
+  padding: 10px;
+  border-radius: 8px;
+  color: ghostwhite;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.spotify-container {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -6,7 +6,7 @@ const Query = props => {
   if (props.queries) {
     for (let i = 0; i < props.queries.length; i++) {
       queriesList.push(
-        <ReactJson
+        <ReactJson theme="summerfruit:inverted"
           src={JSON.parse(JSON.stringify(props.queries[i]))}
           name={null}
           iconStyle="triangle"
