@@ -27,4 +27,4 @@ const Query = props => {
   );
 };
 
-export default Query1;
+export default Query;

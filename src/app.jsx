@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
-import Home from '../components/Home.jsx';
+import Home from './components/Home.jsx';
 import "./stylesheets/style.scss";
 
 const App = props => {
@@ -82,8 +82,8 @@ const App = props => {
 
   return (
     <div>
-      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />
-      <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus} /> }
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} rl={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} /> } 
 
       {/* <Headers schemaStatus={schemaStatus} cacheStatus={cacheStatus} updateSchemaStatus={updateSchemaStatus} updateCacheStatus={updateCacheStatus} schemaToggle={schemaToggle} cacheToggle={cacheToggle} />
       <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus} /> */}
