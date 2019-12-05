@@ -67,10 +67,10 @@ const ObserverContainers = props => {
     <React.Fragment>
       <div id="observerContainers">
         <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
-        <Query2 queries={queries} historyBtn={historyBtn} />
-        <GraphQLResponse results={results} historyBtn={historyBtn} />
-        {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
-        {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
+          <Query2 queries={queries} historyBtn={historyBtn} />
+          <GraphQLResponse results={results} historyBtn={historyBtn} />
+          {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
+          {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
       </div>
     </React.Fragment>
   );
