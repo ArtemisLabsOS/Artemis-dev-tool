@@ -9,8 +9,10 @@ const ApolloGraphQLCache = props => {
 
   return (
     <div id="cache-container">
-      <h2>CACHE:</h2>
-      <ReactJson theme="summerfruit:inverted"
+      <div id="cache-hThree">
+        <h3>CACHE</h3>
+      </div>
+      <ReactJson theme="google"
         src={props.cache}
         name={null}
         iconStyle="triangle"

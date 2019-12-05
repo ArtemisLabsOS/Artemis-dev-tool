@@ -9,7 +9,7 @@ const Headers = (props) => {
         <img></img>
       </div>
       <div className="header-container">
-        <Dropdown />
+        <Dropdown/>
         <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>

@@ -23,8 +23,10 @@ const Schema = props => {
 
   return (
     <div id="schema-container">
-      <h2>SCHEMA:</h2>
-        <ReactJson theme="summerfruit:inverted"
+      <div id="schema-hThree">
+        <h3>SCHEMA</h3>
+      </div>
+        <ReactJson theme="google"
           src={schema}
           name={null}
           iconStyle="triangle"
