@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
-<<<<<<< HEAD
-=======
 import Home from './components/Home.jsx';
->>>>>>> 89894e5f993529031dfd0b07a60eca018c4e35d1
 import "./stylesheets/style.scss";
 // import DropdownMenu from "./components/DropdownMenu.jsx";
 
