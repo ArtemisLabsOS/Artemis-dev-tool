@@ -6,97 +6,97 @@ import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
 
 const ObserverContainers = props => {
-  const [queries, updateQueries] = useState([]);
-  const [results, updateResults] = useState([]);
-  const [history, recordHistory] = useState([]);
-  const [historyBtn, historyBtnToggle] = useState(0);
-  const [url, updateUrl] = useState("");
-  const [cache, updateCache] = useState({});
+  // const [queries, updateQueries] = useState([]);
+  // const [results, updateResults] = useState([]);
+  // const [history, recordHistory] = useState([]);
+  // const [historyBtn, historyBtnToggle] = useState(0);
+  // const [url, updateUrl] = useState("");
+  // const [cache, updateCache] = useState({});
 
-  const getCache = () => {
-    msgToBackground("contentScript", "getCache", response => {
-      console.log(response)
-      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-    });
-  }
+  // const getCache = () => {
+  //   msgToBackground("contentScript", "getCache", response => {
+  //     console.log(response)
+  //     msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+  //   });
+  // }
 
-  function isToggle(index) {
-    historyBtnToggle(index);
-    msgToBackground(
-      "contentScript",
-      "rerenderDOM",
-      response => console.log(response),
-      history[index]
-    );
-  }
+  // function isToggle(index) {
+  //   historyBtnToggle(index);
+  //   msgToBackground(
+  //     "contentScript",
+  //     "rerenderDOM",
+  //     response => console.log(response),
+  //     history[index]
+  //   );
+  // }
 
-  useEffect(() => {
-    historyBtnToggle(queries.length - 1);
-  }, [queries]);
+  // useEffect(() => {
+  //   historyBtnToggle(queries.length - 1);
+  // }, [queries]);
 
-  useEffect(() => {
-    chrome.devtools.network.onRequestFinished.addListener(httpReq => {
+  // useEffect(() => {
+  //   chrome.devtools.network.onRequestFinished.addListener(httpReq => {
 
-      if (httpReq.request.postData) {
-        updateUrl(httpReq.request.url);
-        httpReq.getContent(res => {
-          updateResults(oldResults => [...oldResults, res]);
-        });
-        let requestQuery;
-        if (IsJsonString(httpReq.request.postData.text)) {
-          requestQuery = JSON.parse(httpReq.request.postData.text).query;
-        } else {
-          requestQuery = httpReq.request.postData.text;
-        }
-        msgToBackground("contentScript", "getDOM", response =>
-          recordHistory(oldHistory => [...oldHistory, response.msg])
-        );
-        updateQueries(oldQueries => [
-          ...oldQueries,
-          {
-            time: httpReq.time,
-            outgoingQueries: requestQuery
-          }
-        ]);
-      }
-    });
-  }, []);
+  //     if (httpReq.request.postData) {
+  //       updateUrl(httpReq.request.url);
+  //       httpReq.getContent(res => {
+  //         updateResults(oldResults => [...oldResults, res]);
+  //       });
+  //       let requestQuery;
+  //       if (IsJsonString(httpReq.request.postData.text)) {
+  //         requestQuery = JSON.parse(httpReq.request.postData.text).query;
+  //       } else {
+  //         requestQuery = httpReq.request.postData.text;
+  //       }
+  //       msgToBackground("contentScript", "getDOM", response =>
+  //         recordHistory(oldHistory => [...oldHistory, response.msg])
+  //       );
+  //       updateQueries(oldQueries => [
+  //         ...oldQueries,
+  //         {
+  //           time: httpReq.time,
+  //           outgoingQueries: requestQuery
+  //         }
+  //       ]);
+  //     }
+  //   });
+  // }, []);
 
   return (
     <React.Fragment>
       <div id="observerContainers">
-        <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
-        <Query queries={queries} historyBtn={historyBtn} />
-        <GraphQLResponse results={results} historyBtn={historyBtn} />
-        {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
-        {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
-      </div>
+        <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} />
+        <Query queries={props.queries} historyBtn={props.historyBtn} />
+        <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
+        {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
+        {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
+      </div>}
     </React.Fragment>
   );
 };
 
-const msgToBackground = function (type, msg, callback, newBody) {
-  if (chrome && chrome.runtime) {
-    chrome.runtime.sendMessage(
-      {
-        type,
-        msg,
-        newBody
-      },
-      function (response) {
-        callback(response);
-      }
-    );
-  }
-};
+// const msgToBackground = function (type, msg, callback, newBody) {
+//   if (chrome && chrome.runtime) {
+//     chrome.runtime.sendMessage(
+//       {
+//         type,
+//         msg,
+//         newBody
+//       },
+//       function (response) {
+//         callback(response);
+//       }
+//     );
+//   }
+// };
 
-const IsJsonString = function (str) {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
+// const IsJsonString = function (str) {
+//   try {
+//     JSON.parse(str);
+//   } catch (e) {
+//     return false;
+//   }
+//   return true;
+// };
 
 export default ObserverContainers;
