@@ -20,6 +20,7 @@ const Query2 = props => {
       );
     }
   }
+  
   return (
     <div id="query-container">
       <div id="query-hThree">

@@ -4,7 +4,6 @@ import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
-import DropdownMenu from "../components/DropdownMenu.jsx";
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);
@@ -65,13 +64,18 @@ const ObserverContainers = props => {
 
   return (
     <React.Fragment>
-      <div id="observerContainers">
-        <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
+      <div>
+        <div id="observerContainers">
+          <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
           <Query2 queries={queries} historyBtn={historyBtn} />
-          <GraphQLResponse results={results} historyBtn={historyBtn} />
-          {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
-          {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
+          <GraphQLResponse results={results} historyBtn={historyBtn} /> 
+        </div> 
+        {/* <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
+        <Query2 queries={queries} historyBtn={historyBtn} />
+        <GraphQLResponse results={results} historyBtn={historyBtn} /> */}
       </div>
+        {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
+        {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
     </React.Fragment>
   );
 };

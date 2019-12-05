@@ -12,16 +12,18 @@ const ApolloGraphQLCache = props => {
       <div id="cache-hThree">
         <h3>CACHE</h3>
       </div>
+      <div id='cache-data'>
       <ReactJson theme="google"
         src={props.cache}
         name={null}
         iconStyle="triangle"
         indentWidth={1}
-        collapsed={3}
+        collapsed={false}
         enableClipboard={false}
         displayDataTypes={false}
         displayObjectSize={false}
       />
+      </div>
     </div>
   );
 };
