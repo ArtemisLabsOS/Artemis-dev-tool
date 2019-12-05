@@ -23,12 +23,6 @@ const ObserverContainers = props => {
 
   function isToggle(index) {
     historyBtnToggle(index);
-    msgToBackground(
-      "contentScript",
-      "rerenderDOM",
-      response => console.log(response),
-      history[index]
-    );
   }
 
   useEffect(() => {
@@ -66,7 +60,7 @@ const ObserverContainers = props => {
   return (
     <React.Fragment>
       <div id="observerContainers">
-        <HistoryOfPastQueries queries={queries} isToggle={isToggle} />
+        <HistoryOfPastQueries queries={queries} isToggle={isToggle} history={history}/>
           <Query2 queries={queries} historyBtn={historyBtn} />
           <GraphQLResponse results={results} historyBtn={historyBtn} />
           {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
