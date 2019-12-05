@@ -6,12 +6,12 @@ const GraphQLResponse = props => {
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
       responseArr.push(
-        <ReactJson theme="summerfruit:inverted"
+        <ReactJson theme="google"
           src={JSON.parse(props.results[i])}
           name={null}
           iconStyle="triangle"
           indentWidth={1}
-          collapsed={3}
+          collapsed={false}
           enableClipboard={false}
           displayDataTypes={false}
           displayObjectSize={false}
@@ -22,7 +22,9 @@ const GraphQLResponse = props => {
   
   return (
     <div id="response-container">
-      <h2 className="graphql-heading">RESPONSE:</h2>
+      <div id="response-hThree">
+        <h3 className="graphql-heading">RESPONSE</h3>
+      </div>
       <span className="graphql-response">{responseArr[props.historyBtn]}</span>
     </div>
   );

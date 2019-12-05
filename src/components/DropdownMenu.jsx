@@ -4,19 +4,21 @@ const style = <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/semantic
 
 const DropdownMenu = () => {
   return(
-    <div className="spotify">
-      <Dropdown text="OPTIONS">
+    <React.Fragment >
+      <div id="drop-menu-text">
+      <Dropdown id="drop-options-text" text="OPTIONS"> 
         <Dropdown.Menu>
           <Dropdown.Item href="#/action-1">OBSERVER</Dropdown.Item>
           <Dropdown.Item href="#/action-2">TESTING</Dropdown.Item>
           <Dropdown.Item href="#/action-3">PERFORMANCE</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-    </div>
+      </div>
+    </React.Fragment>
   )
 }
 
-export default () => (<div>{style}<DropdownMenu/></div>);
+export default () => (<div className="item1">{style}<DropdownMenu/></div>);
 // export default DropdownMenu;
 
 
