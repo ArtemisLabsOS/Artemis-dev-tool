@@ -1,19 +1,6 @@
-// @font-face {
-//   font-family: "Tomorrow";
-//   font-style: normal;
-//   font-weight: 400;
-//   font-display: swap;
-//   src: local("Tomorrow Regular"), local("Tomorrow-Regular"),
-//     url(https://fonts.gstatic.com/s/tomorrow/v2/WBLmrETNbFtZCeGqgRXSe2DiLsip.woff2)
-//       format("woff2");
-//   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-//     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-//     U+FEFF, U+FFFD;
-// }
-
 body {
   margin: 0;
-  font-family: "Tomorrow";
+  font-family: 'Courier New', Courier, monospace;
   color: whitesmoke !important;
 }
 
@@ -179,7 +166,13 @@ h2, h1 {
   justify-content: center;
 }
 
-.spotify {
+.header-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px 10px;
+}
+
+.header-item {
   background-color: #1db954;
   padding: 10px;
   border-radius: 8px;
@@ -188,10 +181,19 @@ h2, h1 {
   border: 1px solid #fff;
 }
 
-.spotify-container {
-  display: flex;
-  justify-content: space-evenly;
+.item1{
+  grid-column: 1/3;
 }
+
+.item2{
+  grid-column: 3;
+}
+
+.item3{
+  grid-column: 4;
+}
+
+
 
 .pretty-json-container {
   font-size: 12px;

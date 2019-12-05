@@ -1,5 +1,4 @@
 import React from 'react';
-import { DropdownMenu } from 'semantic-ui-react';
 import Dropdown from '../components/DropdownMenu.jsx';
 
 const Headers = (props) => {
@@ -9,12 +8,12 @@ const Headers = (props) => {
         <h1>ARTEMIS</h1>
         <img></img>
       </div>
-      <div className="spotify-container">
+      <div className="header-container">
         <Dropdown />
-        <button className="spotify" onClick={()=> props.schemaToggle()}>
+        <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
-        <button className="spotify" onClick={()=> props.cacheToggle()}>
+        <button className="header-item item3" onClick={()=> props.cacheToggle()}>
           CACHE
         </button>
       </div>
