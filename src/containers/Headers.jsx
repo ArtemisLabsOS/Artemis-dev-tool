@@ -7,11 +7,11 @@ const Headers = (props) => {
         <h1>ARTEMIS</h1>
         <img></img>
       </div>
-      <div className="spotify-container">
-        <button className="spotify" onClick={()=> props.schemaToggle()}>
+      <div className="header-container">
+        <button className="header-item item1" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
-        <button className="spotify" onClick={()=> props.cacheToggle()}>
+        <button className="header-item" onClick={()=> props.cacheToggle()}>
           CACHE
         </button>
       </div>
