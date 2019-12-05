@@ -31,6 +31,9 @@ const App = () => {
   }, [queries]);
 
   useEffect(() => {
+    chrome.tabs.executeScript({
+      file: "contentScript.js"
+    });
     chrome.devtools.network.onRequestFinished.addListener(httpReq => {
 
       if (httpReq.request.postData) {
@@ -55,11 +58,6 @@ const App = () => {
           }
         ]);
       }
-    });
-  }, []);
-  useEffect(() => {
-    chrome.tabs.executeScript({
-      file: "contentScript.js"
     });
   }, []);
 
