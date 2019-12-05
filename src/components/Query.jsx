@@ -30,23 +30,4 @@ const Query = props => {
   );
 };
 
-
-//  theme={{
-//   base00: "rgba(0, 0, 0, 0)",
-//   base01: "white",
-//   base02: "white",
-//   base03: "white",
-//   base04: "white",
-//   base05: "white",
-//   base06: "white",
-//   base07: "white",
-//   base08: "white",
-//   base09: "orange", //string
-//   base0A: "yellow", 
-//   base0B: "lightgreen", //number
-//   base0C: "white",
-//   base0D: "white",
-//   base0E: "white",
-//   base0F: "white"
-// }}
 export default Query;
