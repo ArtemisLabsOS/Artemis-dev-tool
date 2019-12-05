@@ -66,7 +66,7 @@ const ObserverContainers = props => {
   return (
     <React.Fragment>
       <div id="observerContainers">
-        <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} />
+        <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} history={props.history}/>
         <Query queries={props.queries} historyBtn={props.historyBtn} />
         <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
         {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}

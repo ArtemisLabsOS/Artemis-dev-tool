@@ -1,5 +1,7 @@
-import React from "react";
-import Clock from "react-live-clock";
+import React, {useEffect} from "react";
+import TimeButton from './TimeButton.jsx'
+
+
 
 const HistoryOfPastQueries = props => {
   let pastQueries = [];
@@ -7,9 +9,7 @@ const HistoryOfPastQueries = props => {
     pastQueries.push(
       <div id="queryBox" onClick={() => props.isToggle(i)}>
         <div>Query {i + 1}</div>
-        <div>
-        <button className="time-button"><Clock format={"HH:mm:ss"} /></button>
-        </div>
+        <TimeButton history={props.history} index = {i}/>
       </div>
     );
   };
@@ -20,5 +20,7 @@ const HistoryOfPastQueries = props => {
     </div>
   );
 };
+
+
 
 export default HistoryOfPastQueries;

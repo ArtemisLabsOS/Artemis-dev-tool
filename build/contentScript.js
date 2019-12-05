@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
-var port = chrome.runtime.connect();
+// var port = chrome.runtime.connect();
 let cache;
 
 window.addEventListener("message", function (event) {
