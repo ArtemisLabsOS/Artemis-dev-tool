@@ -22,7 +22,7 @@ const GraphQLResponse = props => {
   
   return (
     <div id="response-container">
-      <h2 className="graphql-heading">Response:</h2>
+      <h2 className="graphql-heading">RESPONSE:</h2>
       <span className="graphql-response">{responseArr[props.historyBtn]}</span>
     </div>
   );

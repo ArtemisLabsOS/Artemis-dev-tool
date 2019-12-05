@@ -21,7 +21,7 @@ const Query2 = props => {
   }
   return (
     <div id="query-container">
-      <h2>Query:</h2>
+      <h2>QUERY:</h2>
       <span>{queriesList[props.historyBtn]}</span>
     </div>
   );
