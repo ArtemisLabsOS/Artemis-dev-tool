@@ -6,7 +6,6 @@ const Headers = (props) => {
     <React.Fragment>
       <div className="hOne">
         <h1>ARTEMIS</h1>
-        <img></img>
       </div>
       <div className="header-container">
         <Dropdown/>
