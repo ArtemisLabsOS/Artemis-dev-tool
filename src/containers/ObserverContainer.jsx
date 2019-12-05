@@ -63,11 +63,21 @@ const ObserverContainers = props => {
   //   });
   // }, []);
 
+  /*
+  
+  export default (
+    <SlideInDownDiv>
+      <img src="https://picsum.photos/300/200/?random" />
+    </SlideInDownDiv>
+  );
+   */
   return (
     <React.Fragment>
       <div id="observerContainers">
         <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} />
-        <Query queries={props.queries} historyBtn={props.historyBtn} />
+        <Animate>
+          <Query queries={props.queries} historyBtn={props.historyBtn} />
+        </Animate>
         <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
         {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
         {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
