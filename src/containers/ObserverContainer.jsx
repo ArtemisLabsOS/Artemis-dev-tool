@@ -4,6 +4,7 @@ import Query from "../components/Query.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
+import DropdownMenu from "../components/DropdownMenu.jsx";
 
 const ObserverContainers = props => {
   // const [queries, updateQueries] = useState([]);
@@ -70,7 +71,7 @@ const ObserverContainers = props => {
         <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
         {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
         {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
-      </div>}
+      </div>
     </React.Fragment>
   );
 };

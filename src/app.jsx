@@ -3,11 +3,11 @@ import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
 import Home from './components/Home.jsx';
 import "./stylesheets/style.scss";
+// import DropdownMenu from "./components/DropdownMenu.jsx";
 
-const App = props => {
+const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);
-  //=====================================
   const [queries, updateQueries] = useState([]);
   const [results, updateResults] = useState([]);
   const [history, recordHistory] = useState([]);
@@ -63,7 +63,6 @@ const App = props => {
       }
     });
   }, []);
-  //==================================
   useEffect(() => {
     chrome.tabs.executeScript({
       file: "contentScript.js"
@@ -83,10 +82,7 @@ const App = props => {
   return (
     <React.Fragment>
       {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />}
-      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} rl={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} /> } 
-
-      {/* <Headers schemaStatus={schemaStatus} cacheStatus={cacheStatus} updateSchemaStatus={updateSchemaStatus} updateCacheStatus={updateCacheStatus} schemaToggle={schemaToggle} cacheToggle={cacheToggle} />
-      <ObserverContainer schemaStatus={schemaStatus} cacheStatus={cacheStatus} /> */}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} rl={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} />}
     </React.Fragment>
   );
 };

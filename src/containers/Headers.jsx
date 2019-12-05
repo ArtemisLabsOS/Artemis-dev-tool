@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropdown from '../components/DropdownMenu.jsx';
 
 const Headers = (props) => {
   return (
@@ -6,11 +7,12 @@ const Headers = (props) => {
       <div className="hOne">
         <h1>ARTEMIS</h1>
       </div>
-      <div className="spotify-container">
-        <button className="spotify" onClick={()=> props.schemaToggle()}>
+      <div className="header-container">
+        <Dropdown/>
+        <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
-        <button className="spotify" onClick={()=> props.cacheToggle()}>
+        <button className="header-item item3" onClick={()=> props.cacheToggle()}>
           CACHE
         </button>
       </div>
