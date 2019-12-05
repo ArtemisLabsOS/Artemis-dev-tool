@@ -1,4 +1,6 @@
 import React from 'react';
+import { DropdownMenu } from 'semantic-ui-react';
+import Dropdown from '../components/DropdownMenu.jsx';
 
 const Headers = (props) => {
   return (
@@ -8,10 +10,11 @@ const Headers = (props) => {
         <img></img>
       </div>
       <div className="header-container">
-        <button className="header-item item1" onClick={()=> props.schemaToggle()}>
+        <Dropdown />
+        <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
-        <button className="header-item" onClick={()=> props.cacheToggle()}>
+        <button className="header-item item3" onClick={()=> props.cacheToggle()}>
           CACHE
         </button>
       </div>

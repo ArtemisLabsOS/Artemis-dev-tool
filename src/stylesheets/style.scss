@@ -1,13 +1,22 @@
 body {
   margin: 0;
+<<<<<<< HEAD
   font-family: 'Courier New', Courier, monospace;
   color: whitesmoke;
+=======
+  font-family: "Tomorrow";
+  color: whitesmoke !important;
+}
+
+h2, h1 {
+  font-family: 'Courier New', Courier, monospace !important;
+>>>>>>> 98b7648880869415e6553b063e60ea4276d8fa76
 }
 
 #root {
   position: fixed;
   background-color: rgb(34, 35, 38);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace !important;
   
   height: 100%;
   width: 100%;
@@ -168,13 +177,18 @@ body {
   border-radius: 8px;
   color: ghostwhite;
   font-family: 'Courier New', Courier, monospace;
+  border: 1px solid #fff;
 }
 
 .item1{
-  grid-column: 3;
+  grid-column: 1/2;
 }
 
 .item2{
+  grid-column: 3;
+}
+
+.item3{
   grid-column: 4;
 }
 
@@ -182,4 +196,14 @@ body {
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px 10px;
+}
+
+.pretty-json-container {
+  font-size: 12px;
+}
+
+#cache-container {
+  margin-left: 10px;
+  margin-right: 25px;
+  width: 40%;
 }
