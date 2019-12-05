@@ -1,11 +1,5 @@
 import React, {useEffect} from "react";
 import Clock from "react-live-clock";
-<<<<<<< HEAD
-
-var moment = require('moment');
-moment().format();
-=======
->>>>>>> master
 
 const msgToBackground = function (type, msg, callback, newBody) {
   if (chrome && chrome.runtime) {

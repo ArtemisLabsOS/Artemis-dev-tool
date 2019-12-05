@@ -21,11 +21,6 @@ const ObserverContainers = props => {
   //   });
   // }
 
-<<<<<<< HEAD
-  function isToggle(index) {
-    historyBtnToggle(index);
-  }
-=======
   // function isToggle(index) {
   //   historyBtnToggle(index);
   //   msgToBackground(
@@ -35,7 +30,6 @@ const ObserverContainers = props => {
   //     history[index]
   //   );
   // }
->>>>>>> master
 
   // useEffect(() => {
   //   historyBtnToggle(queries.length - 1);
@@ -72,19 +66,11 @@ const ObserverContainers = props => {
   return (
     <React.Fragment>
       <div id="observerContainers">
-<<<<<<< HEAD
         <HistoryOfPastQueries queries={queries} isToggle={isToggle} history={history}/>
-          <Query2 queries={queries} historyBtn={historyBtn} />
-          <GraphQLResponse results={results} historyBtn={historyBtn} />
-          {props.schemaStatus ? <Schema historyBtn={historyBtn} url={url} queries={queries} /> : null}
-          {props.cacheStatus ? <ApolloGraphQLCache historyBtn={historyBtn} url={url} queries={queries} getCache={getCache} cache={cache} /> : null}
-=======
-        <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} />
         <Query queries={props.queries} historyBtn={props.historyBtn} />
         <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
         {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
         {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
->>>>>>> master
       </div>
     </React.Fragment>
   );
