@@ -4,6 +4,7 @@ import Query2 from "../components/Query2.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
+import DropdownMenu from "../components/DropdownMenu.jsx";
 
 const ObserverContainers = props => {
   const [queries, updateQueries] = useState([]);

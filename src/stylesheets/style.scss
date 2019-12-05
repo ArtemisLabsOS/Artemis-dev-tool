@@ -14,13 +14,17 @@
 body {
   margin: 0;
   font-family: "Tomorrow";
-  color: whitesmoke;
+  color: whitesmoke !important;
+}
+
+h2, h1 {
+  font-family: 'Courier New', Courier, monospace !important;
 }
 
 #root {
   position: fixed;
   background-color: rgb(34, 35, 38);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace !important;
   
   height: 100%;
   width: 100%;
@@ -181,9 +185,20 @@ body {
   border-radius: 8px;
   color: ghostwhite;
   font-family: 'Courier New', Courier, monospace;
+  border: 1px solid #fff;
 }
 
 .spotify-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+.pretty-json-container {
+  font-size: 12px;
+}
+
+#cache-container {
+  margin-left: 10px;
+  margin-right: 25px;
+  width: 40%;
 }
