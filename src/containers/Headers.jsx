@@ -1,5 +1,4 @@
 import React from 'react';
-import { DropdownMenu } from 'semantic-ui-react';
 import Dropdown from '../components/DropdownMenu.jsx';
 
 const Headers = (props) => {
