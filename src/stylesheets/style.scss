@@ -40,6 +40,9 @@ h1, h2, h3 {
   justify-content: flex-end;
   overflow: auto;
   border-right: 1px solid white;
+  // border-top: 1px solid white;
+  // border-radius: 8px;
+  margin-right: 5px;
 
   #queryBox {
     width: 100%;
@@ -66,10 +69,12 @@ h1, h2, h3 {
 #query-container {
   width: 37.5%;
   overflow: auto;
+  overflow-y: auto;
   padding-right: 1rem;
   padding-left: 1rem;
   padding-top: 1rem;
   border-right: 1px solid white;
+  // border-radius: 8px;
 }
 
 #response-container {
@@ -79,23 +84,46 @@ h1, h2, h3 {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-top: 1rem;
+  // border: 1px solid white;
+  // border-radius: 8px;
 }
 
 #schema-container {
-  width: 30%;
   height: 100%;
   overflow-y: auto;
-  margin-left: 1rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  // margin-left: 1rem;
+  // padding-right: 10rem;
+  // padding-left: 10rem;
+  padding-top: 1rem; 
+  position: absolute;
+  top: 0;
+  right: 3px;
+  z-index: 2;
+  background-color: rgb(29, 31, 33);
+  width: 35%;
+  border: 1px solid white;
+  margin-top: 115px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 #cache-container {
-  margin-left: 10px;
-  margin-right: 25px;
-  width: 40%;
-  padding-top: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  // margin-left: 1rem;
+  // padding-right: 10rem;
+  // padding-left: 10rem;
+  padding-top: 1rem; 
+  position: absolute;
+  top: 0;
+  right: 3px;
+  z-index: 2;
+  background-color: rgb(29, 31, 33);
+  width: 35%;
+  border: 1px solid white;
+  margin-top: 115px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 #query-hThree {
@@ -124,38 +152,19 @@ h1, h2, h3 {
   margin-bottom: 25px;
 }
 
-// #graphql-res {
-//   box-sizing: border-box;
-//   background-color: white;
-//   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-//   0 5px 15px 0 rgba(0,0,0,0.08);
-//   padding: 20px 25px;
-//   margin-bottom: 10px;
-// }
-
-// .graphql-heading {
-//   margin-bottom: 10px;
-// }
-
-// #graphQLTab{
-//   box-sizing: border-box;
-//   display: grid;
-//   grid-template-rows: 3fr 7fr;
-//   grid-template-columns: 100%;
-//   grid-template-areas:
-//     'log-container'
-//     'graphql';
-//   padding: 10px;
-// }
-// #graphql-container {
-//   grid-area: graphql;
-//   margin-right: 0px;
-//   min-height: 600px;
-// }
-// /* * To hide GraphQLTab */
-// .hide{
-//   display: none!important;
-// }
+#home-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  h1{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+}
 
 #queryBox pre {
   background-color: green !important;
@@ -232,6 +241,8 @@ h1, h2, h3 {
 
 .pretty-json-container {
   font-size: 12px;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace !important;
 }
 
 // #drop-menu-text {
@@ -240,3 +251,68 @@ h1, h2, h3 {
 //   align-content: center;
 // }
 
+#schema-data {
+  width: 100%;
+}
+
+#cache-data {
+  width: 100%;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #ffffff;
+  font-size: 5px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
