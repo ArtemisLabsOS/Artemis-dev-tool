@@ -1,24 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Clock from "react-live-clock";
+import msgToBackground from '../Utility/msgToBackground.js'
 var Moment = require('moment');
-const currentTime = new Moment();
-
-const msgToBackground = function (type, msg, callback, newBody) {
-  if (chrome && chrome.runtime) {
-    chrome.runtime.sendMessage(
-      {
-        type,
-        msg,
-        newBody
-      },
-      function (response) {
-        callback(response);
-      }
-    );
-  }
-};
+let currentTime = new Moment();
 
 const TimeButton = props => {
+  useEffect(() => {
+    currentTime = new Moment();
+  }, []);
   const [isHovered, setHovered] = useState(false);
   function toggleTime(index){
     msgToBackground(
