@@ -5,7 +5,6 @@ import Home from './components/Home.jsx';
 import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
 // import DropdownMenu from "./components/DropdownMenu.jsx";
-
 const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);
