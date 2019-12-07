@@ -14,13 +14,13 @@ const Headers = (props) => {
       </div>
       <div className="header-container">
         <Dropdown/>
-        <ButtonInverted schemaToggle={props.schemaToggle} cacheToggle={props.cacheToggle}/>
-        {/* <button className="header-item item2" onClick={()=> props.schemaToggle()}>
+        {/* <ButtonInverted schemaToggle={props.schemaToggle} cacheToggle={props.cacheToggle}/> */}
+        <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
         <button className="header-item item3" onClick={()=> props.cacheToggle()}>
           CACHE
-        </button> */}
+        </button>
       </div>
     </React.Fragment>
   )
