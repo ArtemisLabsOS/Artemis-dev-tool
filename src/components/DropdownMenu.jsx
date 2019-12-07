@@ -11,6 +11,8 @@ const DropdownMenu = () => {
             <Dropdown.Item href="#/action-1">OBSERVER</Dropdown.Item>
             <Dropdown.Item href="#/action-2">TESTING</Dropdown.Item>
             <Dropdown.Item href="#/action-3">PERFORMANCE</Dropdown.Item>
+            <Dropdown.Item href="#/action-4">TIME TRAVEL</Dropdown.Item>
+
           </Dropdown.Menu>
         </Dropdown>
       </div>
