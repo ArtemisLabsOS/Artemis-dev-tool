@@ -4,7 +4,6 @@ import Headers from './containers/Headers.jsx';
 import Home from './components/Home.jsx';
 import "./stylesheets/style.scss";
 // import DropdownMenu from "./components/DropdownMenu.jsx";
-
 const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);
@@ -82,7 +81,7 @@ const App = () => {
 const msgToBackground = function (type, msg, callback, newBody) {
   if (chrome && chrome.runtime) {
     chrome.runtime.sendMessage(
-      {
+      {npm 
         type,
         msg,
         newBody
