@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
 import Home from './components/Home.jsx';
+import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
 // import DropdownMenu from "./components/DropdownMenu.jsx";
 const App = () => {
@@ -13,17 +14,6 @@ const App = () => {
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
   const [cache, updateCache] = useState({});
-
-  const getCache = () => {
-    msgToBackground("contentScript", "getCache", response => {
-      console.log(response)
-      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-    });
-  }
-
-  function isToggle(index) {
-    historyBtnToggle(index);
-  }
 
   useEffect(() => {
     historyBtnToggle(queries.length - 1);
@@ -69,6 +59,17 @@ const App = () => {
     updateCacheStatus(!cacheStatus);
     updateSchemaStatus(false);
   }
+  
+  const getCache = () => {
+    msgToBackground("contentScript", "getCache", response => {
+      console.log(response)
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
+  }
+
+  function isToggle(index) {
+    historyBtnToggle(index);
+  }
 
   return (
     <React.Fragment>
@@ -76,22 +77,6 @@ const App = () => {
       {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} />}
     </React.Fragment>
   );
-};
-
-const msgToBackground = function (type, msg, callback, newBody) {
-  if (chrome && chrome.runtime) {
-    chrome.runtime.sendMessage(
-      {
-        type,
-        msg,
-        newBody
-      },
-      
-      function (response) {
-        callback(response);
-      }
-    );
-  }
 };
 
 const IsJsonString = function (str) {
