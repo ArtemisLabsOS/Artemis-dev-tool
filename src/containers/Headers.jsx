@@ -3,6 +3,8 @@ import Dropdown from '../components/DropdownMenu.jsx';
 import { Container, Button, Alert } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 
+import ButtonInverted from '../components/ButtonInverted'
+
 const Headers = (props) => {
 
   return (
@@ -12,12 +14,13 @@ const Headers = (props) => {
       </div>
       <div className="header-container">
         <Dropdown/>
-        <button className="header-item item2" onClick={()=> props.schemaToggle()}>
+        <ButtonInverted schemaToggle={props.schemaToggle} cacheToggle={props.cacheToggle}/>
+        {/* <button className="header-item item2" onClick={()=> props.schemaToggle()}>
           SCHEMA
         </button>
         <button className="header-item item3" onClick={()=> props.cacheToggle()}>
           CACHE
-        </button>
+        </button> */}
       </div>
     </React.Fragment>
   )
