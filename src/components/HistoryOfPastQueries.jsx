@@ -2,11 +2,9 @@ import React, {  useEffect , useState} from "react";
 import TimeButton from './TimeButton.jsx'
 // import  { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
-//  import ActiveIndex from "./ActiveIndex.js"
-// import ChartComponent from "./ChartComponent.jsx";
 import Query from "./Query.jsx"
 
-
+import "../stylesheets/style.scss";
 
 const HistoryOfPastQueries = props => {
   const[activeIndex,setActiveIndex]=useState(-1);
@@ -38,29 +36,31 @@ const HistoryOfPastQueries = props => {
         }}
       >
         <Icon name='dropdown' />
-        <div id="queryBox" onClick={() => this.props.isToggle(i)}>
+        <div id="queryBox" onClick={() => props.isToggle(i)}>
           <div>Query {i + 1}</div> 
           <TimeButton history={props.history} index = {i}/>
         </div>
       </Accordion.Title>,
       
       <Accordion.Content active={activeIndex === i}>
-       <p>Performance</p> 
+        <p font-color="navy">Performance
+      </p>
       </Accordion.Content>
       
-      )
+      ) 
   };
   
 
   return (
-    <div id="history-past-queries">
-      <Accordion fluid styled>
-        
-        {results}
  
+    <div id="history-past-queries">
+      <Accordion fluid styled height={200}>
+     
+        {results}
+    
       </Accordion>
       </div>
-
+  
   );
 }
 

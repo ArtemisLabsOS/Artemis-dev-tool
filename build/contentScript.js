@@ -1,5 +1,6 @@
 // Listen for messages
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+  console.log("the runtime is ", chrome.runtime)
   switch (msg.msg) {
     case "getDOM":
       sendResponse({ msg: document.getElementsByTagName('body')[0].innerHTML });
@@ -15,6 +16,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       sendResponse({ msg: "cache requested" });
       break;
     case "retrieveCache":
+      console.log("cache in content script is",cache)
       sendResponse({ msg: cache });
       break;
   }
