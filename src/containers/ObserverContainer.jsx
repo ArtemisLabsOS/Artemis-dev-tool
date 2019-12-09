@@ -4,6 +4,7 @@ import Query from "../components/Query.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
+import TreeVisualizer from "../components/GraphQLTreeVisualizer.jsx";
 
 const ObserverContainers = props => {
 
@@ -16,6 +17,7 @@ const ObserverContainers = props => {
       </div>
       {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
       {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
+      <TreeVisualizer/>
     </React.Fragment>
   );
 };

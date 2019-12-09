@@ -1,0 +1,28 @@
+import React from 'react';
+import App from '../app.jsx';
+
+const TreeVisualizer = () => {
+  
+  const traverse = (obj) => {
+    for (let k in obj) {
+      if (obj[k] && typeof obj[k] === 'object') {
+        traverse(obj[k]);
+      } else {
+        // Do something with obj[k] --> extract data --> put into D3 tree data array format
+
+      }
+    }
+  }
+
+  console.log('this is result in Tree component', result);
+  
+  return (
+    <div>hi i am a tree.</div>
+  );
+}
+
+
+
+
+
+export default TreeVisualizer;
