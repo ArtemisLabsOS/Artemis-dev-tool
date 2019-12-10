@@ -4,7 +4,7 @@ import Headers from './containers/Headers.jsx';
 import Home from './components/Home.jsx';
 import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
-// import DropdownMenu from "./components/DropdownMenu.jsx";
+
 const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);
@@ -16,20 +16,6 @@ const App = () => {
   const [cache, updateCache] = useState({});
   const [visualizerStatus, updateVisualizer] = useState(false);
 
-<<<<<<< HEAD
-=======
-  const getCache = () => {
-    msgToBackground("contentScript", "getCache", response => {
-      console.log(response)
-      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-    });
-  }
-
-  const isToggle = (index) => {
-    historyBtnToggle(index);
-  }
-
->>>>>>> 22608d2a90e2c49f34e22c3b8e60ac39c66c8e89
   useEffect(() => {
     historyBtnToggle(queries.length - 1);
   }, [queries]);
