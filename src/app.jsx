@@ -14,6 +14,7 @@ const App = () => {
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
   const [cache, updateCache] = useState({});
+  const [visualizerStatus, updateVisualizer] = useState(false);
 
   const getCache = () => {
     msgToBackground("contentScript", "getCache", response => {
@@ -22,7 +23,7 @@ const App = () => {
     });
   }
 
-  function isToggle(index) {
+  const isToggle = (index) => {
     historyBtnToggle(index);
   }
 
@@ -61,20 +62,28 @@ const App = () => {
     });
   }, []);
 
-  function schemaToggle() {
+  const schemaToggle = () => {
     updateSchemaStatus(!schemaStatus);
     updateCacheStatus(false);
+    updateVisualizer(false);
   }
 
-  function cacheToggle() {
+  const cacheToggle = () => {
     updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    updateVisualizer(false);
+  }
+
+  const visualizerToggle = () => {
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
     updateSchemaStatus(false);
   }
 
   return (
     <React.Fragment>
-      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />}
-      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} />}
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
     </React.Fragment>
   );
 };

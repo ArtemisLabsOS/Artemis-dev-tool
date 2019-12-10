@@ -87,7 +87,24 @@ h1, h2, h3 {
   // border: 1px solid white;
   // border-radius: 8px;
 }
-
+#visualizer-container{
+  height: 100%;
+  overflow-y: auto;
+  // margin-left: 1rem;
+  // padding-right: 10rem;
+  // padding-left: 10rem;
+  padding-top: 1rem; 
+  position: absolute;
+  top: 0;
+  right: 3px;
+  z-index: 2;
+  background-color: rgb(29, 31, 33);
+  width: 95%;
+  border: 1px solid white;
+  margin-top: 115px;
+  margin-right: 6px;
+  margin-left: 6px;
+}
 #schema-container {
   height: 100%;
   overflow-y: auto;
@@ -175,18 +192,6 @@ h1, h2, h3 {
   display: none !important;
 }
 
-/* *for responsive use
-@media screen and (min-width: 760px) {
-  #graphQLTab{
-    grid-template-rows: none;
-    grid-template-columns: 3fr 7fr;
-    grid-template-areas:
-      'log-container graphql';
-    max-height: 1200px;
-    overflow-y: scroll;
-  } */
-/* } */
-
 .hOne {
   display: flex;
   justify-content: center;
@@ -237,6 +242,9 @@ h1, h2, h3 {
 
 .item3{
   grid-column: 8;
+}
+.item4{
+  grid-column: 6;
 }
 
 .pretty-json-container {
@@ -315,4 +323,13 @@ h1, h2, h3 {
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+
+#treeWrapper{
+  height:100%;
+  width:100%;
+}
+.rd3t-tree-container{
+  height: 100%;
+  width: 100%
 }
