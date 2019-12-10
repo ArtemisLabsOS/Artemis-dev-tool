@@ -21,6 +21,7 @@
   "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
   "dependencies": {
     "animate.css": "^3.7.2",
+    "awesome-typescript-loader": "^5.2.1",
     "bootstrap": "^4.4.1",
     "graphiql": "^0.17.0",
     "graphql-syntax-highlighter-react": "^0.4.0",
@@ -36,6 +37,7 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-transition-group": "^4.3.0",
     "semantic-ui-react": "^0.88.1",
+    "source-map-loader": "^0.2.4",
     "victory": "^33.1.7"
   },
   "devDependencies": {
