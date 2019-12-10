@@ -2,9 +2,14 @@ import React, {  useEffect , useState} from "react";
 import TimeButton from './TimeButton.jsx'
 // import  { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
+import '../stylesheets/semantic.css'
 import Query from "./Query.jsx"
 
-import "../stylesheets/style.scss";
+import 'semantic-ui-less/semantic.less'
+
+// import 'semantic-ui-css/semantic.css';
+
+// import "../stylesheets/style.scss";
 
 const HistoryOfPastQueries = props => {
   const[activeIndex,setActiveIndex]=useState(-1);
@@ -16,6 +21,7 @@ const HistoryOfPastQueries = props => {
     console.log(storage)
     pastQueries.push(
       <div id="queryBox" onClick={() => props.isToggle(i)}>
+
         <div>Query {i + 1}</div>
         <TimeButton history={props.history} index = {i}/>
       </div>
@@ -24,6 +30,7 @@ const HistoryOfPastQueries = props => {
       <Accordion.Title
         active={activeIndex === i}
         index={i}
+        background-color="light-blue"
         onClick={(e, titleProps) => {
           console.log('this is e', e);
           console.log('this is titleprops',titleProps);
@@ -43,7 +50,7 @@ const HistoryOfPastQueries = props => {
       </Accordion.Title>,
       
       <Accordion.Content active={activeIndex === i}>
-        <p font-color="navy">Performance
+        <p >Performance
       </p>
       </Accordion.Content>
       
@@ -53,12 +60,13 @@ const HistoryOfPastQueries = props => {
 
   return (
  
-    <div id="history-past-queries">
-      <Accordion fluid styled height={200}>
+    <div id="history-past-queries" >
+      <Accordion fluid styled height={100}>
      
         {results}
     
       </Accordion>
+
       </div>
   
   );

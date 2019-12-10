@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from '../components/DropdownMenu.jsx';
 import { Container, Button, Alert } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
+// import "../stylesheets/style.scss";
 
 import ButtonInverted from '../components/ButtonInverted'
 

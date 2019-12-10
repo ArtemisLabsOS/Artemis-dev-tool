@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
-  color: whitesmoke !important;
+  color: rgb(96, 224, 197) !important;
 }
 
 h1, h2, h3 {
@@ -33,14 +33,21 @@ h1, h2, h3 {
   height: 100%;
 }
 
+.title {
+  background-color:  rgba(170, 174, 171, 0.619) !important;
+
+}
 #history-past-queries {
   width: 25%;
+  background-color:  rgba(170, 174, 171, 0.619) !important;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
   overflow: auto;
-  border-right: 1px solid white;
-  border-top: 1px solid white;
+  font-family: 'Courier New', Courier, monospace !important;
+
+  border-right: 1px solid rgba(58, 255, 114, 0.24);
+  border-top: 1px solid  rgba(216, 240, 223, 0.208);
   // border-radius: 8px;
   margin-right: 5px;
 
@@ -142,6 +149,14 @@ h1, h2, h3 {
   text-align: center;
 }
 
+.ui.input input {
+  color: maroon;
+}
+
+.accordion ui fluid styled{
+  color:  maroon !important;
+  background-color: rgb(125, 193, 205) !important;
+}
 .scrollbar {
   margin-left: 30px;
   float: left;
@@ -167,7 +182,7 @@ h1, h2, h3 {
 }
 
 #queryBox pre {
-  background-color: green !important;
+  background-color: rgb(0, 128, 115) !important;
 }
 
 /* * To hide GraphQLTab */
@@ -189,6 +204,7 @@ h1, h2, h3 {
 
 .hOne {
   display: flex;
+  
   justify-content: center;
 }
 
@@ -217,7 +233,7 @@ h1, h2, h3 {
   flex-direction: column;
   align-content:center;
   justify-content: center;
-  background-color: #1db954;
+  background-color: #1daeb9;
   border-radius: 6px;
   color: ghostwhite;
   border: 1px solid #fff;

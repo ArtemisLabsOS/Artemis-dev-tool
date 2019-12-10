@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { VictoryBar, VictoryChart , VictoryAxis , VictoryTheme, VictoryStack } from 'victory';
 
 
+//import 
+
 const VictoryBarUse= props => {
 const data = [
     {quarter: 1, earnings: 13000},
