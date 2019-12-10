@@ -1,25 +1,23 @@
 import React, {  useEffect , useState} from "react";
 import TimeButton from './TimeButton.jsx'
-// import  { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
-//  import ActiveIndex from "./ActiveIndex.js"
-// import ChartComponent from "./ChartComponent.jsx";
 import Query from "./Query.jsx"
-
-
 
 const HistoryOfPastQueries = props => {
   const[activeIndex,setActiveIndex]=useState(-1);
 
   let results=[];
   let pastQueries = [];
+  //
+  const uploadTime = [];
+  //
   for (let i = 0; i < props.queries.length; i++) {
     let storage=props.queries[i]
     console.log(storage)
     pastQueries.push(
       <div id="queryBox" onClick={() => props.isToggle(i)}>
         <div>Query {i + 1}</div>
-        <TimeButton history={props.history} index = {i}/>
+        <TimeButton history={props.history} index={i} uploadTime={uploadTime} />
       </div>
     );
     results.push(
@@ -46,25 +44,20 @@ const HistoryOfPastQueries = props => {
       
       <Accordion.Content active={activeIndex === i}>
        <p>Performance</p> 
-      </Accordion.Content>
-      
-      )
+      </Accordion.Content>  
+    )
   };
   
 
   return (
     <div id="history-past-queries">
       <Accordion fluid styled>
-        
         {results}
- 
       </Accordion>
-      </div>
+    </div>
 
   );
 }
-
-
 
 
 export default HistoryOfPastQueries;

@@ -14,7 +14,22 @@ const App = () => {
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
   const [cache, updateCache] = useState({});
+  const [visualizerStatus, updateVisualizer] = useState(false);
 
+<<<<<<< HEAD
+=======
+  const getCache = () => {
+    msgToBackground("contentScript", "getCache", response => {
+      console.log(response)
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
+  }
+
+  const isToggle = (index) => {
+    historyBtnToggle(index);
+  }
+
+>>>>>>> 22608d2a90e2c49f34e22c3b8e60ac39c66c8e89
   useEffect(() => {
     historyBtnToggle(queries.length - 1);
   }, [queries]);
@@ -50,13 +65,21 @@ const App = () => {
     });
   }, []);
 
-  function schemaToggle() {
+  const schemaToggle = () => {
     updateSchemaStatus(!schemaStatus);
     updateCacheStatus(false);
+    updateVisualizer(false);
   }
 
-  function cacheToggle() {
+  const cacheToggle = () => {
     updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    updateVisualizer(false);
+  }
+
+  const visualizerToggle = () => {
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
     updateSchemaStatus(false);
   }
   
@@ -73,8 +96,8 @@ const App = () => {
 
   return (
     <React.Fragment>
-      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />}
-      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} />}
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
     </React.Fragment>
   );
 };
