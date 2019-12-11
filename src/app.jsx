@@ -1,90 +1,100 @@
 import React, { useEffect, useState } from "react";
-import ObserverContainer from './containers/ObserverContainer.jsx';
+import ObserverContainer from "./containers/ObserverContainer.jsx";
+import Headers from './containers/Headers.jsx';
+import Home from './components/Home.jsx';
+import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
-const { introspectionQuery } = require('graphql');
-const {
-  introspect,
-  introspectURL,
-  introspectFile 
-} = require('graphql-introspect');
-const http = require('http');
-console.log(http);
 
-import { ApolloProvider } from 'react-apollo-hooks';
+const App = () => {
+  const [schemaStatus, updateSchemaStatus] = useState(false);
+  const [cacheStatus, updateCacheStatus] = useState(false);
+  const [queries, updateQueries] = useState([]);
+  const [results, updateResults] = useState([]);
+  const [history, recordHistory] = useState([]);
+  const [historyBtn, historyBtnToggle] = useState(0);
+  const [url, updateUrl] = useState("");
+  const [cache, updateCache] = useState({});
+  const [visualizerStatus, updateVisualizer] = useState(false);
 
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-boost';
-
-
-const httpLink = new HttpLink({
-  uri: 'https://api.spacex.land/graphql/',
-
-});
-console.log("this is the link")
-console.log(httpLink)
-
-const client = new ApolloClient({
-	link: httpLink,
-  cache: new InMemoryCache(),
-});
-console.log("this is client")
-console.log(client)
-
-const App = props => {
   useEffect(() => {
-    //inject content script
+    historyBtnToggle(queries.length - 1);
+  }, [queries]);
+
+  useEffect(() => {
     chrome.tabs.executeScript({
-      file: 'contentScript.js'
+      file: "contentScript.js"
     });
-  },[]);
+    chrome.devtools.network.onRequestFinished.addListener(httpReq => {
 
-  useEffect(() => {
-    chrome.devtools.network.onRequestFinished.addListener((httpReq) => {
-      console.log('this is the second useEffect http request');
-      // httpReq.getContent((res) => {
-        // bglog(res);
-      // })
-      // bglog(httpReq.request.postData.text);
+      if (httpReq.request.postData) {
+        updateUrl(httpReq.request.url);
+        httpReq.getContent(res => {
+          updateResults(oldResults => [...oldResults, res]);
+        });
+        let requestQuery;
+        if (IsJsonString(httpReq.request.postData.text)) {
+          requestQuery = JSON.parse(httpReq.request.postData.text).query;
+        } else {
+          requestQuery = httpReq.request.postData.text;
+        }
+        msgToBackground("contentScript", "getDOM", response =>
+          recordHistory(oldHistory => [...oldHistory, response.msg])
+        );
+        updateQueries(oldQueries => [
+          ...oldQueries,
+          {
+            time: httpReq.time,
+            outgoingQueries: requestQuery
+          }
+        ]);
+      }
+    });
+  }, []);
 
-      // httpReq.request.url gets us the http end point
-      console.log(httpReq.request);
-      console.log(httpReq.request.url);
+  const schemaToggle = () => {
+    updateSchemaStatus(!schemaStatus);
+    updateCacheStatus(false);
+    updateVisualizer(false);
+  }
 
-      introspect(httpReq.request.url)
-      // .then((output) => {
-      //   // output is supposed to be the schema
+  const cacheToggle = () => {
+    updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    updateVisualizer(false);
+  }
 
-      //   console.log(output.json());
-      //   return output.json();
-      //   console.log('hi');
-      // })
-      .then((output) => output.json())
-      .catch((err) => console.log('I AM ERROR', err));
-    })
-  })
+  const visualizerToggle = () => {
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
+    updateSchemaStatus(false);
+  }
+  
+  const getCache = () => {
+    msgToBackground("contentScript", "getCache", response => {
+      console.log(response)
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
+  }
+
+  function isToggle(index) {
+    historyBtnToggle(index);
+  }
 
   return (
-    <div>
-      <ObserverContainer/>
-      {/* {console.log('client with caching is:'+client)} */}
-      <ApolloProvider client={client} cache={client.cache}>
-        <div
-          css={{
-            display: 'grid',
-            gridTemplateColumns: '80px repeat(auto-fit, 300px)',
-            alignItems: 'start',
-            height: 'calc(100vh - 4px)',
-            overflow: 'hidden',
-          }}
-        >
-        {/* console.log({client}) */}
-        </div>
-      </ApolloProvider>
-    </div>
+    <React.Fragment>
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
+    </React.Fragment>
   );
 };
 
-
+const IsJsonString = function (str) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
 
 export default App;

@@ -2,18 +2,16 @@ import React from "react";
 import ReactJson from "react-json-view";
 
 const GraphQLResponse = props => {
-//
-
   let responseArr = [];
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {
       responseArr.push(
-        <ReactJson
+        <ReactJson theme="google"
           src={JSON.parse(props.results[i])}
           name={null}
           iconStyle="triangle"
           indentWidth={1}
-          collapsed={3}
+          collapsed={false}
           enableClipboard={false}
           displayDataTypes={false}
           displayObjectSize={false}
@@ -21,10 +19,13 @@ const GraphQLResponse = props => {
       );
     }
   }
+  
   return (
-    <div id="graphql-res">
-      <h2 className="graphql-heading">Response:</h2>
-      <span className="graphql-span">{responseArr[props.historyBtn]}</span>
+    <div id="response-container">
+      <div id="response-hThree">
+        <h3 className="graphql-heading">RESPONSE</h3>
+      </div>
+      <span className="graphql-response">{responseArr[props.historyBtn]}</span>
     </div>
   );
 };

@@ -1,43 +1,63 @@
-import React, { useEffect } from "react";
-//
-import Clock from 'react-live-clock';
-// import Moment from './Moment.jsx';
-const moment = require("moment");
-moment().format();
-//
+import React, {  useEffect , useState} from "react";
+import TimeButton from './TimeButton.jsx'
+import { Accordion, Icon } from 'semantic-ui-react'
+import Query from "./Query.jsx"
+
 const HistoryOfPastQueries = props => {
-    let pastQueries = [];
-    let timeTracker = [];
-    
-    for (let i=props.queries.length-1; i>=0; i--){
-      pastQueries.push(<div onClick={()=>props.isToggle(i)}>Query {i+1}</div>)}
+  const[activeIndex,setActiveIndex]=useState(-1);
 
-    //
-  //   const time = [];
-  //   console.log('this is time outside', time)
-    
-    let x = new moment().format("h:mm:ss");
-    for (let i = 0; i < pastQueries.length; i++) {
-      console.log('this is time', timeTracker)
-    timeTracker.push(<div><Clock format={'HH:mm:ss'}/></div>);
-    // if (time.length === 0){
-    //     time.push(x);
-    // }else{
-    //     time.push(moment.duration(new moment(time[0]).diff(new moment(time[time.length - 1]))))
-    // }
-  }
-    //
-    return (
-    <div>
-      {pastQueries}
-      {/* {time} */}
-      {/* <Moment pastQueries={pastQueries}/> */}
+  let results=[];
+  let pastQueries = [];
+  //
+  const uploadTime = [];
+  //
+  for (let i = 0; i < props.queries.length; i++) {
+    let storage=props.queries[i]
+    console.log(storage)
+    pastQueries.push(
+      <div id="queryBox" onClick={() => props.isToggle(i)}>
+        <div>Query {i + 1}</div>
+        <TimeButton history={props.history} index={i} uploadTime={uploadTime} />
+      </div>
+    );
+    results.push(
+      <Accordion.Title
+        active={activeIndex === i}
+        index={i}
+        onClick={(e, titleProps) => {
+          console.log('this is e', e);
+          console.log('this is titleprops',titleProps);
+          console.log("this is active index", activeIndex)
 
-      {/* {timeTracker.length <= 1 ? timeTracker[0] : } */}
-      {timeTracker}
-      {/* <=1 ? timeTracker[0] : timeTracker[timeTracker.length-1] - timeTracker[0]} */}
+          const newIndex = activeIndex === i ? -1 : i
+    
+          setActiveIndex(newIndex);
+          
+        }}
+      >
+        <Icon name='dropdown' />
+        <div id="queryBox" onClick={() => this.props.isToggle(i)}>
+          <div>Query {i + 1}</div> 
+          <TimeButton history={props.history} index = {i}/>
+        </div>
+      </Accordion.Title>,
+      
+      <Accordion.Content active={activeIndex === i}>
+       <p>Performance</p> 
+      </Accordion.Content>  
+    )
+  };
+  
+
+  return (
+    <div id="history-past-queries">
+      <Accordion fluid styled>
+        {results}
+      </Accordion>
     </div>
+
   );
-};
+}
+
 
 export default HistoryOfPastQueries;

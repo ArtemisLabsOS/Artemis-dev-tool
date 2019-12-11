@@ -1,27 +1,33 @@
 import React from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import ReactJson from "react-json-view";
+import { SSL_OP_TLS_ROLLBACK_BUG } from "constants";
 
 const Query = props => {
-  let arr = [];
+  let queriesList = [];
   if (props.queries) {
-    arr = props.queries.map((data, i) => (
-      <SyntaxHighlighter
-        // id="queryBox"
-        key={i}
-        language="javascript"
-        style={docco}
-      >
-        {data.outgoingQueries}
-      </SyntaxHighlighter>
-    ));
+    for (let i = 0; i < props.queries.length; i++) {
+      queriesList.push(
+        <ReactJson theme="google"
+          src={JSON.parse(JSON.stringify(props.queries[i]))}
+          name={null}
+          iconStyle="triangle"
+          indentWidth={1}
+          collapsed={3}
+          enableClipboard={false}
+          displayDataTypes={false}
+          displayObjectSize={false}
+        />
+      );
+    }
   }
-
   return (
-  <div id="queryBox">
-  {arr[props.historyBtn]}
-  </div>
-  )
+    <div id="query-container">
+      <div id="query-hThree">
+        <h3>QUERY</h3>
+      </div>
+      <span>{queriesList[props.historyBtn]}</span>
+    </div>
+  );
 };
 
 export default Query;
