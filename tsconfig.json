@@ -2,13 +2,20 @@
     "compilerOptions": {
       "module": "commonjs",
       "target": "es6",
-      "sourceMap": true,
-      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+        "paths":{
+            "*.js": ["*"],
+            "*.ts": ["*"]
+
+        },
       "jsx": "react",
       "allowJs": true,
       "types": ["react", "react-dom", "enzyme", "jest", "mocha", "node"],
       "lib": ["es6", "dom"]
     },
+      "include": [
+        "./src/**/*"
+    ],
     "exclude": [
       "node_modules",
       "dist",
