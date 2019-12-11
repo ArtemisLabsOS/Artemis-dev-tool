@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
-import Home from './components/Home.jsx';
+import Home from './components/Home.tsx';
 import GraphContainer from './containers/GraphContainer.jsx'
 import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 // import DropdownMenu from "./components/DropdownMenu.jsx";
+
+/**
+ * ************************************
+ *
+ * @module  App
+ * @description Component that holds all dashboard components
+ *
+ * ************************************
+ */
 const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);

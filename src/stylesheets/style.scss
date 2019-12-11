@@ -34,12 +34,12 @@ h1, h2, h3 {
 }
 
 .title {
-  background-color:  rgba(170, 174, 171, 0.619) !important;
+  background-color: rgb(29, 31, 33)!important;
 
 }
 #history-past-queries {
   width: 25%;
-  background-color:  rgba(170, 174, 171, 0.619) !important;
+  background-color: rgb(29, 31, 33) !important;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
@@ -106,7 +106,7 @@ h1, h2, h3 {
   top: 0;
   right: 3px;
   z-index: 2;
-  background-color: rgb(29, 31, 33);
+  background-color: rgb(29, 31, 33) !important;
   width: 35%;
   border: 1px solid white;
   margin-top: 115px;

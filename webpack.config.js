@@ -1,7 +1,13 @@
+'use strict';
+const webpack = require('webpack');
+const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
   entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js','jsx']
+  },
   output: {
       path: path.resolve(__dirname, './build'),
       filename: 'bundle.js'
@@ -10,8 +16,16 @@ module.exports = {
   module:{
     rules: [
       {
-        test: /\.jsx?/,//if file ends with this text run this 
-        exclude: /(node_modules|bower_components)/,
+        test: /\.ts|\.tsx$/, //if file ends with this text run this 
+        include: path.resolve(__dirname, './app'),    
+        exclude: /node_modules/,
+        use: {
+          loader:  'ts-loader',
+        }
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
