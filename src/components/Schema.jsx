@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactJson from "react-json-view";
 import introspectionQuery from "../Utility/introspectionQuery.js";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 const Schema = props => {
   const [schema, updateSchema] = useState({});

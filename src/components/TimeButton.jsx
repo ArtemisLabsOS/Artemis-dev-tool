@@ -18,7 +18,7 @@ const TimeButton = props => {
     );
 
   }
-  const hovered = isHovered ? 'Click Me!' : props.uploadTime[props.index]
+  const hovered = isHovered ? 'Click Me!' : currentTime.format('h:mm:ss');
 
   return (
     <div>
