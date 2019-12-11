@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReactJson from "react-json-view";
 import introspectionQuery from "../Utility/introspectionQuery.js";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 const Schema = props => {
   const [schema, updateSchema] = useState({});
- 
+
   useEffect(() => {
     graphQLFetcher(props.url, introspectionQuery);
   }, [props.queries])
@@ -18,8 +17,8 @@ const Schema = props => {
       body: JSON.stringify({ query: introspectionQuery })
     })
       .then(response => response.json())
-      .then(resp =>{
-        console.log(resp.data);
+      .then(resp => {
+        console.log('this is data', resp.data);
         updateSchema(resp.data);
       });
   }

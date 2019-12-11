@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
 import Headers from './containers/Headers.jsx';
 import Home from './components/Home.jsx';
+import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
-// import DropdownMenu from "./components/DropdownMenu.jsx";
 
 const App = () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
@@ -14,17 +14,7 @@ const App = () => {
   const [historyBtn, historyBtnToggle] = useState(0);
   const [url, updateUrl] = useState("");
   const [cache, updateCache] = useState({});
-
-  const getCache = () => {
-    msgToBackground("contentScript", "getCache", response => {
-      console.log(response)
-      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-    });
-  }
-
-  function isToggle(index) {
-    historyBtnToggle(index);
-  }
+  const [visualizerStatus, updateVisualizer] = useState(false);
 
   useEffect(() => {
     historyBtnToggle(queries.length - 1);
@@ -61,37 +51,41 @@ const App = () => {
     });
   }, []);
 
-  function schemaToggle() {
+  const schemaToggle = () => {
     updateSchemaStatus(!schemaStatus);
     updateCacheStatus(false);
+    updateVisualizer(false);
   }
 
-  function cacheToggle() {
+  const cacheToggle = () => {
     updateCacheStatus(!cacheStatus);
     updateSchemaStatus(false);
+    updateVisualizer(false);
+  }
+
+  const visualizerToggle = () => {
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
+    updateSchemaStatus(false);
+  }
+  
+  const getCache = () => {
+    msgToBackground("contentScript", "getCache", response => {
+      console.log(response)
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
+  }
+
+  function isToggle(index) {
+    historyBtnToggle(index);
   }
 
   return (
     <React.Fragment>
-      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} />}
-      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} />}
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
     </React.Fragment>
   );
-};
-
-const msgToBackground = function (type, msg, callback, newBody) {
-  if (chrome && chrome.runtime) {
-    chrome.runtime.sendMessage(
-      {
-        type,
-        msg,
-        newBody
-      },
-      function (response) {
-        callback(response);
-      }
-    );
-  }
 };
 
 const IsJsonString = function (str) {

@@ -1,41 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Clock from "react-live-clock";
+import msgToBackground from '../Utility/msgToBackground.js'
 var Moment = require('moment');
-const currentTime = new Moment();
-
-const msgToBackground = function (type, msg, callback, newBody) {
-  if (chrome && chrome.runtime) {
-    chrome.runtime.sendMessage(
-      {
-        type,
-        msg,
-        newBody
-      },
-      function (response) {
-        callback(response);
-      }
-    );
-  }
-};
+let currentTime = new Moment();
 
 const TimeButton = props => {
+  useEffect(() => {
+    currentTime = new Moment();
+  }, []);
   const [isHovered, setHovered] = useState(false);
-  function toggleTime(index){
+  function toggleTime(index) {
     msgToBackground(
       "contentScript",
       "rerenderDOM",
       response => console.log(response),
       props.history[index]
     );
+
   }
-  
+  const hovered = isHovered ? 'Click Me!' : currentTime.format('h:mm:ss');
+
   return (
     <div>
-      <button className="time-button" 
-        onClick={()=>toggleTime(props.index)} 
+      <button className="time-button"
+        onClick={() => toggleTime(props.index)}
         onMouseOver={() => setHovered(true)}
         onMouseOut={() => setHovered(false)}>
-        {isHovered ? <p>click Me!</p>: <p>{currentTime.format("h:mm:ss")}</p>}
+        {/* {isHovered ? 'click Me!' : { uploadTime[props.index]}} */}
+        {hovered}
       </button>
     </div>
   );
