@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query from "../components/Query.jsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
-import Schema from "../components/Schema.jsx";
+import Schema from "../components/Schema.tsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
 import GraphQLVisualizer from '../components/GraphQLVisualizer.jsx';
 

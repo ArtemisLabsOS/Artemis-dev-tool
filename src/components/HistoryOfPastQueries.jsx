@@ -2,6 +2,20 @@ import React, {  useEffect , useState} from "react";
 import TimeButton from './TimeButton.jsx'
 import { Accordion, Icon } from 'semantic-ui-react'
 import Query from "./Query.jsx"
+import Modal from 'react-modal';
+import Collapsible from 'react-collapsible';
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  }
+};
+
 
 const HistoryOfPastQueries = props => {
   const[activeIndex,setActiveIndex]=useState(-1);
@@ -45,6 +59,7 @@ const HistoryOfPastQueries = props => {
       <Accordion.Content active={activeIndex === i}>
        <p>Performance</p> 
       </Accordion.Content>  
+
     )
   };
   
@@ -54,6 +69,34 @@ const HistoryOfPastQueries = props => {
       <Accordion fluid styled>
         {results}
       </Accordion>
+
+      <div id="details-wrapper">
+          <Collapsible trigger="Node Summary" open="true">
+            {sgmodal}
+            <p>
+              <span className="sidebar-title">Instance Type: </span>
+              <span>{InstanceTypeDisplay}</span>
+            </p>
+            <p>
+              <span className="sidebar-title">Instance ID: </span>
+              <span>
+                {InstanceIdDisplay}
+              </span>
+            </p>
+            <p>
+              <span className="sidebar-title">Instance Status: </span>
+              <span>
+                {InstanceStatusDisplay}
+              </span>
+            </p>
+            {/* {sgDetails} */}
+          </Collapsible>
+          <Collapsible trigger="Node Details" open="true">
+            <div id="main-info" className="node-info">
+              <ReactJson src={nodeData} name={"Active Node"} indentWidth={reactJsonconfig.indentWidth} iconStyle={reactJsonconfig.iconStyle} displayObjectSize={reactJsonconfig.displayObjectSize} displayDataTypes={reactJsonconfig.displayDataTypes}/>
+            </div>
+          </Collapsible>
+        </div>
     </div>
 
   );
