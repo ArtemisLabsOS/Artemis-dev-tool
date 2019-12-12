@@ -40,7 +40,7 @@ const Features = () => {
           </figcaption>
         </ScrollAnimation>
         <div className='image-frame'>
-          <img src='../images/feature-2.gif' alt='feature 2' />
+          <img src='' alt='feature 2' />
         </div>
       </figure>
       <figure className='feature-item'>
