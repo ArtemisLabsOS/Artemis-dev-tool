@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import ButtonInverted from '../components/ButtonInverted.js';
 /**
  * ************************************
  *@module Headers
@@ -36,19 +37,19 @@ const Headers = (props) => {
       </div>
       <div className="header-container">
         <Dropdown />
-        <button className="header-item item4" onClick={() => props.visualizerToggle()}>
-          VISUALIZER
+        <button className="header-item item4" onClick={() => props.visualizerToggle()}>VISUALIZER
+        </button> 
+        <button className="header-item item2" onClick={() => props.schemaToggle()}>SCHEMA
+       </button>
+        <button className="header-item item3" onClick={() => props.cacheToggle()}>CACHE
         </button>
-        <button className="header-item item2" onClick={() => props.schemaToggle()}>
-          SCHEMA
-        </button>
-        <button className="header-item item3" onClick={() => props.cacheToggle()}>
-          CACHE
-        </button>
-      </div>
+      
+        </div>
  
     </React.Fragment>
   )
 }
 
 export default Headers;
+
+

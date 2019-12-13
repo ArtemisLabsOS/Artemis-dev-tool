@@ -72,28 +72,26 @@ const HistoryOfPastQueries = props => {
 
       <div id="details-wrapper">
           <Collapsible trigger="Node Summary" open="true">
-            {sgmodal}
+            
             <p>
               <span className="sidebar-title">Instance Type: </span>
-              <span>{InstanceTypeDisplay}</span>
+            
             </p>
             <p>
               <span className="sidebar-title">Instance ID: </span>
               <span>
-                {InstanceIdDisplay}
+        
               </span>
             </p>
             <p>
               <span className="sidebar-title">Instance Status: </span>
               <span>
-                {InstanceStatusDisplay}
+          
               </span>
             </p>
-            {/* {sgDetails} */}
           </Collapsible>
           <Collapsible trigger="Node Details" open="true">
             <div id="main-info" className="node-info">
-              <ReactJson src={nodeData} name={"Active Node"} indentWidth={reactJsonconfig.indentWidth} iconStyle={reactJsonconfig.iconStyle} displayObjectSize={reactJsonconfig.displayObjectSize} displayDataTypes={reactJsonconfig.displayDataTypes}/>
             </div>
           </Collapsible>
         </div>

@@ -1,4 +1,7 @@
 const path = require('path');
+const lodash = require('lodash');
+const webpack = require('webpack');
+
 
 module.exports = {
   entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 

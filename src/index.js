@@ -8,6 +8,11 @@ import store from './store';
 import './assets/styles/normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/styles.css';
+
+import LandingPage from '.components/LandingPage';
+import 'tachyons';
+import '../styles.css';
+
 /**
  * React Routed components to switch from landing page (immediate view of page) to the application
  *
@@ -15,6 +20,7 @@ import './assets/styles/styles.css';
  **/
 
 render(
+
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
@@ -27,5 +33,9 @@ render(
       </Switch>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('app')
+
+   <div className='landing'>
+     <LandingPage/>
+   </div>,
+  document.getElementById('landing')
 );
