@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ObserverContainer from "./containers/ObserverContainer.jsx";
-import Headers from './containers/Headers.jsx';
+// import Headers from './containers/Headers.jsx';
+import Headers from './containers/Headers.tsx';
 import Home from './components/Home.jsx';
 import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
@@ -68,7 +69,7 @@ const App = () => {
     updateCacheStatus(false);
     updateSchemaStatus(false);
   }
-  
+
   const getCache = () => {
     msgToBackground("contentScript", "getCache", response => {
       console.log(response)
