@@ -1,4 +1,7 @@
 const path = require('path');
+const lodash = require('lodash');
+const webpack = require('webpack');
+
 
 module.exports = {
   entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
@@ -10,13 +13,6 @@ module.exports = {
   module:{
     rules: [
       {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader'
-        }
-      },
-      {
         test: /\.jsx?/,//if file ends with this text run this 
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -24,6 +20,13 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env','@babel/preset-react']
           }
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
         }
       },
       {
@@ -44,3 +47,7 @@ module.exports = {
   },
   devtool: 'inline-source-map'
 };
+
+
+
+
