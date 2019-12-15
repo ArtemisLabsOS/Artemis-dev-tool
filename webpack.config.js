@@ -6,19 +6,24 @@ const webpack = require('webpack');
 module.exports = {
   entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
   output: {
-      path: path.resolve(__dirname, './build'),
-      filename: 'bundle.js'
-    },
+    path: path.resolve(__dirname, './build'),
+    filename: 'bundle.js'
+  },
   mode: process.env.NODE_ENV,
-  module:{
+  module: {
     rules: [
+      {
+        test: /\.tsx?/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.jsx?/,//if file ends with this text run this 
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env','@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },
