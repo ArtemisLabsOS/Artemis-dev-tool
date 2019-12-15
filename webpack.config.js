@@ -10,6 +10,11 @@ module.exports = {
   module:{
     rules: [
       {
+        test: /\.tsx?/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader'
+      },
+      {
         test: /\.jsx?/,//if file ends with this text run this 
         exclude: /(node_modules|bower_components)/,
         use: {

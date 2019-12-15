@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import ReactJson from "react-json-view";
 
-const ApolloGraphQLCache = props => {
+interface Props {
+  // declare all props' type
+  getCache: () => void,
+  queries: object[],
+  cache: object[],
+}
+
+const ApolloGraphQLCache: React.FC<Props> = props => {
   useEffect(() => {
     props.getCache()
   }, [props.queries])

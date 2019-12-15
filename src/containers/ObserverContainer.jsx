@@ -1,10 +1,10 @@
 import React from "react";
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query from "../components/Query.jsx";
-import GraphQLResponse from "../components/GraphQLResponse.jsx";
+import GraphQLResponse from "../components/GraphQLResponse.tsx";
 import Schema from "../components/Schema.jsx";
-import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
-import GraphQLVisualizer from '../components/GraphQLVisualizer.jsx';
+import ApolloGraphQLCache from "../components/ApolloGraphQLCache.tsx";
+import GraphQLVisualizer from '../components/GraphQLVisualizer.tsx';
 
 const ObserverContainers = props => {
 
