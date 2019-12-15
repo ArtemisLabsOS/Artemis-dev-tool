@@ -1,7 +1,12 @@
-import React from "react";
+import * as React from "react";
 import ReactJson from "react-json-view";
 
-const GraphQLResponse = props => {
+interface IResponse {
+  results: string[],
+  historyBtn: number,
+}
+
+const GraphQLResponse: React.FC<IResponse> = props => {
   let responseArr = [];
   if (props.results) {
     for (let i = 0; i < props.results.length; i++) {

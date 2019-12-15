@@ -1,4 +1,4 @@
-const introspectionQuery = `query IntrospectionQuery {
+const introspectionQuery: string = `query IntrospectionQuery {
   __schema {
     queryType { name }
     mutationType { name }
@@ -229,4 +229,4 @@ const introspectionQuery = `query IntrospectionQuery {
   }
 }`;
 
-module.exports = introspectionQuery;
+export default introspectionQuery;

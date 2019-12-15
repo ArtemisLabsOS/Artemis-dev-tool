@@ -89,21 +89,48 @@ h1, h2, h3 {
 }
 #visualizer-container{
   height: 100%;
+  fill: none;
+
   overflow-y: auto;
+  stroke: rgb(25, 112, 53);
+  stroke-width: 4.0;
+  a:hover {
+    text-decoration: underline;
+  }
+
   // margin-left: 1rem;
   // padding-right: 10rem;
   // padding-left: 10rem;
   padding-top: 1rem; 
+  padding-left: 3em;
   position: absolute;
   top: 0;
   right: 3px;
   z-index: 2;
-  background-color: rgb(29, 31, 33);
+  background-color: rgba(28, 12, 65, 0.795);
   width: 95%;
-  border: 1px solid white;
+  border: 1px solid rgb(223, 197, 197);
+  text-shadow: -1px -1px 3px rgb(98, 255, 150), -1px 1px 3px rgb(243, 255, 150), 1px -1px 3px rgb(128, 255, 128),
+  1px 1px 3px rgb(160, 216, 107);
+
+
   margin-top: 115px;
   margin-right: 6px;
   margin-left: 6px;
+
+  #tree {
+    text-shadow: -1px -1px 3px whitesmoke, -1px 1px 3px rgb(240, 240, 240), 1px -1px 3px rgb(249, 255, 139),
+      1px 1px 3px rgb(246, 255, 124);
+ 
+   }
+   
+  #treeWrapper {
+    fill: none;
+    stroke: rgb(25, 112, 53);
+    stroke-width: 4.0;
+
+   }
+
 }
 #schema-container {
   height: 100%;
@@ -222,7 +249,7 @@ h1, h2, h3 {
   flex-direction: column;
   align-content:center;
   justify-content: center;
-  background-color: #1db954;
+  background-color: #1db4b9;
   border-radius: 6px;
   color: ghostwhite;
   border: 1px solid #fff;
@@ -279,7 +306,7 @@ h1, h2, h3 {
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #ffffff;
+  color: #529685;
   font-size: 5px;
   margin: 80px auto;
   position: relative;
@@ -332,4 +359,37 @@ h1, h2, h3 {
 .rd3t-tree-container{
   height: 100%;
   width: 100%
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { 
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /*  Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
 }

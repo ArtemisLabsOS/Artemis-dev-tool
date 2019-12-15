@@ -1,7 +1,13 @@
-import React from 'react';
-import Dropdown from '../components/DropdownMenu.jsx';
+import * as React from 'react';
+import Dropdown from '../components/DropdownMenu';
 
-const Headers = (props) => {
+interface IHeaders {
+  visualizerToggle: () => void,
+  schemaToggle: () => void,
+  cacheToggle: () => void,
+}
+
+const Headers: React.FC<IHeaders> = (props) => {
 
   return (
     <React.Fragment>

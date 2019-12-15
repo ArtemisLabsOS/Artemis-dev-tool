@@ -1,20 +1,21 @@
 const path = require('path');
+const lodash = require('lodash');
+const webpack = require('webpack');
+
 
 module.exports = {
   entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
   output: {
-      path: path.resolve(__dirname, './build'),
-      filename: 'bundle.js'
-    },
+    path: path.resolve(__dirname, './build'),
+    filename: 'bundle.js'
+  },
   mode: process.env.NODE_ENV,
-  module:{
+  module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.tsx?/,
         exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader'
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.jsx?/,//if file ends with this text run this 
@@ -22,8 +23,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env','@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
         }
       },
       {
@@ -44,3 +52,7 @@ module.exports = {
   },
   devtool: 'inline-source-map'
 };
+
+
+
+
