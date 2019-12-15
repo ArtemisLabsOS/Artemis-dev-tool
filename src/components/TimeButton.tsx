@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Clock from "react-live-clock";
-import msgToBackground from '../Utility/msgToBackground.js'
+import * as React from "react";
+import msgToBackground from '../Utility/msgToBackground'
 var Moment = require('moment');
 let currentTime = new Moment();
 
-const TimeButton = props => {
-  useEffect(() => {
+interface Props{
+  history: string[],
+  index: number,
+}
+
+
+const TimeButton:React.FC<Props> = props => {
+  React.useEffect(() => {
     currentTime = new Moment();
   }, []);
-  const [isHovered, setHovered] = useState(false);
-  function toggleTime(index) {
+  const [isHovered, setHovered] = React.useState(false);
+  function toggleTime(index: number) {
     msgToBackground(
       "contentScript",
       "rerenderDOM",
@@ -26,7 +31,6 @@ const TimeButton = props => {
         onClick={() => toggleTime(props.index)}
         onMouseOver={() => setHovered(true)}
         onMouseOut={() => setHovered(false)}>
-        {/* {isHovered ? 'click Me!' : { uploadTime[props.index]}} */}
         {hovered}
       </button>
     </div>

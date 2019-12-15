@@ -1,8 +1,12 @@
-import React from "react";
+import * as React  from "react";
 import ReactJson from "react-json-view";
-import { SSL_OP_TLS_ROLLBACK_BUG } from "constants";
 
-const Query = props => {
+interface iQuery{
+    queries: object[],
+    historyBtn: number,
+}
+const Query: React.FC<iQuery> = props => {
+
   let queriesList = [];
   if (props.queries) {
     for (let i = 0; i < props.queries.length; i++) {
@@ -28,6 +32,9 @@ const Query = props => {
       <span>{queriesList[props.historyBtn]}</span>
     </div>
   );
+
+
+
 };
 
 export default Query;

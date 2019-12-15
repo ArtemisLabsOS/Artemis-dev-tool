@@ -1,37 +1,25 @@
-import React, {  useEffect , useState} from "react";
-import TimeButton from './TimeButton.jsx'
+import * as React from "react";
+import TimeButton from './TimeButton'
 import { Accordion, Icon } from 'semantic-ui-react'
-import Query from "./Query.jsx"
-import Modal from 'react-modal';
 import Collapsible from 'react-collapsible';
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
-
-
-const HistoryOfPastQueries = props => {
-  const[activeIndex,setActiveIndex]=useState(-1);
+interface iHistoryOfPastQueries{
+  isToggle:(i:number)=> void;
+  history: string[];
+  queries: object[];
+}
+const HistoryOfPastQueries: React.FC<iHistoryOfPastQueries> = props => {
+  const[activeIndex,setActiveIndex]= React.useState<number>(-1);
 
   let results=[];
-  let pastQueries = [];
-  //
-  const uploadTime = [];
-  //
+  let pastQueries= [];
   for (let i = 0; i < props.queries.length; i++) {
     let storage=props.queries[i]
     console.log(storage)
     pastQueries.push(
       <div id="queryBox" onClick={() => props.isToggle(i)}>
         <div>Query {i + 1}</div>
-        <TimeButton history={props.history} index={i} uploadTime={uploadTime} />
+        <TimeButton history={props.history} index={i} />
       </div>
     );
     results.push(
@@ -50,12 +38,11 @@ const HistoryOfPastQueries = props => {
         }}
       >
         <Icon name='dropdown' />
-        <div id="queryBox" onClick={() => this.props.isToggle(i)}>
+        <div id="queryBox" onClick={() => props.isToggle(i)}>
           <div>Query {i + 1}</div> 
           <TimeButton history={props.history} index = {i}/>
         </div>
       </Accordion.Title>,
-      
       <Accordion.Content active={activeIndex === i}>
        <p>Performance</p> 
       </Accordion.Content>  
@@ -71,7 +58,7 @@ const HistoryOfPastQueries = props => {
       </Accordion>
 
       <div id="details-wrapper">
-          <Collapsible trigger="Node Summary" open="true">
+          <Collapsible trigger="Node Summary" open={true}>
             
             <p>
               <span className="sidebar-title">Instance Type: </span>
@@ -90,7 +77,7 @@ const HistoryOfPastQueries = props => {
               </span>
             </p>
           </Collapsible>
-          <Collapsible trigger="Node Details" open="true">
+          <Collapsible trigger="Node Details" open={true}>
             <div id="main-info" className="node-info">
             </div>
           </Collapsible>
