@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 
 
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
-import Query from "../components/Query.jsx";
+import Query from "../components/Query.tsx";
 import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";

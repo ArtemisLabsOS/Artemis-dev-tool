@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
   "dependencies": {
+    "@babel/preset-typescript": "^7.7.4",
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
     "@types/enzyme": "^3.10.4",
