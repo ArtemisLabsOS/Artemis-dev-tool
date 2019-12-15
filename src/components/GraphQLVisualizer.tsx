@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React  from 'react';
 import Tree from 'react-d3-tree';
 
 interface IVisualizer {

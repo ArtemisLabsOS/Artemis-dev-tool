@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Fragment } from 'react'
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
 import Query from "../components/Query.tsx";
@@ -5,6 +6,15 @@ import GraphQLResponse from "../components/GraphQLResponse.jsx";
 import Schema from "../components/Schema.jsx";
 import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
 import GraphQLVisualizer from '../components/GraphQLVisualizer.jsx';
+=======
+import * as React from 'react'
+import HistoryOfPastQueries from "../components/HistoryOfPastQueries";
+import Query from "../components/Query";
+import GraphQLResponse from "../components/GraphQLResponse";
+import Schema from "../components/Schema";
+import ApolloGraphQLCache from "../components/ApolloGraphQLCache";
+import GraphQLVisualizer from '../components/GraphQLVisualizer';
+>>>>>>> e3aa3af06bcdf48b89b7ee140eff339e09bd3be3
 // import ChartComponent from "../components/ChartComponent.jsx";
 
 interface IProps {
@@ -18,13 +28,13 @@ interface IProps {
     url: string,
     cacheStatus: boolean,
     getCache: () => void,
-    cache: object
+    cache: any,
 }
 
 const ObserverContainer: React.FC<IProps> = props => {
 
     return (
-        <Fragment>
+        <React.Fragment>
             <div id="observerContainers">
                 <HistoryOfPastQueries queries={props.queries} isToggle={props.isToggle} history={props.history} />
                 <Query queries={props.queries} historyBtn={props.historyBtn} />
@@ -32,9 +42,9 @@ const ObserverContainer: React.FC<IProps> = props => {
 
             </div>
             {props.visualizerStatus ? <GraphQLVisualizer results={props.results} /> : null}
-            {props.schemaStatus ? <Schema historyBtn={props.historyBtn} url={props.url} queries={props.queries} /> : null}
-            {props.cacheStatus ? <ApolloGraphQLCache historyBtn={props.historyBtn} url={props.url} queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
-        </Fragment>
+            {props.schemaStatus ? <Schema url={props.url} queries={props.queries} /> : null}
+            {props.cacheStatus ? <ApolloGraphQLCache queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
+        </React.Fragment>
     )
 }
 

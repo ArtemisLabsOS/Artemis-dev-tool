@@ -1,28 +1,28 @@
-import React, { useEffect, useState, Fragment } from "react";
+import * as React from "react";
 import ObserverContainer from "./containers/ObserverContainer";
 import Headers from './containers/Headers';
-import Home from './components/Home.jsx';
-import msgToBackground from './Utility/msgToBackground.js'
+import Home from './components/Home';
+import msgToBackground from './Utility/msgToBackground'
 import "./stylesheets/style.scss";
 
 
 
 const App: React.FC = () => {
-    const [schemaStatus, updateSchemaStatus] = useState<boolean>(false);
-    const [cacheStatus, updateCacheStatus] = useState<boolean>(false);
-    const [queries, updateQueries] = useState<Array<object>>([]);
-    const [results, updateResults] = useState<Array<string>>([]);
-    const [history, recordHistory] = useState<Array<object>>([]);
-    const [historyBtn, historyBtnToggle] = useState<number>(0);
-    const [url, updateUrl] = useState<string>("");
-    const [cache, updateCache] = useState<object>({});
-    const [visualizerStatus, updateVisualizer] = useState<boolean>(false);
+    const [schemaStatus, updateSchemaStatus] = React.useState<boolean>(false);
+    const [cacheStatus, updateCacheStatus] = React.useState<boolean>(false);
+    const [queries, updateQueries] = React.useState<Array<object>>([]);
+    const [results, updateResults] = React.useState<Array<string>>([]);
+    const [history, recordHistory] = React.useState<Array<string>>([]);
+    const [historyBtn, historyBtnToggle] = React.useState<number>(0);
+    const [url, updateUrl] = React.useState<string>("");
+    const [cache, updateCache] = React.useState<object>({});
+    const [visualizerStatus, updateVisualizer] = React.useState<boolean>(false);
 
-    useEffect((): void => {
+    React.useEffect((): void => {
         historyBtnToggle(queries.length - 1);
     }, [queries]);
 
-    useEffect((): void => {
+    React.useEffect((): void => {
         chrome.tabs.executeScript({
             file: "contentScript.js"
         });
@@ -83,10 +83,10 @@ const App: React.FC = () => {
     }
 
     return (
-        <Fragment>
+        <React.Fragment>
             {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
             {queries.length === 0 ? null : <ObserverContainer queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
-        </Fragment>
+        </React.Fragment>
     );
 };
 
