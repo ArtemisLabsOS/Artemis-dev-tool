@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Dropdown from '../components/DropdownMenu';
 
 interface IHeaders {
@@ -7,7 +7,7 @@ interface IHeaders {
   cacheToggle: () => void,
 }
 
-const Headers: React.FC<IHeaders> = (props: object) => {
+const Headers: React.FC<IHeaders> = (props) => {
 
   return (
     <React.Fragment>

@@ -1,4 +1,4 @@
-const msgToBackground = function (type: string, msg: string, callback: (arg0: any) => void, newBody:string) {
+const msgToBackground = function (type: string, msg: string, callback: (arg0: any) => void, newBody?:string) {
   if (chrome && chrome.runtime) {
     chrome.runtime.sendMessage(
       {

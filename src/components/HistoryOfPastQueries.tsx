@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import TimeButton from './TimeButton.jsx'
+import * as React from "react";
+import TimeButton from './TimeButton'
 import { Accordion, Icon } from 'semantic-ui-react'
 import Collapsible from 'react-collapsible';
 
@@ -9,13 +9,10 @@ interface iHistoryOfPastQueries{
   queries: object[];
 }
 const HistoryOfPastQueries: React.FC<iHistoryOfPastQueries> = props => {
-  const[activeIndex,setActiveIndex]=useState<number>(-1);
+  const[activeIndex,setActiveIndex]= React.useState<number>(-1);
 
   let results=[];
   let pastQueries= [];
-  //
-  const uploadTime: string[] = [];
-  //
   for (let i = 0; i < props.queries.length; i++) {
     let storage=props.queries[i]
     console.log(storage)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import msgToBackground from '../Utility/msgToBackground'
 var Moment = require('moment');
 let currentTime = new Moment();
@@ -10,10 +10,10 @@ interface Props{
 
 
 const TimeButton:React.FC<Props> = props => {
-  useEffect(() => {
+  React.useEffect(() => {
     currentTime = new Moment();
   }, []);
-  const [isHovered, setHovered] = useState(false);
+  const [isHovered, setHovered] = React.useState(false);
   function toggleTime(index: number) {
     msgToBackground(
       "contentScript",

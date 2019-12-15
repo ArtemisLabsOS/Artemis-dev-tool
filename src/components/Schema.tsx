@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import ReactJson from "react-json-view";
-import introspectionQuery from "../Utility/introspectionQuery.js";
+import introspectionQuery from "../Utility/introspectionQuery";
 
-const Schema = props => {
-  const [schema, updateSchema] = useState({});
+interface Props{
+  url: string,
+  queries: object[],
+}
+const Schema: React.FC<Props> = props => {
+  const [schema, updateSchema] = React.useState({});
 
-  useEffect(() => {
+  React.useEffect(() => {
     graphQLFetcher(props.url, introspectionQuery);
-  }, [props.queries])
+  }, [props.queries.length])
 
-  function graphQLFetcher(url, introspectionQuery) {
+  function graphQLFetcher(url:string, introspectionQuery: string) {
     console.log('this is url', url);
     return fetch(url, {
       method: "post",
