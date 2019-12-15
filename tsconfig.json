@@ -2,13 +2,28 @@
     "compilerOptions": {
       "module": "commonjs",
       "target": "es6",
-      "sourceMap": true,
-      "allowSyntheticDefaultImports": true,
+      "noImplicitAny": false,
+      "noImplicitThis": true,
+      "esModuleInterop": true,
+        "paths":{
+            "*.js": ["*"],
+            "*.ts": ["*"]
+
+        },
       "jsx": "react",
       "allowJs": true,
       "types": ["react", "react-dom", "enzyme", "jest", "mocha", "node"],
-      "lib": ["es6", "dom"]
+      "lib": ["es6", "dom","es2017", "esnext"],
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "baseUrl": "./src",
+      "typeRoots": [ "node_modules/@types" ]
+
+
     },
+      "include": [
+        "./src/**/*"
+    ],
     "exclude": [
       "node_modules",
       "dist",

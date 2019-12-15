@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import ObserverContainer from "./containers/ObserverContainer.jsx";
-import Headers from './containers/Headers.jsx';
+import ObserverContainer from "./containers/ObserverContainer.tsx";
+import Headers from './containers/Headers.tsx';
 import Home from './components/Home.jsx';
 import msgToBackground from './Utility/msgToBackground.js'
 import "./stylesheets/style.scss";
 
-const App = () => {
+
+
+// /**
+//  * ************************************
+//  *
+//  * @module  App
+//  * @description Component that holds all dashboard components
+//  *
+//  * ************************************
+//  */
+
+// const App 
+const App= () => {
   const [schemaStatus, updateSchemaStatus] = useState(false);
   const [cacheStatus, updateCacheStatus] = useState(false);
   const [queries, updateQueries] = useState([]);

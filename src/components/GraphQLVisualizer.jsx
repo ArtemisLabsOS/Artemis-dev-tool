@@ -1,5 +1,6 @@
 import React from 'react';
 import Tree from 'react-d3-tree';
+import "../stylesheets/style.scss";
 
 const traverse = (obj) => {
     if (typeof obj !== 'object') {
@@ -31,7 +32,7 @@ const GraphQLVisualizer = props => {
     const data = traverse(JSON.parse(props.results[0]));
     return (
         <div id="visualizer-container">
-            <div>
+            <div id="text">
                 <h3>VISUALIZER</h3>
             </div>
             <div id="treeWrapper">
