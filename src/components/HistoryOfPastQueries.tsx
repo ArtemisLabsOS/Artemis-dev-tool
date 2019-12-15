@@ -5,7 +5,7 @@ import Collapsible from 'react-collapsible';
 
 interface iHistoryOfPastQueries{
   isToggle:(i:number)=> void;
-  history: string;
+  history: string[];
   queries: object[];
 }
 const HistoryOfPastQueries: React.FC<iHistoryOfPastQueries> = props => {
@@ -22,7 +22,7 @@ const HistoryOfPastQueries: React.FC<iHistoryOfPastQueries> = props => {
     pastQueries.push(
       <div id="queryBox" onClick={() => props.isToggle(i)}>
         <div>Query {i + 1}</div>
-        <TimeButton history={props.history} index={i} uploadTime={uploadTime} />
+        <TimeButton history={props.history} index={i} />
       </div>
     );
     results.push(

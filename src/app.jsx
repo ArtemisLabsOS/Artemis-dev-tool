@@ -80,7 +80,7 @@ const App= () => {
     updateCacheStatus(false);
     updateSchemaStatus(false);
   }
-  
+
   const getCache = () => {
     msgToBackground("contentScript", "getCache", response => {
       console.log(response)
