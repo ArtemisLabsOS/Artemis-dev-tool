@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ObserverContainer from "./containers/ObserverContainer.jsx";
-// import Headers from './containers/Headers.jsx';
+import ObserverContainer from "./containers/ObserverContainer.tsx";
 import Headers from './containers/Headers.tsx';
 import Home from './components/Home.jsx';
 import msgToBackground from './Utility/msgToBackground.js'

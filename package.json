@@ -21,6 +21,7 @@
   "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
   "dependencies": {
     "@babel/preset-typescript": "^7.7.4",
+    "@types/chrome": "0.0.91",
     "graphiql": "^0.17.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
