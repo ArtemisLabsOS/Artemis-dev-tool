@@ -1,18 +1,15 @@
 import * as React from "react";
 import msgToBackground from '../Utility/msgToBackground'
-var Moment = require('moment');
-let currentTime = new Moment();
 
 interface Props{
+  timeStamp: any,
   history: string[],
   index: number,
 }
 
 
 const TimeButton:React.FC<Props> = props => {
-  React.useEffect(() => {
-    currentTime = new Moment();
-  }, []);
+
   const [isHovered, setHovered] = React.useState(false);
   function toggleTime(index: number) {
     msgToBackground(
@@ -23,7 +20,7 @@ const TimeButton:React.FC<Props> = props => {
     );
 
   }
-  const hovered = isHovered ? 'Click Me!' : currentTime.format('h:mm:ss');
+  const hovered = isHovered ? 'Click Me!' : props.timeStamp.format('h:mm:ss');
 
   return (
     <div>
