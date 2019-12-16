@@ -1,10 +1,10 @@
 import * as React from 'react'
 import HistoryOfPastQueries from "../components/HistoryOfPastQueries.ts";
-import Query from "../components/Query.ts";
-import GraphQLResponse from "../components/GraphQLResponse.ts";
-import Schema from "../components/Schema.ts";
-import ApolloGraphQLCache from "../components/ApolloGraphQLCache.ts";
-import GraphQLVisualizer from '../components/GraphQLVisualizer.ts';
+import Query from "../components/Query.tsx";
+import GraphQLResponse from "../components/GraphQLResponse.tsx";
+import Schema from "../components/Schema.tsx";
+import ApolloGraphQLCache from "../components/ApolloGraphQLCache.tsx";
+import GraphQLVisualizer from '../components/GraphQLVisualizer.tsx';
 // import ChartComponent from "../components/ChartComponent.jsx";
 
 interface IProps {
