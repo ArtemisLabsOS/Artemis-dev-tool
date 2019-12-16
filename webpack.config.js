@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  entry: path.join(__dirname, 'src/panel.js'), //where to build dependency graph 
+  entry: path.join(__dirname, 'src/index.tsx'), //where to build dependency graph 
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js'
@@ -12,11 +12,6 @@ module.exports = {
   mode: process.env.NODE_ENV,
   module: {
     rules: [
-      {
-        test: /\.tsx?/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
       {
         test: /\.jsx?/,//if file ends with this text run this 
         exclude: /(node_modules|bower_components)/,
