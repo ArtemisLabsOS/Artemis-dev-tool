@@ -10,6 +10,7 @@ const Schema: React.FC<Props> = props => {
   const [schema, updateSchema] = React.useState({});
 
   React.useEffect(() => {
+    console.log(props.queries.length);
     graphQLFetcher(props.url, introspectionQuery);
   }, [props.queries.length])
 
