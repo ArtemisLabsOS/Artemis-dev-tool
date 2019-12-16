@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  entry: path.join(__dirname, 'src/panel.tsx'), //where to build dependency graph 
+  entry: path.join(__dirname, 'src/index.tsx'), //where to build dependency graph 
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js'

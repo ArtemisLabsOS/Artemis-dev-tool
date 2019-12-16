@@ -6,35 +6,27 @@ interface iQuery{
     historyBtn: number,
 }
 const Query: React.FC<iQuery> = props => {
-
-  let queriesList = [];
-  if (props.queries) {
-    for (let i = 0; i < props.queries.length; i++) {
-      queriesList.push(
-        <ReactJson theme="google"
-          src={JSON.parse(JSON.stringify(props.queries[i]))}
-          name={null}
-          iconStyle="triangle"
-          indentWidth={1}
-          collapsed={3}
-          enableClipboard={false}
-          displayDataTypes={false}
-          displayObjectSize={false}
-        />
-      );
-    }
-  }
   return (
     <div id="query-container">
       <div id="query-hThree">
         <h3>QUERY</h3>
       </div>
-      <span>{queriesList[props.historyBtn]}</span>
+      <span>
+        {props.queries.length !== 0 && props.historyBtn > -1&& props.historyBtn < props.queries.length? 
+          <ReactJson theme="google"
+            src={JSON.parse(JSON.stringify(props.queries[props.historyBtn]))}
+            name={null}
+            iconStyle="triangle"
+            indentWidth={1}
+            collapsed={3}
+            enableClipboard={false}
+            displayDataTypes={false}
+            displayObjectSize={false}
+          /> : null
+        }
+      </span>
     </div>
   );
-
-
-
 };
 
 export default Query;
