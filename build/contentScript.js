@@ -6,7 +6,23 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       break;
     case "rerenderDOM":
       console.log(msg);
-      document.getElementsByTagName('body')[0].innerHTML = msg.newBody;
+      let tab;
+      if(document.getElementsByClassName('snapShot').length === 0){
+        tab = document.createElement('div');
+      }
+      else{
+        tab = document.getElementsByClassName('snapShot')[0];
+      }
+      const p = document.createElement('p');
+      p.addEventListener('click', () => {
+        document.getElementsByTagName('body')[0].removeChild(tab);
+      })
+      p.innerText = "this is tab"
+      tab.className = "snapShot"
+      tab.setAttribute("style", "position: fixed; width: 100%; height: 100%; top: 0; left: 0; border: 1px solid blue;");
+      tab.innerHTML = msg.newBody;
+      tab.prepend(p);
+      document.getElementsByTagName('body')[0].appendChild(tab);
       sendResponse({ msg: "rerender done" });
       break;
     case "getCache":
