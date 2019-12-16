@@ -80,8 +80,7 @@ const App: React.FC = () => {
   }
 
   const getCache = (): void => {
-      msgToBackground("contentScript", "getCache", response => {
-          console.log(response)
+      msgToBackground("contentScript", "getCache", () => {
           msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
       });
   }
@@ -89,8 +88,6 @@ const App: React.FC = () => {
   function isToggle(index: number) {
       historyBtnToggle(index);
   }
-
-  console.log(timeStamps);
   return (
       <React.Fragment>
           {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
