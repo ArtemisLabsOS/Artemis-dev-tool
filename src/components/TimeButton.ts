@@ -1,5 +1,5 @@
 import * as React from "react";
-import msgToBackground from '../Utility/msgToBackground'
+import msgToBackground from '../Utility/msgToBackground.ts'
 var Moment = require('moment');
 let currentTime = new Moment();
 

@@ -1,8 +1,8 @@
 import * as React from "react";
-import ObserverContainer from "./containers/ObserverContainer";
-import Headers from './containers/Headers';
-import Home from './components/Home';
-import msgToBackground from './Utility/msgToBackground'
+import ObserverContainer from "./containers/ObserverContainer.ts";
+import Headers from './containers/Headers.ts';
+import Home from './components/Home.ts';
+import msgToBackground from './Utility/msgToBackground.ts'
 import "./stylesheets/style.scss";
 
 

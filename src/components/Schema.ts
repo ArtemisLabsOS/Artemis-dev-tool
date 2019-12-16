@@ -1,6 +1,6 @@
 import * as React from "react";
 import ReactJson from "react-json-view";
-import introspectionQuery from "../Utility/introspectionQuery";
+import introspectionQuery from "../Utility/introspectionQuery.ts";
 
 interface Props{
   url: string,

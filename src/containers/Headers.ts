@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dropdown from '../components/DropdownMenu';
+import Dropdown from '../components/DropdownMenu.ts';
 
 interface IHeaders {
   visualizerToggle: () => void,

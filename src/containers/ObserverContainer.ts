@@ -1,20 +1,10 @@
-<<<<<<< HEAD
-import React, { Fragment } from 'react'
-import HistoryOfPastQueries from "../components/HistoryOfPastQueries.jsx";
-import Query from "../components/Query.tsx";
-import GraphQLResponse from "../components/GraphQLResponse.jsx";
-import Schema from "../components/Schema.jsx";
-import ApolloGraphQLCache from "../components/ApolloGraphQLCache.jsx";
-import GraphQLVisualizer from '../components/GraphQLVisualizer.jsx';
-=======
 import * as React from 'react'
-import HistoryOfPastQueries from "../components/HistoryOfPastQueries";
-import Query from "../components/Query";
-import GraphQLResponse from "../components/GraphQLResponse";
-import Schema from "../components/Schema";
-import ApolloGraphQLCache from "../components/ApolloGraphQLCache";
-import GraphQLVisualizer from '../components/GraphQLVisualizer';
->>>>>>> e3aa3af06bcdf48b89b7ee140eff339e09bd3be3
+import HistoryOfPastQueries from "../components/HistoryOfPastQueries.ts";
+import Query from "../components/Query.ts";
+import GraphQLResponse from "../components/GraphQLResponse.ts";
+import Schema from "../components/Schema.ts";
+import ApolloGraphQLCache from "../components/ApolloGraphQLCache.ts";
+import GraphQLVisualizer from '../components/GraphQLVisualizer.ts';
 // import ChartComponent from "../components/ChartComponent.jsx";
 
 interface IProps {
