@@ -57,8 +57,4 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 66bce4ff9c961763e6710a7b59412f0eccb8fd49
