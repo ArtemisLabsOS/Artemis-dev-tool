@@ -1,5 +1,5 @@
 import * as React from "react";
-import HistoryBox from '../components/HistoryBox'
+import HistoryBox from '../components/HistoryBox';
 
 interface iHistoryOfPastQueries{
   timeStamps: object[],

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
   "dependencies": {
+    "@blueprintjs/core": "^3.22.2",
     "@material-ui/core": "^4.8.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -30,6 +31,7 @@
     "@types/react-dom": "^16.9.4",
     "jest": "^24.9.0",
     "moment": "^2.24.0",
+    "onsenui": "^2.10.10",
     "react": "^16.12.0",
     "react-collapsible": "^2.6.2",
     "react-d3-tree": "^1.15.3",

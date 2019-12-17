@@ -1,27 +1,43 @@
 import * as React from 'react';
 import Dropdown from '../components/DropdownMenu';
-import {AppBar, createStyles, makeStyles, Theme, Toolbar, Typography} from "@material-ui/core";
+// import SelectCreatable, { CreatableProps } from 'react-select/lib/Creatable';
+// import SelectReadOnly from 'react-select';
+// // import { getStyles } from './SelectDropdownStyles';
 
-
+// import 'normalize.css/normalize.css'
+// import '@blueprintjs/core/dist/blueprint.css'
+import Button from "../components/Button.ts"
 interface IHeaders {
   visualizerToggle: () => void,
   schemaToggle: () => void,
   cacheToggle: () => void,
 }
 
+
+
 const Headers: React.FC<IHeaders> = (props) => {
 
   return (
     <React.Fragment>
-      <AppBar position={"static"} className={classes.appBar}>
+  
+      <nav className="pt-navbar">
+
+        <div className="pt-navbar-group pt-align-left"> 
+            <div className="pt-navbar-heading"> Upload File</div>
+            <input className="pt-input" placeholder="Search Query Id.." type="text" />
+        </div>
+
+
+
+      </nav>
       <div className="hOne">
         <h1>ARTEMIS</h1>
       </div>
       <div className="header-container">
         <Dropdown />
-        <button className="header-item item4" onClick={() => props.visualizerToggle()}>
+        <Button className="header-item item4" onClick={() => props.visualizerToggle()}>
           VISUALIZER
-        </button>
+        </Button>
         <button className="header-item item2" onClick={() => props.schemaToggle()}>
           SCHEMA
         </button>
@@ -29,7 +45,6 @@ const Headers: React.FC<IHeaders> = (props) => {
           CACHE
         </button>
       </div>
-      </AppBar>
     </React.Fragment>
   )
 }
