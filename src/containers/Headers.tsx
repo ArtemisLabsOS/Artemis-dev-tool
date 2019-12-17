@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Dropdown from '../components/DropdownMenu';
+import {AppBar, createStyles, makeStyles, Theme, Toolbar, Typography} from "@material-ui/core";
+
 
 interface IHeaders {
   visualizerToggle: () => void,
@@ -11,6 +13,7 @@ const Headers: React.FC<IHeaders> = (props) => {
 
   return (
     <React.Fragment>
+      <AppBar position={"static"} className={classes.appBar}>
       <div className="hOne">
         <h1>ARTEMIS</h1>
       </div>
@@ -26,6 +29,7 @@ const Headers: React.FC<IHeaders> = (props) => {
           CACHE
         </button>
       </div>
+      </AppBar>
     </React.Fragment>
   )
 }

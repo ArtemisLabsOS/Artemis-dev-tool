@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
   "dependencies": {
+    "@material-ui/core": "^4.8.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@types/chrome": "0.0.91",
