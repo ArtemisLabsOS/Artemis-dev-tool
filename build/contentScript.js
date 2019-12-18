@@ -17,9 +17,10 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       p.addEventListener('click', () => {
         document.getElementsByTagName('body')[0].removeChild(tab);
       })
-      p.innerText = "this is tab"
+      p.innerText = "Close Snapshot"
+      p.setAttribute('style', 'position:fixed; top: 10; left: 10');
       tab.className = "snapShot"
-      tab.setAttribute("style", "position: fixed; width: 100%; height: 100%; top: 0; left: 0; border: 1px solid blue;");
+      tab.setAttribute("style", "position: fixed; background-color: white; width: 100%; height: 100%; top: 0; left: 0; border: 1px solid blue;");
       tab.innerHTML = msg.newBody;
       tab.prepend(p);
       document.getElementsByTagName('body')[0].appendChild(tab);
