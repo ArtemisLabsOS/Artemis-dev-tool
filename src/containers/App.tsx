@@ -4,6 +4,7 @@ import Headers from './Headers';
 import Home from '../components/Home';
 import msgToBackground from '../Utility/msgToBackground'
 import IsJsonString from '../Utility/isJsonString'
+import isValidRequest from '../Utility/isValidRequest'
 var Moment = require('moment');
 import "../stylesheets/style.scss";
 
@@ -29,7 +30,8 @@ const App: React.FC = () => {
       file: "contentScript.js"
     });
     chrome.devtools.network.onRequestFinished.addListener((httpReq: any) => {
-      if (httpReq.request.postData) {
+      if (isValidRequest(httpReq)) {
+        console.log(httpReq);
         let currentTime = new Moment();
         recordTimeStamps(oldTimes => [
           ...oldTimes,
@@ -41,7 +43,7 @@ const App: React.FC = () => {
         });
         let requestQuery: any;
         if (IsJsonString(httpReq.request.postData.text)) {
-          requestQuery = JSON.parse(httpReq.request.postData.text).query;
+          requestQuery = JSON.parse(httpReq.request.postData.text);
         } else {
           requestQuery = httpReq.request.postData.text;
         }

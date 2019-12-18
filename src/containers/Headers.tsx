@@ -31,7 +31,7 @@ const Headers: React.FC<IHeaders> = (props) => {
 
       </nav>
       <div className="hOne">
-        <h1>ARTEMIS</h1>
+        <h1 id="title">ARTEMIS</h1>
       </div>
       <div className="header-container">
         <Dropdown />

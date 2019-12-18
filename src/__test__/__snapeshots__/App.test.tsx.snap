@@ -5,13 +5,22 @@ exports[`App Should match snapshot, render Header, Body, and Footer 1`] = `
   <Component
     schemaToggle={[Function]}
     cacheToggle={[Function]}
+    visualizerToggle={[Function]}
   />
 
   <Component
-    copyToClipboard={[Function]}
-    handleToggle={[Function]}
-    isValidTab={true}
-    recStatus="off"
+    timeStamps={[Function]} 
+    queries={[Function]} 
+    isToggle={[Function]} 
+    historyBtn={historyBtn} 
+    results={results} 
+    url={url} 
+    schemaStatus={schemaStatus} 
+    cacheStatus={cacheStatus} 
+    getCache={getCache} 
+    cache={cache} 
+    history={history} 
+    visualizerStatus={visualizerStatus}
   />
 </div>
 `;

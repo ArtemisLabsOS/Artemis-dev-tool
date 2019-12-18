@@ -5,11 +5,18 @@ exports[`Header Should render Header with title of Artemis Dev Tool 1`] = `
   <h1
     id="title"
   >
-  Artemis
+  ARTEMIS
   </h1>
   <Component
-    shouldInfoDisplay={false}
-    toggleInfoDisplay={[MockFunction]}
+  />
+  <Component
+    onClick={[MockFunction]}
+  />
+  <Component
+    onClick={[MockFunction]}
+  />
+  <Component
+    onClick={[MockFunction]}
   />
 </div>
 `;
