@@ -4,7 +4,7 @@
   "description": "",
   "main": "devtools.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose -u",
     "build": "webpack --mode production",
     "dev": "NODE_ENV=production webpack --watch"
   },
@@ -37,12 +37,8 @@
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
-<<<<<<< HEAD
     "@types/enzyme": "^3.10.4",
     "@types/jest": "^24.0.23",
-=======
-    "babel-jest": "^24.9.0",
->>>>>>> d358352a1f736cf37e5333f90b289867113afc88
     "babel-loader": "^8.0.6",
     "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
@@ -59,7 +55,8 @@
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
-  },"jest": {
+  },
+  "jest": {
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
