@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { shallow, mount, render} from 'enzyme';
-import GraphQLCache from '../ApolloGraphQLCache';
+import GraphQLCache from '../src/components/ApolloGraphQLCache';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 

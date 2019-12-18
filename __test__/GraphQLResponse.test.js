@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { shallow, mount, render} from 'enzyme';
-import GraphQLResponse from '../GraphQLResponse';
+import GraphQLResponse from '../src/components/GraphQLResponse';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });

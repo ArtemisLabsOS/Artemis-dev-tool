@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 const Enzyme = require('enzyme');
 const EnzymeAdapter = require('enzyme-adapter-react-16');
 import { shallow, mount, render} from 'enzyme';
-import Home from "../Home";
+import Home from "../src/components/Home";
 import { Item } from 'semantic-ui-react';
 import renderer from 'react-test-renderer';
 
