@@ -3,27 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "devtools.js",
-  "jest": {
-    "verbose": true,
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "<rootDir>/test-shim.js",
-      "<rootDir>/test-setup.js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
-    },
-    "testMatch": [
-      "**/__tests__/*.(ts|tsx|js)"
-    ]
-  },
   "scripts": {
     "test": "jest",
     "build": "webpack --mode production",

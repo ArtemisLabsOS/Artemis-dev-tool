@@ -1,12 +1,17 @@
 import React from 'react';
 import { shallow } from "enzyme";
-import Headers, { IHeaders } from '../src/containers/Headers';
+import Headers from '../src/containers/Headers';
 import Dropdown from '../src/components/DropdownMenu';
+
+const Enzyme = require("enzyme");
+const Adapter = require("enzyme-adapter-react-16");
+
+Enzyme.configure({ adapter: new Adapter() });
 
 const func = jest.fn();
 
 describe('<Headers />', () => {
-    let props: IHeaders;
+    let props;
     beforeAll(() => {
         props = {
             visualizerToggle: func,

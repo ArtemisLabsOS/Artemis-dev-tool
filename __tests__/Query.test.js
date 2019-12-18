@@ -1,17 +1,22 @@
 import * as React from 'react';
 import ReactJson from 'react-json-view';
 import { shallow } from 'enzyme';
-import Query, { iQuery } from '../src/components/Query'
+import Query from '../src/components/Query'
+
+const Enzyme = require("enzyme");
+const Adapter = require("enzyme-adapter-react-16");
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('<Query />', () => {
-    let props: iQuery;
+    let props;
     beforeAll(() => {
         props = {
             queries: [{}],
             historyBtn: 0
         }
     })
-    let reactJsonProp: any;
+    let reactJsonProp;
     beforeAll(() => {
         reactJsonProp = {
             src: {},

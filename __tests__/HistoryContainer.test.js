@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import HistoryContainer, { IHistoryOfPastQueries } from '../src/containers/HistoryContainer'
+import HistoryContainer from '../src/containers/HistoryContainer'
+
+const Enzyme = require("enzyme");
+const Adapter = require("enzyme-adapter-react-16");
+
+Enzyme.configure({ adapter: new Adapter() });
 
 const func = jest.fn()
 
 describe('<HistoryContainer />', () => {
-    let props: IHistoryOfPastQueries;
+    let props;
     beforeAll(() => {
         props = {
             timeStamps: [{}],
