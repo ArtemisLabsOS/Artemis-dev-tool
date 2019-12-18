@@ -8,7 +8,6 @@ var Moment = require('moment');
 import "../stylesheets/style.scss";
 
 
-
 const App: React.FC = () => {
   const [schemaStatus, updateSchemaStatus] = React.useState<boolean>(false);
   const [cacheStatus, updateCacheStatus] = React.useState<boolean>(false);

@@ -6,7 +6,7 @@ import Dropdown from '../components/DropdownMenu';
 
 // import 'normalize.css/normalize.css'
 // import '@blueprintjs/core/dist/blueprint.css'
-import Button from "../components/Button.ts"
+import Button from "../components/Button"
 interface IHeaders {
   visualizerToggle: () => void,
   schemaToggle: () => void,

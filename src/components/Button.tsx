@@ -156,4 +156,4 @@ import React, {
   }
   const ButtonWrapper = ButtonDoc || Button;
   
-  export { ButtonWrapper as Button };
+  export default Button;

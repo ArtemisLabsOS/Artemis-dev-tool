@@ -1,0 +1,15 @@
+exports[`Header Should render Header with title of Artemis Dev Tool 1`] = `
+<div
+  id="header"
+>
+  <h1
+    id="title"
+  >
+  Artemis
+  </h1>
+  <Component
+    shouldInfoDisplay={false}
+    toggleInfoDisplay={[MockFunction]}
+  />
+</div>
+`;

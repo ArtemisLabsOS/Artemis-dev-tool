@@ -1,0 +1,17 @@
+exports[`App Should match snapshot, render Header, Body, and Footer 1`] = `
+<div
+  id="App"
+>
+  <Component
+    schemaToggle={[Function]}
+    cacheToggle={[Function]}
+  />
+
+  <Component
+    copyToClipboard={[Function]}
+    handleToggle={[Function]}
+    isValidTab={true}
+    recStatus="off"
+  />
+</div>
+`;
