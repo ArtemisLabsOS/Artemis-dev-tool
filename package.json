@@ -4,49 +4,76 @@
   "description": "",
   "main": "devtools.js",
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/test-shim.js",
+      "<rootDir>/test-setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)"
+    ]
   },
   "scripts": {
-    "test": "jest echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --mode production",
     "dev": "NODE_ENV=production webpack --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timjj92/Artemis-dev-tool.git"
+    "url": "git+https://github.com/ArtemisLabsLLP/Artemis-dev-tool.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/timjj92/Artemis-dev-tool/issues"
+    "url": "https://github.com/ArtemisLabsLLP/Artemis-dev-tool/issues"
   },
-  "homepage": "https://github.com/timjj92/Artemis-dev-tool#readme",
+  "homepage": "https://github.com/ArtemisLabsLLP/Artemis-dev-tool#readme",
   "dependencies": {
     "@types/chrome": "0.0.91",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "awesome-typescript-loader": "^5.2.1",
     "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-collapsible": "^2.6.2",
     "react-d3-tree": "^1.15.3",
     "react-dom": "^16.12.0",
     "react-json-view": "^1.19.1",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "source-map-loader": "^0.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
+    "@types/enzyme": "^3.10.4",
+    "@types/jest": "^24.0.23",
     "babel-loader": "^8.0.6",
     "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "jest": "^24.9.0",
     "node-sass": "^4.13.0",
+    "react-test-renderer": "^16.12.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   }

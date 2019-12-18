@@ -56,46 +56,43 @@ const App: React.FC = () => {
             outgoingQueries: requestQuery
           }
         ]);
-        
       }
     });
   }, []);
 
   const schemaToggle = (): void => {
-      updateSchemaStatus(!schemaStatus);
-      updateCacheStatus(false);
-      updateVisualizer(false);
+    updateSchemaStatus(!schemaStatus);
+    updateCacheStatus(false);
+    updateVisualizer(false);
   }
 
   const cacheToggle = (): void => {
-      updateCacheStatus(!cacheStatus);
-      updateSchemaStatus(false);
-      updateVisualizer(false);
+    updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    updateVisualizer(false);
   }
 
   const visualizerToggle = (): void => {
-      updateVisualizer(!visualizerStatus);
-      updateCacheStatus(false);
-      updateSchemaStatus(false);
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
+    updateSchemaStatus(false);
   }
 
   const getCache = (): void => {
-      msgToBackground("contentScript", "getCache", () => {
-          msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-      });
+    msgToBackground("contentScript", "getCache", () => {
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
   }
 
   function isToggle(index: number) {
-      historyBtnToggle(index);
+    historyBtnToggle(index);
   }
   return (
-      <React.Fragment>
-          {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
-          {queries.length === 0 ? null : <ObserverContainer timeStamps={timeStamps} queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
-      </React.Fragment>
+    <React.Fragment>
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer timeStamps={timeStamps} queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
+    </React.Fragment>
   );
 };
-
-
 
 export default App;
