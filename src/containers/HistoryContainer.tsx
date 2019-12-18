@@ -13,8 +13,7 @@ const HistoryContainer: React.FC<IHistoryOfPastQueries> = props => {
   let results = [];
   for (let i = 0; i < props.queries.length; i++) {
     results.push(
-      <HistoryBox key={i} timeStamp={props.timeStamps[i]} activeIndex={activeIndex} setActiveIndex={setActiveIndex} history={props.history} i={i} isToggle={props.isToggle} />
-    )
+      <HistoryBox key={i} timeStamp={props.timeStamps[i]} activeIndex={activeIndex} setActiveIndex={setActiveIndex} history={props.history} i={i} isToggle={props.isToggle} />)
   };
   return (
     <div id="history-past-queries">
