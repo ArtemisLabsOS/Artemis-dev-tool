@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should render correctly with no props 1`] = `
+<div
+  id="home-component"
+>
+  <h1>
+    ARTEMIS
+  </h1>
+  <p>
+    GraphQL query has not been detected yet.
+  </p>
+  <div
+    className="loader"
+  >
+    Loading...
+  </div>
+</div>
+`;

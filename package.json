@@ -4,7 +4,7 @@
   "description": "",
   "main": "devtools.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose -u",
     "build": "webpack --mode production",
     "dev": "NODE_ENV=production webpack --watch"
   },
@@ -55,5 +55,8 @@
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

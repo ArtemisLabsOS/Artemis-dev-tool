@@ -16,7 +16,7 @@ describe('TimeButton domponents', () => {
   describe('LabeledText', () => {
     let wrapper;
     const props = {
-      timeStamps: [],
+      timeStamps: [Function],
       isToggle:(i)=> i,
       history: ["hello"],
       queries: ['Hello'],

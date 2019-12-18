@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import Home from '../src/components/Home';
+import renderer from 'react-test-renderer';
 
 const Enzyme = require("enzyme");
 const Adapter = require("enzyme-adapter-react-16");

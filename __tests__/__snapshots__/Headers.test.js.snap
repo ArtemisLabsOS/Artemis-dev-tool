@@ -12,42 +12,7 @@ exports[`<Headers /> Should make a snapshot 1`] = `
   <div
     className="header-container"
   >
-    <Component />
-    <button
-      className="header-item item4"
-      onClick={[Function]}
-    >
-      VISUALIZER
-    </button>
-    <button
-      className="header-item item2"
-      onClick={[Function]}
-    >
-      SCHEMA
-    </button>
-    <button
-      className="header-item item3"
-      onClick={[Function]}
-    >
-      CACHE
-    </button>
-  </div>
-</Fragment>
-`;
-
-exports[`<Headers /> Should render three buttons 1`] = `
-<Fragment>
-  <div
-    className="hOne"
-  >
-    <h1>
-      ARTEMIS
-    </h1>
-  </div>
-  <div
-    className="header-container"
-  >
-    <Component />
+    <_default />
     <button
       className="header-item item4"
       onClick={[Function]}
