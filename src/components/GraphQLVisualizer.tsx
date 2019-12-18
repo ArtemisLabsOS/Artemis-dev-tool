@@ -1,4 +1,4 @@
-import * as React  from 'react';
+import * as React from 'react';
 import Tree from 'react-d3-tree';
 
 interface IVisualizer {
@@ -31,18 +31,30 @@ const svgSquare = {
 }
 
 const GraphQLVisualizer: React.FC<IVisualizer> = props => {
-  // console.log('this is props.result', props.results)
   const data = traverse(JSON.parse(props.results[0]));
-  return (
-    <div id="visualizer-container">
+  if (data === undefined) {
+    return (
+      <div id="visualizer-container">
         <div>
-            <h3>VISUALIZER</h3>
+          <h3>VISUALIZER</h3>
         </div>
         <div id="treeWrapper">
-            <Tree data={data} nodeSvgShape={svgSquare} />
+          hello
         </div>
-    </div>
-  )
+      </div>
+    )
+  } else {
+    return (
+      <div id="visualizer-container">
+        <div>
+          <h3>VISUALIZER</h3>
+        </div>
+        <div id="treeWrapper">
+          <Tree data={data} nodeSvgShape={svgSquare} />
+        </div>
+      </div>
+    )
+  }
 }
 
 export default GraphQLVisualizer;
