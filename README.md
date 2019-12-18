@@ -1,5 +1,5 @@
 # Artemis-dev-tool
-[![Known Vulnerabilities](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool?targetFile=package.json) [![Dependencies](https://david-dm.org/ArtemisLabsLLP/Artemis-dev-tool.svg)
+[![Known Vulnerabilities](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool?targetFile=package.json) ![Dependencies](https://david-dm.org/ArtemisLabsLLP/Artemis-dev-tool.svg)
 
 Project Artemis is an Open Sourced developer tool for single endpoint testing of GraphQL queries for Apollo Client. The web based extension is best used for React and Express products and applications in development mode, and is available at the chrome store. 
 
