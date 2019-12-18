@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from "react-dom";
 const Enzyme = require('enzyme');
 const EnzymeAdapter = require('enzyme-adapter-react-16');
-import { configure } from 'enzyme';
-configure({ adapter: new EnzymeAdapter() });
 import { shallow, mount, render} from 'enzyme';
 import Home from "../Home";
 import { Item } from 'semantic-ui-react';
@@ -24,4 +22,6 @@ it('should render correctly with no props', () => {
   const homeComponent = renderer.create(<Home/>).toJSON();
   expect(homeComponent).toMatchSnapshot();
 })
+
+
 
