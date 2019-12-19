@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  entry: path.join(__dirname, 'src/index.tsx'), //where to build dependency graph 
+  entry: path.join(__dirname, './src/index.tsx'), //where to build dependency graph 
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js'
@@ -40,6 +40,17 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.css$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ]
   },
   resolve: {
@@ -47,7 +58,3 @@ module.exports = {
   },
   devtool: 'inline-source-map'
 };
-
-
-
-

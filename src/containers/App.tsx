@@ -4,6 +4,7 @@ import Headers from './Headers';
 import Home from '../components/Home';
 import msgToBackground from '../Utility/msgToBackground'
 import IsJsonString from '../Utility/isJsonString'
+import isValidRequest from '../Utility/isValidRequest'
 var Moment = require('moment');
 import "../stylesheets/style.scss";
 
@@ -30,7 +31,8 @@ const App: React.FC = () => {
       file: "contentScript.js"
     });
     chrome.devtools.network.onRequestFinished.addListener((httpReq: any) => {
-      if (httpReq.request.postData) {
+      if (isValidRequest(httpReq)) {
+        console.log(httpReq);
         let currentTime = new Moment();
         recordTimeStamps(oldTimes => [
           ...oldTimes,
@@ -42,7 +44,7 @@ const App: React.FC = () => {
         });
         let requestQuery: any;
         if (IsJsonString(httpReq.request.postData.text)) {
-          requestQuery = JSON.parse(httpReq.request.postData.text).query;
+          requestQuery = JSON.parse(httpReq.request.postData.text);
         } else {
           requestQuery = httpReq.request.postData.text;
         }
@@ -56,46 +58,43 @@ const App: React.FC = () => {
             outgoingQueries: requestQuery
           }
         ]);
-        
       }
     });
   }, []);
 
   const schemaToggle = (): void => {
-      updateSchemaStatus(!schemaStatus);
-      updateCacheStatus(false);
-      updateVisualizer(false);
+    updateSchemaStatus(!schemaStatus);
+    updateCacheStatus(false);
+    updateVisualizer(false);
   }
 
   const cacheToggle = (): void => {
-      updateCacheStatus(!cacheStatus);
-      updateSchemaStatus(false);
-      updateVisualizer(false);
+    updateCacheStatus(!cacheStatus);
+    updateSchemaStatus(false);
+    updateVisualizer(false);
   }
 
   const visualizerToggle = (): void => {
-      updateVisualizer(!visualizerStatus);
-      updateCacheStatus(false);
-      updateSchemaStatus(false);
+    updateVisualizer(!visualizerStatus);
+    updateCacheStatus(false);
+    updateSchemaStatus(false);
   }
 
   const getCache = (): void => {
-      msgToBackground("contentScript", "getCache", () => {
-          msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
-      });
+    msgToBackground("contentScript", "getCache", () => {
+      msgToBackground("contentScript", "retrieveCache", response => { updateCache(response) });
+    });
   }
 
   function isToggle(index: number) {
-      historyBtnToggle(index);
+    historyBtnToggle(index);
   }
   return (
-      <React.Fragment>
-          {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
-          {queries.length === 0 ? null : <ObserverContainer timeStamps={timeStamps} queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
-      </React.Fragment>
+    <React.Fragment>
+      {queries.length === 0 ? <Home /> : <Headers schemaToggle={schemaToggle} cacheToggle={cacheToggle} visualizerToggle={visualizerToggle} />}
+      {queries.length === 0 ? null : <ObserverContainer timeStamps={timeStamps} queries={queries} isToggle={isToggle} historyBtn={historyBtn} results={results} url={url} schemaStatus={schemaStatus} cacheStatus={cacheStatus} getCache={getCache} cache={cache} history={history} visualizerStatus={visualizerStatus} />}
+    </React.Fragment>
   );
 };
-
-
 
 export default App;

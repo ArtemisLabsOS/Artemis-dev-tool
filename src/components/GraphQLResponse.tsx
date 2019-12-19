@@ -1,19 +1,21 @@
 import * as React from "react";
 import ReactJson from "react-json-view";
 
+
 interface IResponse {
   results: string[],
   historyBtn: number,
 }
 
-const GraphQLResponse: React.FC<IResponse> = props => {  
+const GraphQLResponse: React.FC<IResponse> = props => {
+  console.log(props.results, props.historyBtn, props.results[props.historyBtn]);
   return (
     <div id="response-container">
       <div id="response-hThree">
         <h3 className="graphql-heading">RESPONSE</h3>
       </div>
       <span className="graphql-response">
-        {props.results.length !== 0 && props.historyBtn < props.results.length && props.historyBtn > -1? 
+        {props.results.length !== 0 && props.historyBtn < props.results.length && props.historyBtn > -1 ?
           <ReactJson theme="google"
             src={JSON.parse(props.results[props.historyBtn])}
             name={null}
@@ -23,7 +25,7 @@ const GraphQLResponse: React.FC<IResponse> = props => {
             enableClipboard={false}
             displayDataTypes={false}
             displayObjectSize={false}
-          />: null
+          /> : null
         }
       </span>
     </div>
