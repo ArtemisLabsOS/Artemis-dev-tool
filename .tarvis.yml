@@ -1,5 +1,9 @@
+sudo: false
+
 langauge: node_js
+
 node_js:
   - "node"
-  script: 
+
+script: 
   - npm run test:coverage
