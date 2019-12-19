@@ -7,7 +7,6 @@ interface IResponse {
 }
 
 const GraphQLResponse: React.FC<IResponse> = props => {
-  console.log('this is result', props.results)
   return (
     <div id="response-container">
       <div id="response-hThree">
