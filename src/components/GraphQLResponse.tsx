@@ -1,6 +1,7 @@
 import * as React from "react";
 import ReactJson from "react-json-view";
 
+
 interface IResponse {
   results: string[],
   historyBtn: number,
@@ -15,7 +16,7 @@ const GraphQLResponse: React.FC<IResponse> = props => {
       <span className="graphql-response">
         {props.results.length !== 0 && props.historyBtn < props.results.length && props.historyBtn > -1 ?
           <ReactJson theme="google"
-            src={JSON.parse(JSON.stringify(props.results[props.historyBtn]))}
+            src={JSON.parse(props.results[props.historyBtn])}
             name={null}
             iconStyle="triangle"
             indentWidth={1}
