@@ -26,13 +26,12 @@ describe('TimeButton components', () => {
     it('Renders a <div>', () => {
       expect(wrapper.type()).toEqual('div');
     });
-  
     it('displays h3 SCHEMA properly', () => {
       expect(wrapper.contains(<h3>SCHEMA</h3>)).toEqual(true);
-    })
+    });
 
     it('renders 3 divs', () => {
       expect(wrapper.find('div')).toHaveLength(3);
-    })
+    });
   });
 });
