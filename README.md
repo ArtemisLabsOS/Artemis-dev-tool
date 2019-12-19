@@ -1,7 +1,7 @@
 # Artemis-dev-tool
 [![Known Vulnerabilities](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool?targetFile=package.json) ![Dependencies](https://david-dm.org/ArtemisLabsLLP/Artemis-dev-tool.svg)
 
-Project Artemis is an Open Sourced client developer tool for single endpoint testing of GraphQL queries with Apollo Client. Query endpoint testing and cache management can be done in real time for instant engineering feedback without the need for backend resolvers.
+Project Artemis is an Open Sourced client developer tool for single endpoint testing of GraphQL queries (w/wo Apollo Client). Query endpoint testing and cache management can be done in real time for instant engineering feedback without the need for backend resolvers.
 
 Debug and test query mutations and calls using introspection
 
@@ -10,6 +10,7 @@ The web based extension is best used for React and Express products/applications
 Core features:
 
 1. Display schema, query, and GraphQL response with endpoint detection
+![observer demo](gifs/observer.gif)
 2. Query caching and component storage- View normalized Apollo Client cache in JSON Format
 3. History of past queries per testing session
 4. Query response Snapshot feature
