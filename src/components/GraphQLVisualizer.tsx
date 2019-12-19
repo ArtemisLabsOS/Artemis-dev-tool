@@ -9,7 +9,7 @@ const traverse = (obj: any) => {
   if (typeof obj !== 'object') {
     return [{ name: obj }];
   }
-  const array = [];
+  const array:any[] = [];
   const keys = Object.keys(obj);
   for (let i = 0; i < keys.length; i++) {
     const tempObj = {} as any;

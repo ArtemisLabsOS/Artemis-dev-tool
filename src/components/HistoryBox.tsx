@@ -3,11 +3,12 @@ import { Accordion } from 'semantic-ui-react'
 import TimeButton from '../components/TimeButton'
 
 interface Props{
+  key: number,
   timeStamp: any,
   history: string[],
   activeIndex: number,
   i: number
-  isToggle:(i:number)=> void;
+  isToggle: (i: number) => void,
   setActiveIndex:(i:number) => void;
 }
 
