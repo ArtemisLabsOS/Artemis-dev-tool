@@ -5,6 +5,7 @@
   "main": "devtools.js",
   "scripts": {
     "test": "jest --verbose -u",
+    "test:coverage": "jest --coverage",
     "build": "webpack --mode production",
     "dev": "NODE_ENV=production webpack --watch"
   },
@@ -39,12 +40,20 @@
     "@babel/preset-react": "^7.7.4",
     "@types/enzyme": "^3.10.4",
     "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
     "babel-loader": "^8.0.6",
     "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "node-sass": "^4.13.0",
     "react-test-renderer": "^16.12.0",
@@ -57,6 +66,8 @@
     "webpack-dev-server": "^3.9.0"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
