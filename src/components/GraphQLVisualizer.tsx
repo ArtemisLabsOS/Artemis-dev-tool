@@ -62,7 +62,7 @@ const GraphQLVisualizer: React.FC<IVisualizer> = props => {
           <h3>VISUALIZER</h3>
         </div>
         <div id="treeWrapper">
-          <Tree data={data} nodeSvgShape={svgSquare} orientation="vertical" zoom={.4} separation={{ siblings: 0, nonSiblings: 1 }} nodeSize={{ x: 250, y: 150 }} circleRadius={28} translate={{ x: 250, y: 200 }} />
+          <Tree data={data} nodeSvgShape={svgSquare} orientation="vertical" zoom={.4} separation={{ siblings: 0, nonSiblings: 1 }} nodeSize={{ x: 250, y: 150 }} circleRadius={28} translate={{ x: 250, y: 200 }} textLayout={{ x: -25, y: 0 }} shouldCollapseNeighborNodes={true} useCollapseData={true} collapsible={true} transitionDuration={0} />
         </div>
       </div>
     )
