@@ -11,7 +11,7 @@ import Schema from '../src/components/Schema.tsx';
 // Newer Enzyme versions require an adapter to a particular version of React
 configure({ adapter: new Adapter() });
 
-describe('TimeButton domponents', () => {
+describe('TimeButton components', () => {
   describe('LabeledText', () => {
     let wrapper;
     const props = {
