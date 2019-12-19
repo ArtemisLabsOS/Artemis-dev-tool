@@ -21,12 +21,24 @@ const traverse = (obj: any) => {
 }
 
 const svgSquare = {
-  shape: 'rect',
-  shapeProps: {
-    width: 0,
-    height: 0,
-    x: -10,
-    y: -10,
+  "shape": "circle",
+  "shapeProps": {
+    "r": 40
+  },
+  "Translate X": 443.075,
+  "Translate Y": 410.5,
+  "Initial Depth": 1,
+  "Scale Extent": {
+    "Min": 0.1,
+    "Max": 1,
+  },
+  "Node size": {
+    "X": 152,
+    "Y": 156,
+  },
+  "Node seperation": {
+    "Siblings": 1,
+    "Non-Siblings": 0
   }
 }
 
@@ -50,7 +62,7 @@ const GraphQLVisualizer: React.FC<IVisualizer> = props => {
           <h3>VISUALIZER</h3>
         </div>
         <div id="treeWrapper">
-          <Tree data={data} nodeSvgShape={svgSquare} />
+          <Tree data={data} nodeSvgShape={svgSquare} orientation="vertical" zoom={.4} separation={{ siblings: 0, nonSiblings: 1 }} nodeSize={{ x: 250, y: 150 }} circleRadius={28} translate={{ x: 250, y: 200 }} />
         </div>
       </div>
     )
