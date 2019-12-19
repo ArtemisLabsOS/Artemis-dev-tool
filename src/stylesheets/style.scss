@@ -395,3 +395,51 @@ h1, h2, h3 {
       opacity: 1;
   }
 }
+
+.graphQlQuery {
+  pre {
+    background: transparent;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  /* colors copied from graphiql */
+  span.comment {
+    color: #999999;
+  }
+
+  span.number {
+    color: #2882F9;
+  }
+
+  span.variable {
+    color: #397D13;
+  }
+
+  span.atom {
+    color: #CA9800;
+  }
+
+  span.attribute {
+    color: #FFA500;
+  }
+
+  span.punctuation {
+    color: #555555;
+  }
+
+  span.keyword {
+    color: #B11A04;
+  }
+
+  span.def {
+    color: #D2054E;
+  }
+
+  span.property {
+    color: rgb(255,255,255);
+  }
+
+}
+

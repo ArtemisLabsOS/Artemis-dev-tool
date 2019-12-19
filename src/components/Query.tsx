@@ -31,7 +31,7 @@ const Query: React.FC<iQuery> = props => {
     <span>
       {props.queries.length !== 0 && props.historyBtn > -1 && props.historyBtn < props.queries.length ?
         <GraphqlCodeBlock
-        className="GraphqlCodeBlock"
+        className="graphQlQuery"
         queryBody={props.queries[props.historyBtn].outgoingQueries.query}
         /> 
         : null
