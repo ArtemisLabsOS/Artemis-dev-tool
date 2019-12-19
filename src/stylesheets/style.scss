@@ -97,23 +97,17 @@ h1, h2, h3 {
   a:hover {
     text-decoration: underline;
   }
-
-  // margin-left: 1rem;
-  // padding-right: 10rem;
-  // padding-left: 10rem;
   padding-top: 1rem; 
   padding-left: 3em;
   position: absolute;
   top: 0;
   right: 3px;
   z-index: 2;
-  background-color: rgba(28, 12, 65, 0.795);
+  background-color: rgb(29, 31, 33);
   width: 95%;
   border: 1px solid rgb(223, 197, 197);
-  text-shadow: -1px -1px 3px rgb(98, 255, 150), -1px 1px 3px rgb(243, 255, 150), 1px -1px 3px rgb(128, 255, 128),
-  1px 1px 3px rgb(160, 216, 107);
-
-
+  // text-shadow: -1px -1px 3px rgb(98, 255, 150), -1px 1px 3px rgb(243, 255, 150), 1px -1px 3px rgb(128, 255, 128),
+  // 1px 1px 3px rgb(160, 216, 107);
   margin-top: 115px;
   margin-right: 6px;
   margin-left: 6px;
@@ -121,7 +115,6 @@ h1, h2, h3 {
   #tree {
     text-shadow: -1px -1px 3px whitesmoke, -1px 1px 3px rgb(240, 240, 240), 1px -1px 3px rgb(249, 255, 139),
       1px 1px 3px rgb(246, 255, 124);
- 
    }
    
   #treeWrapper {
@@ -130,14 +123,26 @@ h1, h2, h3 {
     stroke-width: 4.0;
 
    }
-
+  
 }
+    .nodeBase{
+      fill:  #529685 !important;
+      stroke:  #529685 !important;
+      stroke-width: 1;
+    }
+    .leafNodeBase{
+      fill: #529685 !important;
+    }
+    path.linkBase{
+     stroke: white !important;
+    }
+    text.nodeNameBase{
+      stroke: white !important;
+    }
+
 #schema-container {
   height: 100%;
   overflow-y: auto;
-  // margin-left: 1rem;
-  // padding-right: 10rem;
-  // padding-left: 10rem;
   padding-top: 1rem; 
   position: absolute;
   top: 0;
@@ -154,9 +159,6 @@ h1, h2, h3 {
 #cache-container {
   height: 100%;
   overflow-y: auto;
-  // margin-left: 1rem;
-  // padding-right: 10rem;
-  // padding-left: 10rem;
   padding-top: 1rem; 
   position: absolute;
   top: 0;
