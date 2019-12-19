@@ -7,17 +7,40 @@ Debug and test query mutations and calls using introspection
 
 The web based extension is best used for React and Express products/applications in development mode, and is available at the chrome store.
 
-Core features:
+## Install
+### 1. Chrome store
+- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd);
+Simply go to the chrome web store and download:
+- Add to Chrome
 
-1. Display schema, query, and GraphQL response with endpoint detection
+### 2. Working with actual code base
+- Fork the repo to your repositories
+- build the project 
+```bash
+npm install
+npm run build
+```
+- Open chrome and direct to chrome://extension
+- Enable developer mode 
+- click LOAD UNPACKED and upload build folder 
+
+## How to use
+Open the application that you want to inspect with chrome and open chrome's inspector window. Artemis will appear and will render once a GraphQL query is detected from the site. If a website or hosted site you are currently testing contains Apollo Client, you should be able to see its inMemory cache. Otherwise, it will display empty object.
+
+## Core features
+- Display schema, query, and GraphQL response with endpoint detection
+
 ![observer demo](gifs/observer.gif)
-2. Query caching and component storage- View normalized Apollo Client cache in JSON Format
+- Query caching and component storage- View normalized Apollo Client cache in JSON Format
+
 ![cache demo](gifs/cache22.gif)
-3. Query response Snapshot feature
-4. View Response and Query Visualizer tree in inspection window
+- Query response Snapshot feature
+
+- View Response and Query Visualizer tree in inspection window
+
 ![tree demo](gifs/tree1turq.gif)
 
- To utilize, open the inspector window. If a website or hosted site you are currently testing contains Apollo Client. Artemis will appear and will render once a GraphQL query is detected.
+ 
 
 Project Artemis is sitll in Beta, a subset project of OS-Labs.
 
@@ -26,7 +49,10 @@ All rights Reserved Artemis Labs LLP located in Venice, CA is actively looking f
 Technologies used: React Hooks, Typescript, GraphQL, D3,
 Jest, Enzyme, and React component library Testing
 
-Simply go to the chrome web store and download:
+## Contributing
+We encourage you to submit issues for any bugs or ideas for enhancements. Also feel free to fork this repo and submit pull requests to contribute as well. 
+
+
 
 Artemis Labs LLP located in Venice, CA is actively looking for contributors and engineers to join the team. Please post issues directly to Github.
 
