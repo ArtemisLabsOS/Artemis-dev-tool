@@ -12,10 +12,10 @@ Core features:
 1. Display schema, query, and GraphQL response with endpoint detection
 ![observer demo](gifs/observer.gif)
 2. Query caching and component storage- View normalized Apollo Client cache in JSON Format
-3. History of past queries per testing session
-4. Query response Snapshot feature
-5. View Response and Query Visualizer tree in inspection window
-6. Performance monitoring and Management
+![cache demo](gifs/cache22.gif)
+3. Query response Snapshot feature
+4. View Response and Query Visualizer tree in inspection window
+![tree demo](gifs/tree1turq.gif)
 
  To utilize, open the inspector window. If a website or hosted site you are currently testing contains Apollo Client. Artemis will appear and will render once a GraphQL query is detected.
 
