@@ -40,8 +40,6 @@ h1, h2, h3 {
   justify-content: flex-end;
   overflow: auto;
   border-right: 1px solid white;
-  // border-top: 1px solid white;
-  // border-radius: 8px;
   margin-right: 5px;
 
   #queryBox {
@@ -74,7 +72,6 @@ h1, h2, h3 {
   padding-left: 1rem;
   padding-top: 1rem;
   border-right: 1px solid white;
-  // border-radius: 8px;
 }
 
 #response-container {
@@ -84,8 +81,6 @@ h1, h2, h3 {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-top: 1rem;
-  // border: 1px solid white;
-  // border-radius: 8px;
 }
 #visualizer-container{
   height: 100%;
@@ -106,24 +101,9 @@ h1, h2, h3 {
   background-color: rgb(29, 31, 33);
   width: 95%;
   border: 1px solid rgb(223, 197, 197);
-  // text-shadow: -1px -1px 3px rgb(98, 255, 150), -1px 1px 3px rgb(243, 255, 150), 1px -1px 3px rgb(128, 255, 128),
-  // 1px 1px 3px rgb(160, 216, 107);
   margin-top: 115px;
   margin-right: 6px;
   margin-left: 6px;
-
-  #tree {
-    text-shadow: -1px -1px 3px whitesmoke, -1px 1px 3px rgb(240, 240, 240), 1px -1px 3px rgb(249, 255, 139),
-      1px 1px 3px rgb(246, 255, 124);
-   }
-   
-  #treeWrapper {
-    fill: none;
-    stroke: rgb(25, 112, 53);
-    stroke-width: 4.0;
-
-   }
-  
 }
     .nodeBase{
       fill:  #529685 !important;
@@ -132,6 +112,7 @@ h1, h2, h3 {
     }
     .leafNodeBase{
       fill: #529685 !important;
+      stroke:  #529685 !important;
     }
     path.linkBase{
      stroke: white !important;
@@ -281,12 +262,6 @@ h1, h2, h3 {
   width: 100%;
   font-family: 'Courier New', Courier, monospace !important;
 }
-
-// #drop-menu-text {
-//   display: flex;
-//   justify-content: center;
-//   align-content: center;
-// }
 
 #schema-data {
   width: 100%;
