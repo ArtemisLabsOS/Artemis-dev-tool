@@ -11,7 +11,7 @@ import Schema from '../src/components/Schema.tsx';
 // Newer Enzyme versions require an adapter to a particular version of React
 configure({ adapter: new Adapter() });
 
-describe('TimeButton domponents', () => {
+describe('TimeButton components', () => {
   describe('LabeledText', () => {
     let wrapper;
     const props = {
@@ -26,13 +26,12 @@ describe('TimeButton domponents', () => {
     it('Renders a <div>', () => {
       expect(wrapper.type()).toEqual('div');
     });
-  
     it('displays h3 SCHEMA properly', () => {
       expect(wrapper.contains(<h3>SCHEMA</h3>)).toEqual(true);
-    })
+    });
 
     it('renders 3 divs', () => {
       expect(wrapper.find('div')).toHaveLength(3);
-    })
+    });
   });
 });
