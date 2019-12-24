@@ -13,7 +13,7 @@ The web based extension is best used for React and Express products/applications
 
 ## Install
 ### 1. Chrome store
-- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd);
+- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/project-artemis/gpncgocimlpojfgbphndpjgkkhdjhnpb?authuser=0);
 Simply go to the chrome web store and download:
 - Add to Chrome
 
