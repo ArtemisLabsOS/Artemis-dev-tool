@@ -9,7 +9,7 @@ const traverse = (obj: any) => {
   if (typeof obj !== 'object') {
     return [{ name: obj }];
   }
-  const array:any[] = [];
+  const array: any[] = [];
   const keys = Object.keys(obj);
   for (let i = 0; i < keys.length; i++) {
     const tempObj = {} as any;
@@ -42,8 +42,8 @@ const svgSquare = {
   }
 }
 
-const GraphQLVisualizer: React.FC<IVisualizer> = props => {
-  const data = traverse(JSON.parse(props.results[0]));
+const GraphQLVisualizer: React.FC<IVisualizer> = ({ results }) => {
+  const data = traverse(JSON.parse(results[0]));
   if (data === undefined) {
     return (
       <div id="visualizer-container">
