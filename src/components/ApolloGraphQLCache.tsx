@@ -8,10 +8,10 @@ interface Props {
   cache: any,
 }
 
-const ApolloGraphQLCache: React.FC<Props> = props => {
+const ApolloGraphQLCache: React.FC<Props> = ({ queries, getCache, cache }) => {
   React.useEffect(() => {
-    props.getCache()
-  }, [props.queries])
+    getCache()
+  }, [queries])
 
   return (
     <div id="cache-container">
@@ -19,16 +19,16 @@ const ApolloGraphQLCache: React.FC<Props> = props => {
         <h3>CACHE</h3>
       </div>
       <div id='cache-data'>
-      <ReactJson theme="google"
-        src={props.cache}
-        name={null}
-        iconStyle="triangle"
-        indentWidth={1}
-        collapsed={false}
-        enableClipboard={false}
-        displayDataTypes={false}
-        displayObjectSize={false}
-      />
+        <ReactJson theme="google"
+          src={cache}
+          name={null}
+          iconStyle="triangle"
+          indentWidth={1}
+          collapsed={false}
+          enableClipboard={false}
+          displayDataTypes={false}
+          displayObjectSize={false}
+        />
       </div>
     </div>
   );
