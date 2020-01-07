@@ -14,11 +14,11 @@ The web based extension is best used for React and Express products/applications
 ## Install
 ### 1. Chrome store
 - Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/project-artemis/gpncgocimlpojfgbphndpjgkkhdjhnpb?authuser=0);
-Simply go to the chrome web store and download:
-- Add to Chrome
+- Click Add to Chrome button
 
 ### 2. Working with actual code base
 - Fork the repo to your repositories
+- Clone the reposotory on to your local machine 
 - build the project 
 ```bash
 npm install
@@ -29,7 +29,7 @@ npm run build
 - click LOAD UNPACKED and upload build folder 
 
 ## How to use
-Open the application that you want to inspect with chrome and open chrome's inspector window. Artemis will appear and will render once a GraphQL query is detected from the site. If a website or hosted site you are currently testing contains Apollo Client, you should be able to see its inMemory cache. Otherwise, it will display empty object.
+Open the application built with GraphQL on Chrome and open inspector window. Artemis will appear and will render once a GraphQL query is detected from the site. If a website or hosted site you are currently testing contains Apollo Client, you should be able to see its inMemory cache. Otherwise, it will display empty object.
 
 ## Core features
 - Display schema, query, and GraphQL response with endpoint detection
