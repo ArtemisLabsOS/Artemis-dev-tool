@@ -13,7 +13,7 @@ The web based extension is best used for React and Express products/applications
 
 ## Install
 ### 1. Chrome store
-- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/project-artemis/gpncgocimlpojfgbphndpjgkkhdjhnpb?authuser=0);
+- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/project-artemis/gpncgocimlpojfgbphndpjgkkhdjhnpb?authuser=0)
 - Click Add to Chrome button
 
 ### 2. Working with actual code base
