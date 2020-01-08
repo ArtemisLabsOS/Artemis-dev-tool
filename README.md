@@ -1,33 +1,73 @@
-Project Artemis is an Open Sourced client developer tool for single endpoint testing of GraphQL queries with Apollo Client. Query endpoint testing and cache management can be done in real time for instant engineering feedback without the need for backend resolvers.
+# Artemis-dev-tool
+[![Known Vulnerabilities](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ArtemisLabsLLP/Artemis-dev-tool?targetFile=package.json) ![Dependencies](https://david-dm.org/ArtemisLabsLLP/Artemis-dev-tool.svg)
+
+<p align="center">
+  <img width="600" height="390" src="/gifs/schema-visualizer.gif">
+</p>
+
+Project Artemis is an Open Sourced client developer tool for single endpoint testing of GraphQL queries (w/wo Apollo Client). Query endpoint testing and cache management can be done in real time for instant engineering feedback without the need for backend resolvers.
 
 Debug and test query mutations and calls using introspection
 
 The web based extension is best used for React and Express products/applications in development mode, and is available at the chrome store.
 
-Core features:
+## Install
+### 1. Chrome store
+- Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/project-artemis/gpncgocimlpojfgbphndpjgkkhdjhnpb?authuser=0)
+- Click Add to Chrome button
 
-1. Display schema, query, and GraphQL response with endpoint detection
-2. Query caching and component storage- View normalized Apollo Client cache in JSON Format
-3. History of past queries per testing session
-4. Query response Snapshot feature
-5. View Response and Query Visualizer tree in inspection window
-6. Performance monitoring and Management
+### 2. Working with actual code base
+- Fork the repo to your repositories
+- Clone the reposotory on to your local machine 
+- build the project 
+```bash
+npm install
+npm run build
+```
+- Open chrome and direct to chrome://extension
+- Enable developer mode 
+- click LOAD UNPACKED and upload build folder 
 
- To utilize, open the inspector window. If a website or hosted site you are currently testing contains Apollo Client. Artemis will appear and will render once a GraphQL query is detected.
+## How to use
+Open the application built with GraphQL on Chrome and open inspector window. Artemis will appear and will render once a GraphQL query is detected from the site. If a website or hosted site you are currently testing contains Apollo Client, you should be able to see its inMemory cache. Otherwise, it will display empty object.
 
-Project Artemis is sitll in Beta, a subset project of OS-Labs.
+## Core features
+- Display schema, query, and GraphQL response with endpoint detection
 
-All rights Reserved Artemis Labs LLP located in Venice, CA is actively looking for contributors and engineers to join the team. Send a pull request!
+<p align="center">
+  <img width="700" height="390" src="/gifs/observer.gif">
+</p>
 
-Technologies used: React Hooks, Typescript, GraphQL, D3,
-Jest, Enzyme, and React component library Testing
 
-Simply go to the chrome web store and download:
+- Query caching and component storage- View normalized Apollo Client cache in JSON Format
 
-Artemis Labs LLP located in Venice, CA is actively looking for contributors and engineers to join the team. Please post issues directly to Github.
+<p align="center">
+  <img width="600" height="390" src="/gifs/cache22.gif">
+</p>
 
-License This project is protected under the MIT License.
+- Query response Snapshot feature
 
-Artemis Labs v1.7
+<p align="center">
+  <img width="700" height="390" src="gifs/snapshot-.gif">
+</p>
+
+- View Response and Query Visualizer tree in inspection window
+
+<p align="center">
+  <img width="600" height="390" src="/gifs/tree1turq.gif">
+</p>
+
+## Contributing
+Project Artemis is still in Beta, a subset project of OS-Labs. We encourage you to submit issues for any bugs or ideas for enhancements. Also feel free to fork this repo and submit pull requests to contribute as well. 
+
+## Technologies used 
+- React 
+- Typescript
+- GraphQL
+- D3
+- Jest
+- Enzyme
+- Travis CI
 
 All rights Reserved Artemis Labs
+

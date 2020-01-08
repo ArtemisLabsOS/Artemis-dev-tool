@@ -9,7 +9,7 @@ const traverse = (obj: any) => {
   if (typeof obj !== 'object') {
     return [{ name: obj }];
   }
-  const array:any[] = [];
+  const array: any[] = [];
   const keys = Object.keys(obj);
   for (let i = 0; i < keys.length; i++) {
     const tempObj = {} as any;
@@ -42,8 +42,8 @@ const svgSquare = {
   }
 }
 
-const GraphQLVisualizer: React.FC<IVisualizer> = props => {
-  const data = traverse(JSON.parse(props.results[0]));
+const GraphQLVisualizer: React.FC<IVisualizer> = ({ results }) => {
+  const data = traverse(JSON.parse(results[0]));
   if (data === undefined) {
     return (
       <div id="visualizer-container">
@@ -62,7 +62,7 @@ const GraphQLVisualizer: React.FC<IVisualizer> = props => {
           <h3>VISUALIZER</h3>
         </div>
         <div id="treeWrapper">
-          <Tree data={data} nodeSvgShape={svgSquare} orientation="vertical" zoom={.4} separation={{ siblings: 0, nonSiblings: 1 }} nodeSize={{ x: 250, y: 150 }} circleRadius={28} translate={{ x: 250, y: 200 }} />
+          <Tree data={data} nodeSvgShape={svgSquare} orientation="vertical" zoom={.4} separation={{ siblings: 0, nonSiblings: 1 }} nodeSize={{ x: 250, y: 150 }} circleRadius={28} translate={{ x: 250, y: 200 }} textLayout={{ x: -25, y: 0 }} shouldCollapseNeighborNodes={true} useCollapseData={true} collapsible={true} transitionDuration={0} />
         </div>
       </div>
     )

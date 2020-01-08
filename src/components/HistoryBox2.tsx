@@ -1,17 +1,17 @@
 import * as React from 'react'
 import TimeButton from '../components/TimeButton'
 
-interface Props{
+interface Props {
   i: number;
   history: string[];
-  isToggle: (i:number) => void;
+  isToggle: (i: number) => void;
 }
 
-const HistoryBox: React.FC<Props> = props => {
-  return(
-    <div id="queryBox" onClick={() => props.isToggle(props.i)}>
-      <div>Query {props.i + 1}</div>
-      <TimeButton timeStamp={{temp:"temp"}}history={props.history} index={props.i} />
+const HistoryBox: React.FC<Props> = ({ isToggle, i, history }) => {
+  return (
+    <div id="queryBox" onClick={() => isToggle(i)}>
+      <div>Query {i + 1}</div>
+      <TimeButton timeStamp={{ temp: "temp" }} history={history} index={i} />
     </div>
   )
 }

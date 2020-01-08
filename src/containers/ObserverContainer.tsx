@@ -22,17 +22,17 @@ interface IProps {
   cache: any,
 }
 
-const ObserverContainer: React.FC<IProps> = props => {
+const ObserverContainer: React.FC<IProps> = ({ timeStamps, queries, isToggle, historyBtn, results, url, schemaStatus, cacheStatus, getCache, cache, history, visualizerStatus }) => {
   return (
     <React.Fragment>
       <div id="observerContainers">
-        <HistoryContainer timeStamps={props.timeStamps} queries={props.queries} isToggle={props.isToggle} history={props.history} />
-        <Query queries={props.queries} historyBtn={props.historyBtn} />
-        <GraphQLResponse results={props.results} historyBtn={props.historyBtn} />
+        <HistoryContainer timeStamps={timeStamps} queries={queries} isToggle={isToggle} history={history} />
+        <Query queries={queries} historyBtn={historyBtn} />
+        <GraphQLResponse results={results} historyBtn={historyBtn} />
       </div>
-      {props.visualizerStatus ? <GraphQLVisualizer results={props.results} /> : null}
-      {props.schemaStatus ? <Schema url={props.url} queries={props.queries} /> : null}
-      {props.cacheStatus ? <ApolloGraphQLCache queries={props.queries} getCache={props.getCache} cache={props.cache} /> : null}
+      {visualizerStatus ? <GraphQLVisualizer results={results} /> : null}
+      {schemaStatus ? <Schema url={url} queries={queries} /> : null}
+      {cacheStatus ? <ApolloGraphQLCache queries={queries} getCache={getCache} cache={cache} /> : null}
     </React.Fragment>
   )
 }
