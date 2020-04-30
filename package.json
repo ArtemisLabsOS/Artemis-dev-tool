@@ -7,7 +7,9 @@
     "test": "jest --verbose -u",
     "test:coverage": "jest --coverage",
     "build": "webpack --mode production",
-    "dev": "NODE_ENV=production webpack --watch"
+    "dev": "NODE_ENV=production webpack --watch",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,8 @@
     "react-dom": "^16.12.0",
     "react-json-view": "^1.19.1",
     "react-test-renderer": "^16.12.0",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -70,5 +73,6 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
-  }
+  },
+  "snyk": true
 }
